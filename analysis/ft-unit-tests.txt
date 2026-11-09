@@ -1,0 +1,55 @@
+# Unit tests for the software fault-tolerance mechanisms (package D)
+# date: 2026-11-06T10:39:23Z  commit: 06aea177  go version go1.26.0 windows/amd64
+# JWT_SECRET = synthetic 40-char dummy; unit tests only (no Docker, no database)
+
+$ go test -count=1 -v ./internal/service/ -run "TestTransaction_CreateOnce_|TestMoneySpec_Resolve_NoRate|TestRegister_TxError"
+=== RUN   TestRegister_TxError
+--- PASS: TestRegister_TxError (0.25s)
+=== RUN   TestMoneySpec_Resolve_NoRate_IsAnErrorNeverRate1
+--- PASS: TestMoneySpec_Resolve_NoRate_IsAnErrorNeverRate1 (0.12s)
+=== RUN   TestTransaction_CreateOnce_NewClientIDWritesOnce
+--- PASS: TestTransaction_CreateOnce_NewClientIDWritesOnce (0.00s)
+=== RUN   TestTransaction_CreateOnce_RepeatReturnsFirstRowWithoutSideEffects
+--- PASS: TestTransaction_CreateOnce_RepeatReturnsFirstRowWithoutSideEffects (0.00s)
+=== RUN   TestTransaction_CreateOnce_LostRaceRereadsWinner
+--- PASS: TestTransaction_CreateOnce_LostRaceRereadsWinner (0.00s)
+=== RUN   TestTransaction_CreateOnce_OtherUniqueViolationIsNotARetry
+--- PASS: TestTransaction_CreateOnce_OtherUniqueViolationIsNotARetry (0.00s)
+=== RUN   TestTransaction_CreateOnce_DifferentBodyFirstWinsAndWarns
+--- PASS: TestTransaction_CreateOnce_DifferentBodyFirstWinsAndWarns (0.00s)
+=== RUN   TestTransaction_CreateOnce_NoClientIDSkipsLookup
+--- PASS: TestTransaction_CreateOnce_NoClientIDSkipsLookup (0.00s)
+=== RUN   TestTransaction_CreateOnce_ZeroClientIDIsIgnored
+--- PASS: TestTransaction_CreateOnce_ZeroClientIDIsIgnored (0.00s)
+=== RUN   TestTransaction_CreateOnce_LookupFailureIsAnError
+--- PASS: TestTransaction_CreateOnce_LookupFailureIsAnError (0.00s)
+=== RUN   TestTransaction_CreateOnce_CountsTemplateUseOnNewInsert
+--- PASS: TestTransaction_CreateOnce_CountsTemplateUseOnNewInsert (0.00s)
+=== RUN   TestTransaction_CreateOnce_ReplayDoesNotCountTemplateAgain
+--- PASS: TestTransaction_CreateOnce_ReplayDoesNotCountTemplateAgain (0.00s)
+=== RUN   TestTransaction_CreateOnce_LostRaceDoesNotCountTemplate
+--- PASS: TestTransaction_CreateOnce_LostRaceDoesNotCountTemplate (0.00s)
+=== RUN   TestTransaction_CreateOnce_TemplateGoneBeforeTheBumpIsIgnored
+--- PASS: TestTransaction_CreateOnce_TemplateGoneBeforeTheBumpIsIgnored (0.00s)
+=== RUN   TestTransaction_CreateOnce_TemplateBumpErrorDoesNotFailWrite
+--- PASS: TestTransaction_CreateOnce_TemplateBumpErrorDoesNotFailWrite (0.00s)
+=== RUN   TestTransaction_CreateOnce_ForeignTemplateRefused
+--- PASS: TestTransaction_CreateOnce_ForeignTemplateRefused (0.00s)
+=== RUN   TestTransaction_CreateOnce_TemplateDeletedHereIsDropped
+--- PASS: TestTransaction_CreateOnce_TemplateDeletedHereIsDropped (0.00s)
+PASS
+ok  	github.com/howallet/howallet/internal/service	3.381s
+
+$ go test -count=1 -v ./internal/handler/ -run "TestCreateTransaction_RepeatedClientIDAnswers200|TestWriteCurrencyError_NoRate"
+=== RUN   TestWriteCurrencyError_NoRate_CarriesTheNoRateCode
+--- PASS: TestWriteCurrencyError_NoRate_CarriesTheNoRateCode (0.00s)
+=== RUN   TestCreateTransaction_RepeatedClientIDAnswers200
+--- PASS: TestCreateTransaction_RepeatedClientIDAnswers200 (0.00s)
+PASS
+ok  	github.com/howallet/howallet/internal/handler	2.161s
+
+$ go test -count=1 -v ./internal/router/ -run "TestRateLimit_RefusalIsJSONWithRetryAfter"
+=== RUN   TestRateLimit_RefusalIsJSONWithRetryAfter
+--- PASS: TestRateLimit_RefusalIsJSONWithRetryAfter (0.00s)
+PASS
+ok  	github.com/howallet/howallet/internal/router	1.118s

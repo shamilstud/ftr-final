@@ -1,0 +1,705 @@
+
+##### run_exp 6 started 2026-11-06 16:43:30 #####
+
+--- e4quiet(1,) 16:43:30
+[16:43:31.002] known state exp6-quiet-window-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+=== exp6-quiet-window-rep1 ===
+120 s at 5 req/s through the gateway, Prometheus /api/v1/alerts polled every 1 s
+polls: 120 | alerts seen (pending or firing): none
+probe: {'requests': 600, 'success': 600, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.7, 'lat_p50_ms': 9.5, 'lat_p95_ms': 27.4, 'lat_max_ms': 94.0, 'codes': {'200': 600}}
+[16:45:31.870] saved evidence\results\exp6-quiet-window-rep1.json
+
+--- e4quiet(2,) 16:45:35
+[16:45:35.896] known state exp6-quiet-window-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+=== exp6-quiet-window-rep2 ===
+120 s at 5 req/s through the gateway, Prometheus /api/v1/alerts polled every 1 s
+polls: 120 | alerts seen (pending or firing): none
+probe: {'requests': 600, 'success': 600, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.0, 'lat_p50_ms': 9.4, 'lat_p95_ms': 23.3, 'lat_max_ms': 78.9, 'codes': {'200': 600}}
+[16:47:36.802] saved evidence\results\exp6-quiet-window-rep2.json
+
+--- e4replica(1,) 16:47:36
+[16:47:37.492] known state exp6-replica-down-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:47:47.365] exp6-replica-down-rep1: freeze api process of api-56b6dc48d5-c6hnc (pid 28211) `docker exec ftr-endterm-control-plane kill -STOP 28211`
+[16:47:47.626]   -> ok
+
+=== exp6-replica-down-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     0             18m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (52m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             17m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             61m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             61m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (79m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             15m   10.244.0.28   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (79m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+rule: (count(up{job="api"} == 1) < 2) or absent(up{job="api"} == 1)
+  t=  -3.0s ok=  6 fail=  0 codes=200          max_lat=   32.5ms ready_eps=2
+  t=  -2.0s ok=  6 fail=  0 codes=200          max_lat=   33.8ms ready_eps=2
+  t=  -1.0s ok=  6 fail=  0 codes=200          max_lat=   10.0ms ready_eps=2
+  t=  +0.0s ok=  4 fail=  2 codes=200,503      max_lat= 5028.3ms ready_eps=2
+  t=  +1.0s ok=  2 fail=  3 codes=200,503      max_lat= 5017.9ms ready_eps=2
+  t=  +2.0s ok=  3 fail=  3 codes=200,503      max_lat= 5015.5ms ready_eps=1
+  t=  +3.0s ok=  6 fail=  1 codes=200,503      max_lat= 5015.9ms ready_eps=1
+  t=  +4.0s ok=  5 fail=  1 codes=200,503      max_lat= 5007.6ms ready_eps=1
+  t=  +5.0s ok=  4 fail=  1 codes=200,503      max_lat= 5006.5ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +6.0s ok=  7 fail=  0 codes=200          max_lat=   11.9ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +7.0s ok=  6 fail=  0 codes=200          max_lat=   21.7ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +8.0s ok=  6 fail=  0 codes=200          max_lat=   11.7ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +9.0s ok=  6 fail=  0 codes=200          max_lat=   22.6ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +10.0s ok=  5 fail=  0 codes=200          max_lat=   31.2ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +11.0s ok=  7 fail=  0 codes=200          max_lat=   27.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +12.0s ok=  6 fail=  0 codes=200          max_lat=   18.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +13.0s ok=  6 fail=  0 codes=200          max_lat=   12.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +14.0s ok=  6 fail=  0 codes=200          max_lat=   26.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +15.0s ok=  6 fail=  0 codes=200          max_lat=   17.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +16.0s ok=  6 fail=  0 codes=200          max_lat=   11.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +17.0s ok=  6 fail=  0 codes=200          max_lat=   29.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +18.0s ok=  6 fail=  0 codes=200          max_lat=   13.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +19.0s ok=  6 fail=  0 codes=200          max_lat=   11.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +20.0s ok=  6 fail=  0 codes=200          max_lat=   31.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +21.0s ok=  5 fail=  0 codes=200          max_lat=   10.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +22.0s ok=  7 fail=  0 codes=200          max_lat=   18.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +23.0s ok=  6 fail=  0 codes=200          max_lat=   29.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +24.0s ok=  5 fail=  0 codes=200          max_lat=   31.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +25.0s ok=  7 fail=  0 codes=200          max_lat=   25.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +26.0s ok=  6 fail=  0 codes=200          max_lat=   23.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +27.0s ok=  6 fail=  0 codes=200          max_lat=   28.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +28.0s ok=  6 fail=  0 codes=200          max_lat=   29.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +29.0s ok=  6 fail=  0 codes=200          max_lat=   28.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +30.0s ok=  6 fail=  0 codes=200          max_lat=   22.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +31.0s ok=  6 fail=  0 codes=200          max_lat=   11.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +32.0s ok=  6 fail=  0 codes=200          max_lat=   29.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +33.0s ok=  6 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +34.0s ok=  6 fail=  0 codes=200          max_lat=   26.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +35.0s ok=  6 fail=  0 codes=200          max_lat=   12.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +36.0s ok=  6 fail=  0 codes=200          max_lat=   26.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +37.0s ok=  6 fail=  0 codes=200          max_lat=   89.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +38.0s ok=  6 fail=  0 codes=200          max_lat=   28.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +39.0s ok=  6 fail=  0 codes=200          max_lat=   18.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +40.0s ok=  5 fail=  0 codes=200          max_lat=   12.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +41.0s ok=  7 fail=  0 codes=200          max_lat=   10.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +42.0s ok=  6 fail=  0 codes=200          max_lat=  304.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +43.0s ok=  6 fail=  0 codes=200          max_lat=  239.5ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +44.0s ok=  6 fail=  0 codes=200          max_lat=   22.1ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +45.0s ok=  6 fail=  0 codes=200          max_lat=   10.6ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +46.0s ok=  6 fail=  0 codes=200          max_lat=   29.4ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +47.0s ok=  6 fail=  0 codes=200          max_lat=   12.6ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +48.0s ok=  6 fail=  0 codes=200          max_lat=   13.6ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +49.0s ok=  6 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +50.0s ok=  6 fail=  0 codes=200          max_lat=   25.7ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +51.0s ok=  6 fail=  0 codes=200          max_lat=    9.8ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +52.0s ok=  6 fail=  0 codes=200          max_lat=   33.1ms ready_eps=2
+  t= +53.0s ok=  6 fail=  0 codes=200          max_lat=   31.2ms ready_eps=2
+  t= +54.0s ok=  6 fail=  0 codes=200          max_lat=   25.1ms ready_eps=2
+  t= +55.0s ok=  6 fail=  0 codes=200          max_lat=   24.1ms ready_eps=2
+  t= +56.0s ok=  6 fail=  0 codes=200          max_lat=   29.3ms ready_eps=2
+  t= +57.0s ok=  6 fail=  0 codes=200          max_lat=   12.4ms ready_eps=2
+  t= +58.0s ok=  2 fail=  0 codes=200          max_lat=    9.8ms ready_eps=2
+probe_after_injection: {'requests': 350, 'success': 339, 'failed': 11, 'excluded': 0, 'error_rate_pct': 3.14, 'availability_pct': 96.86, 'lat_avg_ms': 172.8, 'lat_p50_ms': 9.8, 'lat_p95_ms': 89.3, 'lat_max_ms': 5028.3, 'codes': {'200': 339, '503': 11}}
+slow_requests_over_1s: 11
+max_latency_ms: 5028.3
+endpoint_drop_s: 2.6
+endpoints_back_s: 43.2
+container_restarts: 0 -> 1
+alerts: {'ApiReplicaDown': {'pending_s': 5.1, 'firing_s': 11.2, 'cleared_s': 53.0, 'activeAt': '2026-11-06T11:47:50.190008992Z'}}
+failed samples: [(0.5, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (0.7, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.2, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.3, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.8, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl')]
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc   1/1     Running   1 (17s ago)   19m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (53m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+events:
+19m         Normal    Scheduled           pod/api-56b6dc48d5-c6hnc             Successfully assigned university/api-56b6dc48d5-c6hnc to ftr-endterm-control-plane
+19m         Normal    SuccessfulCreate    replicaset/api-56b6dc48d5            Created pod: api-56b6dc48d5-c6hnc
+37s         Normal    Killing             pod/api-56b6dc48d5-c6hnc             Container api failed liveness probe, will be restarted
+37s         Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Liveness probe failed: Get "http://10.244.0.23:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+18s         Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Readiness probe failed: Get "http://10.244.0.23:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+17s         Normal    Pulled              pod/api-56b6dc48d5-c6hnc             Container image "howallet-api:endterm" already present on machine
+17s         Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Readiness probe failed: Get "http://10.244.0.23:8080/health": read tcp 10.244.0.1:34388->10.244.0.23:8080: read: connection reset by peer
+17s         Normal    Created             pod/api-56b6dc48d5-c6hnc             Created container: api
+16s         Normal    Started             pod/api-56b6dc48d5-c6hnc             Started container api
+[16:48:46.933] saved evidence\results\exp6-replica-down-rep1.json
+
+--- e4replica(2,) 16:48:47
+[16:48:47.604] known state exp6-replica-down-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:48:54.882] exp6-replica-down-rep2: freeze api process of api-56b6dc48d5-c6hnc (pid 35809) `docker exec ftr-endterm-control-plane kill -STOP 35809`
+[16:48:55.114]   -> ok
+
+=== exp6-replica-down-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     1 (18s ago)   20m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (53m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             18m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             62m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             62m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (80m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             16m   10.244.0.28   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (80m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+rule: (count(up{job="api"} == 1) < 2) or absent(up{job="api"} == 1)
+  t=  -3.0s ok=  5 fail=  0 codes=200          max_lat=   10.8ms ready_eps=2
+  t=  -2.0s ok=  6 fail=  0 codes=200          max_lat=   11.8ms ready_eps=2
+  t=  -1.0s ok=  6 fail=  0 codes=200          max_lat=   23.8ms ready_eps=2
+  t=  +0.0s ok=  4 fail=  2 codes=200,503      max_lat= 5008.0ms ready_eps=2
+  t=  +1.0s ok=  3 fail=  4 codes=200,503      max_lat= 5007.5ms ready_eps=2
+  t=  +2.0s ok=  3 fail=  3 codes=200,503      max_lat= 5009.2ms ready_eps=1
+  t=  +3.0s ok=  3 fail=  2 codes=200,503      max_lat= 5007.0ms ready_eps=1
+  t=  +4.0s ok=  4 fail=  2 codes=200,503      max_lat= 5006.4ms ready_eps=1
+  t=  +5.0s ok=  6 fail=  0 codes=200          max_lat=   29.7ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +6.0s ok=  7 fail=  0 codes=200          max_lat=   10.6ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +7.0s ok=  6 fail=  0 codes=200          max_lat=   22.2ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +8.0s ok=  5 fail=  0 codes=200          max_lat=   17.5ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +9.0s ok=  7 fail=  0 codes=200          max_lat=   10.4ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +10.0s ok=  6 fail=  0 codes=200          max_lat=    9.4ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +11.0s ok=  5 fail=  0 codes=200          max_lat=   22.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +12.0s ok=  7 fail=  0 codes=200          max_lat=   12.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +13.0s ok=  5 fail=  0 codes=200          max_lat=   24.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +14.0s ok=  6 fail=  0 codes=200          max_lat=   11.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +15.0s ok=  7 fail=  0 codes=200          max_lat=   16.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +16.0s ok=  6 fail=  0 codes=200          max_lat=   18.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +17.0s ok=  6 fail=  0 codes=200          max_lat=   12.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +18.0s ok=  6 fail=  0 codes=200          max_lat=   24.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +19.0s ok=  6 fail=  0 codes=200          max_lat=   12.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +20.0s ok=  6 fail=  0 codes=200          max_lat=   11.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +21.0s ok=  6 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +22.0s ok=  6 fail=  0 codes=200          max_lat=   10.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +23.0s ok=  5 fail=  0 codes=200          max_lat=   10.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +24.0s ok=  7 fail=  0 codes=200          max_lat=   21.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +25.0s ok=  6 fail=  0 codes=200          max_lat=   11.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +26.0s ok=  5 fail=  0 codes=200          max_lat=    9.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +27.0s ok=  7 fail=  0 codes=200          max_lat=   12.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +28.0s ok=  6 fail=  0 codes=200          max_lat=   11.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +29.0s ok=  6 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +30.0s ok=  5 fail=  0 codes=200          max_lat=   11.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +31.0s ok=  7 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +32.0s ok=  5 fail=  0 codes=200          max_lat=   13.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +33.0s ok=  7 fail=  0 codes=200          max_lat=   20.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +34.0s ok=  5 fail=  0 codes=200          max_lat=   24.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +35.0s ok=  7 fail=  0 codes=200          max_lat=   11.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +36.0s ok=  6 fail=  0 codes=200          max_lat=   10.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +37.0s ok=  5 fail=  0 codes=200          max_lat=   19.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +38.0s ok=  7 fail=  0 codes=200          max_lat=   31.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +39.0s ok=  5 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +40.0s ok=  6 fail=  0 codes=200          max_lat=   10.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +41.0s ok=  7 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +42.0s ok=  6 fail=  0 codes=200          max_lat=   24.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +43.0s ok=  6 fail=  0 codes=200          max_lat=   25.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +44.0s ok=  6 fail=  0 codes=200          max_lat=  233.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +45.0s ok=  6 fail=  0 codes=200          max_lat=  200.0ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +46.0s ok=  5 fail=  0 codes=200          max_lat=   27.5ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +47.0s ok=  7 fail=  0 codes=200          max_lat=   10.5ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +48.0s ok=  6 fail=  0 codes=200          max_lat=   11.1ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +49.0s ok=  6 fail=  0 codes=200          max_lat=   11.1ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +50.0s ok=  5 fail=  0 codes=200          max_lat=   11.0ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +51.0s ok=  7 fail=  0 codes=200          max_lat=   24.4ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +52.0s ok=  5 fail=  0 codes=200          max_lat=   27.3ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +53.0s ok=  7 fail=  0 codes=200          max_lat=   32.6ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +54.0s ok=  6 fail=  0 codes=200          max_lat=   26.0ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +55.0s ok=  6 fail=  0 codes=200          max_lat=   27.2ms ready_eps=2
+  t= +56.0s ok=  5 fail=  0 codes=200          max_lat=   82.6ms ready_eps=2
+  t= +57.0s ok=  7 fail=  0 codes=200          max_lat=   11.8ms ready_eps=2
+  t= +58.0s ok=  6 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t= +59.0s ok=  5 fail=  0 codes=200          max_lat=   12.3ms ready_eps=2
+  t= +60.0s ok=  6 fail=  0 codes=200          max_lat=   28.0ms ready_eps=2
+  t= +61.0s ok=  3 fail=  0 codes=200          max_lat=    9.9ms ready_eps=2
+probe_after_injection: {'requests': 369, 'success': 356, 'failed': 13, 'excluded': 0, 'error_rate_pct': 3.52, 'availability_pct': 96.48, 'lat_avg_ms': 189.2, 'lat_p50_ms': 9.7, 'lat_p95_ms': 71.4, 'lat_max_ms': 5009.2, 'codes': {'200': 356, '503': 13}}
+slow_requests_over_1s: 13
+max_latency_ms: 5009.2
+endpoint_drop_s: 2.7
+endpoints_back_s: 45.8
+container_restarts: 1 -> 2
+alerts: {'ApiReplicaDown': {'pending_s': 5.1, 'firing_s': 11.2, 'cleared_s': 55.5, 'activeAt': '2026-11-06T11:48:58.190008992Z'}}
+failed samples: [(0.3, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (0.7, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.0, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.2, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.5, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl')]
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc   1/1     Running   2 (17s ago)   21m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (54m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+events:
+21m         Normal    Scheduled           pod/api-56b6dc48d5-c6hnc             Successfully assigned university/api-56b6dc48d5-c6hnc to ftr-endterm-control-plane
+21m         Normal    SuccessfulCreate    replicaset/api-56b6dc48d5            Created pod: api-56b6dc48d5-c6hnc
+107s        Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Liveness probe failed: Get "http://10.244.0.23:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+88s         Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Readiness probe failed: Get "http://10.244.0.23:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+87s         Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Readiness probe failed: Get "http://10.244.0.23:8080/health": read tcp 10.244.0.1:34388->10.244.0.23:8080: read: connection reset by peer
+37s         Normal    Killing             pod/api-56b6dc48d5-c6hnc             Container api failed liveness probe, will be restarted
+17s         Normal    Pulled              pod/api-56b6dc48d5-c6hnc             Container image "howallet-api:endterm" already present on machine
+17s         Normal    Created             pod/api-56b6dc48d5-c6hnc             Created container: api
+16s         Normal    Started             pod/api-56b6dc48d5-c6hnc             Started container api
+[16:49:57.020] saved evidence\results\exp6-replica-down-rep2.json
+
+--- e4replica(3,) 16:49:57
+[16:49:57.713] known state exp6-replica-down-rep3: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:50:07.431] exp6-replica-down-rep3: freeze api process of api-56b6dc48d5-c6hnc (pid 36221) `docker exec ftr-endterm-control-plane kill -STOP 36221`
+[16:50:07.671]   -> ok
+
+=== exp6-replica-down-rep3 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     2 (18s ago)   21m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (54m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             19m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             64m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             64m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (81m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             17m   10.244.0.28   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (81m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+rule: (count(up{job="api"} == 1) < 2) or absent(up{job="api"} == 1)
+  t=  -3.0s ok=  6 fail=  0 codes=200          max_lat=   22.9ms ready_eps=2
+  t=  -2.0s ok=  7 fail=  0 codes=200          max_lat=   10.0ms ready_eps=2
+  t=  -1.0s ok=  5 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t=  +0.0s ok=  4 fail=  2 codes=200,503      max_lat= 5020.9ms ready_eps=2
+  t=  +1.0s ok=  3 fail=  3 codes=200,503      max_lat= 5019.6ms ready_eps=2
+  t=  +2.0s ok=  3 fail=  4 codes=200,503      max_lat= 5027.8ms ready_eps=1
+  t=  +3.0s ok=  4 fail=  1 codes=200,503      max_lat= 5007.3ms ready_eps=1
+  t=  +4.0s ok=  7 fail=  0 codes=200          max_lat=   10.4ms ready_eps=1
+  t=  +5.0s ok=  5 fail=  0 codes=200          max_lat=   10.4ms ready_eps=1
+  t=  +6.0s ok=  7 fail=  0 codes=200          max_lat=   25.1ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +7.0s ok=  5 fail=  0 codes=200          max_lat=   11.1ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +8.0s ok=  6 fail=  0 codes=200          max_lat=   31.6ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +9.0s ok=  6 fail=  0 codes=200          max_lat=   48.8ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +10.0s ok=  7 fail=  0 codes=200          max_lat=   25.1ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +11.0s ok=  5 fail=  0 codes=200          max_lat=   22.1ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t= +12.0s ok=  6 fail=  0 codes=200          max_lat=   11.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +13.0s ok=  6 fail=  0 codes=200          max_lat=   10.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +14.0s ok=  6 fail=  0 codes=200          max_lat=    9.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +15.0s ok=  7 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +16.0s ok=  5 fail=  0 codes=200          max_lat=   17.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +17.0s ok=  6 fail=  0 codes=200          max_lat=   26.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +18.0s ok=  7 fail=  0 codes=200          max_lat=   23.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +19.0s ok=  5 fail=  0 codes=200          max_lat=   22.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +20.0s ok=  6 fail=  0 codes=200          max_lat=   10.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +21.0s ok=  7 fail=  0 codes=200          max_lat=   10.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +22.0s ok=  5 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +23.0s ok=  6 fail=  0 codes=200          max_lat=   13.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +24.0s ok=  6 fail=  0 codes=200          max_lat=   30.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +25.0s ok=  7 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +26.0s ok=  6 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +27.0s ok=  5 fail=  0 codes=200          max_lat=   10.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +28.0s ok=  7 fail=  0 codes=200          max_lat=   10.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +29.0s ok=  5 fail=  0 codes=200          max_lat=   10.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +30.0s ok=  6 fail=  0 codes=200          max_lat=   18.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +31.0s ok=  6 fail=  0 codes=200          max_lat=   16.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +32.0s ok=  7 fail=  0 codes=200          max_lat=   31.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +33.0s ok=  5 fail=  0 codes=200          max_lat=   29.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +34.0s ok=  6 fail=  0 codes=200          max_lat=   31.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +35.0s ok=  7 fail=  0 codes=200          max_lat=   17.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +36.0s ok=  5 fail=  0 codes=200          max_lat=   14.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +37.0s ok=  6 fail=  0 codes=200          max_lat=   11.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +38.0s ok=  6 fail=  0 codes=200          max_lat=   25.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +39.0s ok=  6 fail=  0 codes=200          max_lat=   24.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +40.0s ok=  7 fail=  0 codes=200          max_lat=   12.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +41.0s ok=  5 fail=  0 codes=200          max_lat=   31.2ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +42.0s ok=  6 fail=  0 codes=200          max_lat=   50.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +43.0s ok=  6 fail=  0 codes=200          max_lat=   82.7ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +44.0s ok=  6 fail=  0 codes=200          max_lat=   27.1ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +45.0s ok=  6 fail=  0 codes=200          max_lat=   22.2ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +46.0s ok=  6 fail=  0 codes=200          max_lat=   30.2ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +47.0s ok=  6 fail=  0 codes=200          max_lat=   13.2ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +48.0s ok=  6 fail=  0 codes=200          max_lat=   20.0ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +49.0s ok=  6 fail=  0 codes=200          max_lat=   22.1ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +50.0s ok=  6 fail=  0 codes=200          max_lat=   30.2ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +51.0s ok=  6 fail=  0 codes=200          max_lat=   20.9ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +52.0s ok=  6 fail=  0 codes=200          max_lat=   27.8ms ready_eps=2
+  t= +53.0s ok=  6 fail=  0 codes=200          max_lat=   11.0ms ready_eps=2
+  t= +54.0s ok=  6 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+  t= +55.0s ok=  6 fail=  0 codes=200          max_lat=   27.2ms ready_eps=2
+  t= +56.0s ok=  6 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+  t= +57.0s ok=  6 fail=  0 codes=200          max_lat=   32.7ms ready_eps=2
+  t= +58.0s ok=  6 fail=  0 codes=200          max_lat=   12.1ms ready_eps=2
+  t= +59.0s ok=  3 fail=  0 codes=200          max_lat=    9.5ms ready_eps=2
+probe_after_injection: {'requests': 357, 'success': 347, 'failed': 10, 'excluded': 0, 'error_rate_pct': 2.8, 'availability_pct': 97.2, 'lat_avg_ms': 152.1, 'lat_p50_ms': 9.6, 'lat_p95_ms': 31.9, 'lat_max_ms': 5027.8, 'codes': {'200': 347, '503': 10}}
+slow_requests_over_1s: 10
+max_latency_ms: 5027.8
+endpoint_drop_s: 2.4
+endpoints_back_s: 43.6
+container_restarts: 2 -> 3
+alerts: {'ApiReplicaDown': {'pending_s': 6.1, 'firing_s': 12.2, 'cleared_s': 52.6, 'activeAt': '2026-11-06T11:50:12.190008992Z'}}
+failed samples: [(0.3, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (0.7, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.0, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.3, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl'), (1.7, 503, None, '{"error":"service_unavailable","message":"upstream API is temporarily unavailabl')]
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc   1/1     Running   3 (18s ago)   22m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (55m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+events:
+22m         Normal    Scheduled           pod/api-56b6dc48d5-c6hnc             Successfully assigned university/api-56b6dc48d5-c6hnc to ftr-endterm-control-plane
+22m         Normal    SuccessfulCreate    replicaset/api-56b6dc48d5            Created pod: api-56b6dc48d5-c6hnc
+2m58s       Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Liveness probe failed: Get "http://10.244.0.23:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+2m39s       Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Readiness probe failed: Get "http://10.244.0.23:8080/health": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+2m38s       Warning   Unhealthy           pod/api-56b6dc48d5-c6hnc             Readiness probe failed: Get "http://10.244.0.23:8080/health": read tcp 10.244.0.1:34388->10.244.0.23:8080: read: connection reset by peer
+38s         Normal    Killing             pod/api-56b6dc48d5-c6hnc             Container api failed liveness probe, will be restarted
+18s         Normal    Pulled              pod/api-56b6dc48d5-c6hnc             Container image "howallet-api:endterm" already present on machine
+18s         Normal    Created             pod/api-56b6dc48d5-c6hnc             Created container: api
+17s         Normal    Started             pod/api-56b6dc48d5-c6hnc             Started container api
+[16:51:07.628] saved evidence\results\exp6-replica-down-rep3.json
+
+--- e4errors(1,) 16:51:07
+[16:51:08.247] known state exp6-error-rate-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:51:16.249] exp6-error-rate-rep1: inject `kubectl -n university scale statefulset postgres --replicas=0`
+[16:51:16.472]   -> statefulset.apps/postgres scaled
+[16:51:41.472] exp6-error-rate-rep1: restore at t+25.2s
+[16:51:43.278]   -> statefulset.apps/postgres scaled
+Waiting for 1 pods to be ready...
+partitioned roll out complete: 1 new pods have been updated...
+
+=== exp6-error-rate-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     3 (19s ago)   22m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (55m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             20m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             65m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             65m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (82m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             18m   10.244.0.28   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (82m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+  t=  -3.0s ok= 12 fail=  0 codes=200          max_lat=   10.2ms
+  t=  -1.0s ok=  8 fail=  4 codes=200,500      max_lat=  383.8ms
+  t=  +1.0s ok=  0 fail= 12 codes=500,503      max_lat=10007.7ms
+  t=  +3.0s ok=  0 fail= 12 codes=500,503      max_lat= 5009.9ms
+  t=  +5.0s ok=  0 fail= 12 codes=500,503      max_lat= 5017.5ms alerts=ApiHighErrorRate:pending
+  t=  +7.0s ok=  0 fail= 12 codes=500,503      max_lat= 5006.9ms alerts=ApiHighErrorRate:pending
+  t=  +9.0s ok=  0 fail= 12 codes=503          max_lat=   28.1ms alerts=ApiHighErrorRate:pending
+  t= +11.0s ok=  0 fail= 12 codes=503          max_lat=    6.9ms alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +13.0s ok=  0 fail= 12 codes=503          max_lat= 5006.0ms alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +15.0s ok=  0 fail= 12 codes=500,503      max_lat= 5006.8ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:pending
+  t= +17.0s ok=  1 fail= 11 codes=200,500,503  max_lat= 9159.7ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:pending
+  t= +19.0s ok=  0 fail= 12 codes=503          max_lat= 5009.2ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:pending
+  t= +21.0s ok=  0 fail= 12 codes=500,503      max_lat= 5027.8ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +23.0s ok=  3 fail=  9 codes=200,503      max_lat= 4177.7ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +25.0s ok=  3 fail=  9 codes=200,503      max_lat= 2088.7ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +27.0s ok=  7 fail=  5 codes=200,503      max_lat=   29.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +29.0s ok= 12 fail=  0 codes=200          max_lat=   93.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +31.0s ok= 12 fail=  0 codes=200          max_lat=   10.7ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +33.0s ok= 12 fail=  0 codes=200          max_lat=   26.8ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +35.0s ok= 12 fail=  0 codes=200          max_lat=   29.1ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +37.0s ok= 12 fail=  0 codes=200          max_lat=   28.6ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +39.0s ok= 12 fail=  0 codes=200          max_lat=   28.1ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +41.0s ok= 12 fail=  0 codes=200          max_lat=   28.2ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +43.0s ok= 12 fail=  0 codes=200          max_lat=   32.7ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +45.0s ok= 12 fail=  0 codes=200          max_lat=   26.4ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +47.0s ok= 12 fail=  0 codes=200          max_lat=   10.9ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +49.0s ok= 12 fail=  0 codes=200          max_lat=   23.3ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +51.0s ok= 12 fail=  0 codes=200          max_lat=   11.1ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +53.0s ok= 12 fail=  0 codes=200          max_lat=   11.3ms alerts=ApiHighLatencyP95:firing
+  t= +55.0s ok= 12 fail=  0 codes=200          max_lat=   32.5ms alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok=  9 fail=  0 codes=200          max_lat=   27.8ms
+restore_s: 25.2
+expected_alert: ApiHighErrorRate
+alerts: {'ApiHighErrorRate': {'pending_s': 6.1, 'firing_s': 16.2, 'cleared_s': 53.4, 'activeAt': '2026-11-06T11:51:20.190008992Z'}, 'ApiHighLatencyP95': {'pending_s': 12.1, 'firing_s': 22.2, 'cleared_s': 57.5, 'activeAt': '2026-11-06T11:51:26.190008992Z'}}
+fired: ['ApiHighErrorRate', 'ApiHighLatencyP95']
+correct: False
+probe_fault_window: {'requests': 152, 'success': 6, 'failed': 146, 'excluded': 0, 'error_rate_pct': 96.05, 'availability_pct': 3.95, 'lat_avg_ms': 1651.4, 'lat_p50_ms': 6.5, 'lat_p95_ms': 5009.2, 'lat_max_ms': 10007.7, 'codes': {'200': 6, '500': 22, '503': 124}}
+[16:52:14.742] saved evidence\results\exp6-error-rate-rep1.json
+
+--- e4errors(2,) 16:52:14
+[16:52:15.407] known state exp6-error-rate-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:52:23.408] exp6-error-rate-rep2: inject `kubectl -n university scale statefulset postgres --replicas=0`
+[16:52:23.651]   -> statefulset.apps/postgres scaled
+[16:52:48.651] exp6-error-rate-rep2: restore at t+25.2s
+[16:52:50.469]   -> statefulset.apps/postgres scaled
+Waiting for 1 pods to be ready...
+partitioned roll out complete: 1 new pods have been updated...
+
+=== exp6-error-rate-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     3 (86s ago)   23m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (56m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             21m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             66m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             66m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (83m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             34s   10.244.0.29   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (83m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+  t=  -3.0s ok= 12 fail=  0 codes=200          max_lat=   19.1ms
+  t=  -1.0s ok=  7 fail=  5 codes=200,500      max_lat=  400.9ms
+  t=  +1.0s ok=  0 fail= 11 codes=500,503      max_lat=10024.7ms
+  t=  +3.0s ok=  0 fail= 12 codes=503          max_lat=10008.5ms
+  t=  +5.0s ok=  0 fail= 12 codes=500,503      max_lat= 5009.8ms alerts=ApiHighErrorRate:pending
+  t=  +7.0s ok=  0 fail= 13 codes=500,503      max_lat= 5018.7ms alerts=ApiHighErrorRate:pending
+  t=  +9.0s ok=  0 fail= 12 codes=503          max_lat=   14.5ms alerts=ApiHighErrorRate:pending
+  t= +11.0s ok=  0 fail= 12 codes=503          max_lat=   19.7ms alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +13.0s ok=  0 fail= 12 codes=500,503      max_lat=10005.3ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:pending
+  t= +15.0s ok=  0 fail= 11 codes=503          max_lat=10006.3ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:pending
+  t= +17.0s ok=  0 fail= 13 codes=500,503      max_lat= 5026.1ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:pending
+  t= +19.0s ok=  1 fail= 11 codes=200,500,503  max_lat= 8305.6ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +21.0s ok=  0 fail= 12 codes=500,503      max_lat= 5007.2ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +23.0s ok=  1 fail= 11 codes=200,503      max_lat= 4233.2ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +25.0s ok=  2 fail= 10 codes=200,503      max_lat= 2106.3ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +27.0s ok=  9 fail=  3 codes=200,503      max_lat=   83.4ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +29.0s ok= 12 fail=  0 codes=200          max_lat=   37.2ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +31.0s ok= 12 fail=  0 codes=200          max_lat=   28.9ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +33.0s ok= 12 fail=  0 codes=200          max_lat=   36.1ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +35.0s ok= 11 fail=  0 codes=200          max_lat=   29.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +37.0s ok= 13 fail=  0 codes=200          max_lat=   28.7ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +39.0s ok= 12 fail=  0 codes=200          max_lat=   29.8ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +41.0s ok= 12 fail=  0 codes=200          max_lat=   49.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +43.0s ok= 12 fail=  0 codes=200          max_lat=   28.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +45.0s ok= 12 fail=  0 codes=200          max_lat=   29.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +47.0s ok= 12 fail=  0 codes=200          max_lat=   26.8ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +49.0s ok= 12 fail=  0 codes=200          max_lat=   11.0ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +51.0s ok= 12 fail=  0 codes=200          max_lat=   10.2ms alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +53.0s ok= 12 fail=  0 codes=200          max_lat=   28.8ms alerts=ApiHighLatencyP95:firing
+  t= +55.0s ok=  8 fail=  0 codes=200          max_lat=   11.4ms alerts=ApiHighLatencyP95:firing
+restore_s: 25.2
+expected_alert: ApiHighErrorRate
+alerts: {'ApiHighErrorRate': {'pending_s': 5.1, 'firing_s': 14.2, 'cleared_s': 54.5, 'activeAt': '2026-11-06T11:52:26.190008992Z'}, 'ApiHighLatencyP95': {'pending_s': 11.2, 'firing_s': 20.2, 'cleared_s': None, 'activeAt': '2026-11-06T11:52:32.190008992Z'}}
+fired: ['ApiHighErrorRate', 'ApiHighLatencyP95']
+correct: False
+probe_fault_window: {'requests': 151, 'success': 3, 'failed': 148, 'excluded': 0, 'error_rate_pct': 98.01, 'availability_pct': 1.99, 'lat_avg_ms': 1998.1, 'lat_p50_ms': 9.2, 'lat_p95_ms': 5018.7, 'lat_max_ms': 10024.7, 'codes': {'200': 3, '500': 20, '503': 128}}
+[16:53:19.902] saved evidence\results\exp6-error-rate-rep2.json
+
+--- e4latency(1,) 16:53:20
+lock script (x22): BEGIN; LOCK TABLE accounts IN ACCESS EXCLUSIVE MODE; SELECT pg_sleep(1.5); COMMIT; SELECT pg_sleep(0.3);
+[16:53:20.542] known state exp6-latency-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:53:28.544] exp6-latency-rep1: inject `python callable`
+[16:54:08.556] exp6-latency-rep1: restore at t+40.0s
+
+=== exp6-latency-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     3 (2m31s ago)   24m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (58m ago)     23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0               23m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               67m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               67m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (84m ago)     2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0               32s   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (84m ago)     2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               2d    <none>        ftr-endterm-control-plane   <none>           <none>
+  t=  -3.0s ok= 12 fail=  0 codes=200          max_lat=   27.4ms
+  t=  -1.0s ok= 12 fail=  0 codes=200          max_lat= 1449.1ms
+  t=  +1.0s ok= 12 fail=  0 codes=200          max_lat= 1421.7ms
+  t=  +3.0s ok= 12 fail=  0 codes=200          max_lat= 1388.4ms
+  t=  +5.0s ok= 12 fail=  0 codes=200          max_lat= 1361.1ms
+  t=  +7.0s ok= 12 fail=  0 codes=200          max_lat= 1498.8ms alerts=ApiHighLatencyP95:pending
+  t=  +9.0s ok= 12 fail=  0 codes=200          max_lat= 1469.9ms alerts=ApiHighLatencyP95:pending
+  t= +11.0s ok= 12 fail=  0 codes=200          max_lat= 1445.2ms alerts=ApiHighLatencyP95:pending
+  t= +13.0s ok= 12 fail=  0 codes=200          max_lat= 1416.3ms alerts=ApiHighLatencyP95:pending
+  t= +15.0s ok= 12 fail=  0 codes=200          max_lat= 1359.7ms alerts=ApiHighLatencyP95:pending
+  t= +17.0s ok= 12 fail=  0 codes=200          max_lat= 1497.0ms alerts=ApiHighLatencyP95:firing
+  t= +19.0s ok= 12 fail=  0 codes=200          max_lat= 1468.9ms alerts=ApiHighLatencyP95:firing
+  t= +21.0s ok= 12 fail=  0 codes=200          max_lat= 1438.4ms alerts=ApiHighLatencyP95:firing
+  t= +23.0s ok= 12 fail=  0 codes=200          max_lat= 1411.8ms alerts=ApiHighLatencyP95:firing
+  t= +25.0s ok= 12 fail=  0 codes=200          max_lat= 1382.0ms alerts=ApiHighLatencyP95:firing
+  t= +27.0s ok= 12 fail=  0 codes=200          max_lat= 1358.9ms alerts=ApiHighLatencyP95:firing
+  t= +29.0s ok= 12 fail=  0 codes=200          max_lat= 1497.3ms alerts=ApiHighLatencyP95:firing
+  t= +31.0s ok= 12 fail=  0 codes=200          max_lat= 1479.5ms alerts=ApiHighLatencyP95:firing
+  t= +33.0s ok= 12 fail=  0 codes=200          max_lat= 1414.5ms alerts=ApiHighLatencyP95:firing
+  t= +35.0s ok= 12 fail=  0 codes=200          max_lat= 1382.8ms alerts=ApiHighLatencyP95:firing
+  t= +37.0s ok= 12 fail=  0 codes=200          max_lat= 1354.5ms alerts=ApiHighLatencyP95:firing
+  t= +39.0s ok= 12 fail=  0 codes=200          max_lat=  688.0ms alerts=ApiHighLatencyP95:firing
+  t= +41.0s ok= 12 fail=  0 codes=200          max_lat=   26.1ms alerts=ApiHighLatencyP95:firing
+  t= +43.0s ok= 12 fail=  0 codes=200          max_lat=   23.8ms alerts=ApiHighLatencyP95:firing
+  t= +45.0s ok= 12 fail=  0 codes=200          max_lat=   23.4ms alerts=ApiHighLatencyP95:firing
+  t= +47.0s ok= 12 fail=  0 codes=200          max_lat=   40.8ms alerts=ApiHighLatencyP95:firing
+  t= +49.0s ok= 12 fail=  0 codes=200          max_lat=   29.8ms alerts=ApiHighLatencyP95:firing
+  t= +51.0s ok= 12 fail=  0 codes=200          max_lat=   31.5ms alerts=ApiHighLatencyP95:firing
+  t= +53.0s ok= 12 fail=  0 codes=200          max_lat=   14.8ms alerts=ApiHighLatencyP95:firing
+  t= +55.0s ok= 12 fail=  0 codes=200          max_lat=   28.0ms alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok= 12 fail=  0 codes=200          max_lat=   22.9ms alerts=ApiHighLatencyP95:firing
+  t= +59.0s ok= 12 fail=  0 codes=200          max_lat=   12.2ms alerts=ApiHighLatencyP95:firing
+  t= +61.0s ok= 12 fail=  0 codes=200          max_lat=   10.2ms alerts=ApiHighLatencyP95:firing
+  t= +63.0s ok= 12 fail=  0 codes=200          max_lat=   18.8ms alerts=ApiHighLatencyP95:firing
+  t= +65.0s ok= 12 fail=  0 codes=200          max_lat=   30.5ms alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 12 fail=  0 codes=200          max_lat=   10.4ms alerts=ApiHighLatencyP95:firing
+  t= +69.0s ok=  3 fail=  0 codes=200          max_lat=   12.9ms alerts=ApiHighLatencyP95:firing
+restore_s: 40.0
+expected_alert: ApiHighLatencyP95
+alerts: {'ApiHighLatencyP95': {'pending_s': 7.1, 'firing_s': 17.2, 'cleared_s': None, 'activeAt': '2026-11-06T11:53:34.190008992Z'}}
+fired: ['ApiHighLatencyP95']
+correct: True
+probe_fault_window: {'requests': 241, 'success': 241, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 624.0, 'lat_p50_ms': 584.1, 'lat_p95_ms': 1414.5, 'lat_max_ms': 1498.8, 'codes': {'200': 241}}
+[16:54:38.166] saved evidence\results\exp6-latency-rep1.json
+
+--- e4latency(2,) 16:54:38
+lock script (x22): BEGIN; LOCK TABLE accounts IN ACCESS EXCLUSIVE MODE; SELECT pg_sleep(1.5); COMMIT; SELECT pg_sleep(0.3);
+[16:54:38.842] known state exp6-latency-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:54:46.845] exp6-latency-rep2: inject `python callable`
+[16:55:26.859] exp6-latency-rep2: restore at t+40.0s
+
+=== exp6-latency-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     3 (3m49s ago)   25m    10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (59m ago)     23h    10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0               24m    10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               68m    10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               68m    10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (86m ago)     2d     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0               110s   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (86m ago)     2d     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               2d     <none>        ftr-endterm-control-plane   <none>           <none>
+  t=  -3.0s ok= 12 fail=  0 codes=200          max_lat=   22.0ms
+  t=  -1.0s ok= 12 fail=  0 codes=200          max_lat= 1485.0ms
+  t=  +1.0s ok= 12 fail=  0 codes=200          max_lat= 1453.9ms
+  t=  +3.0s ok= 12 fail=  0 codes=200          max_lat= 1427.8ms
+  t=  +5.0s ok= 12 fail=  0 codes=200          max_lat= 1399.4ms
+  t=  +7.0s ok= 12 fail=  0 codes=200          max_lat= 1370.3ms alerts=ApiHighLatencyP95:pending
+  t=  +9.0s ok= 12 fail=  0 codes=200          max_lat= 1512.4ms alerts=ApiHighLatencyP95:pending
+  t= +11.0s ok= 12 fail=  0 codes=200          max_lat= 1482.0ms alerts=ApiHighLatencyP95:pending
+  t= +13.0s ok= 12 fail=  0 codes=200          max_lat= 1453.9ms alerts=ApiHighLatencyP95:pending
+  t= +15.0s ok= 12 fail=  0 codes=200          max_lat= 1397.6ms alerts=ApiHighLatencyP95:pending
+  t= +17.0s ok= 12 fail=  0 codes=200          max_lat= 1366.8ms alerts=ApiHighLatencyP95:firing
+  t= +19.0s ok= 12 fail=  0 codes=200          max_lat= 1503.6ms alerts=ApiHighLatencyP95:firing
+  t= +21.0s ok= 12 fail=  0 codes=200          max_lat= 1475.7ms alerts=ApiHighLatencyP95:firing
+  t= +23.0s ok= 12 fail=  0 codes=200          max_lat= 1447.1ms alerts=ApiHighLatencyP95:firing
+  t= +25.0s ok= 12 fail=  0 codes=200          max_lat= 1416.9ms alerts=ApiHighLatencyP95:firing
+  t= +27.0s ok= 12 fail=  0 codes=200          max_lat= 1387.4ms alerts=ApiHighLatencyP95:firing
+  t= +29.0s ok= 12 fail=  0 codes=200          max_lat= 1360.1ms alerts=ApiHighLatencyP95:firing
+  t= +31.0s ok= 12 fail=  0 codes=200          max_lat= 1499.1ms alerts=ApiHighLatencyP95:firing
+  t= +33.0s ok= 12 fail=  0 codes=200          max_lat= 1457.3ms alerts=ApiHighLatencyP95:firing
+  t= +35.0s ok= 12 fail=  0 codes=200          max_lat= 1428.0ms alerts=ApiHighLatencyP95:firing
+  t= +37.0s ok= 12 fail=  0 codes=200          max_lat= 1404.9ms alerts=ApiHighLatencyP95:firing
+  t= +39.0s ok= 12 fail=  0 codes=200          max_lat=  734.7ms alerts=ApiHighLatencyP95:firing
+  t= +41.0s ok= 12 fail=  0 codes=200          max_lat=    9.6ms alerts=ApiHighLatencyP95:firing
+  t= +43.0s ok= 12 fail=  0 codes=200          max_lat=   26.6ms alerts=ApiHighLatencyP95:firing
+  t= +45.0s ok= 12 fail=  0 codes=200          max_lat=   20.2ms alerts=ApiHighLatencyP95:firing
+  t= +47.0s ok= 12 fail=  0 codes=200          max_lat=   11.9ms alerts=ApiHighLatencyP95:firing
+  t= +49.0s ok= 12 fail=  0 codes=200          max_lat=   17.4ms alerts=ApiHighLatencyP95:firing
+  t= +51.0s ok= 12 fail=  0 codes=200          max_lat=   30.2ms alerts=ApiHighLatencyP95:firing
+  t= +53.0s ok= 12 fail=  0 codes=200          max_lat=   25.8ms alerts=ApiHighLatencyP95:firing
+  t= +55.0s ok= 12 fail=  0 codes=200          max_lat=   11.9ms alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok= 12 fail=  0 codes=200          max_lat=   11.4ms alerts=ApiHighLatencyP95:firing
+  t= +59.0s ok= 12 fail=  0 codes=200          max_lat=   15.6ms alerts=ApiHighLatencyP95:firing
+  t= +61.0s ok= 12 fail=  0 codes=200          max_lat=   27.7ms alerts=ApiHighLatencyP95:firing
+  t= +63.0s ok= 12 fail=  0 codes=200          max_lat=   88.4ms alerts=ApiHighLatencyP95:firing
+  t= +65.0s ok= 12 fail=  0 codes=200          max_lat=   23.8ms alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 12 fail=  0 codes=200          max_lat=   10.5ms alerts=ApiHighLatencyP95:firing
+  t= +69.0s ok=  3 fail=  0 codes=200          max_lat=    9.4ms alerts=ApiHighLatencyP95:firing
+restore_s: 40.0
+expected_alert: ApiHighLatencyP95
+alerts: {'ApiHighLatencyP95': {'pending_s': 7.1, 'firing_s': 17.2, 'cleared_s': None, 'activeAt': '2026-11-06T11:54:52.190008992Z'}}
+fired: ['ApiHighLatencyP95']
+correct: True
+probe_fault_window: {'requests': 241, 'success': 241, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 636.2, 'lat_p50_ms': 612.6, 'lat_p95_ms': 1427.8, 'lat_max_ms': 1512.4, 'codes': {'200': 241}}
+[16:55:56.549] saved evidence\results\exp6-latency-rep2.json
+##### run_exp 6 finished 2026-11-06 16:55:56 #####
+NOTE 2026-11-06 17:10: the two latency runs above did not record the clear time; moved to results/superseded/. Rerun below.
+lock script (x22): BEGIN; LOCK TABLE accounts IN ACCESS EXCLUSIVE MODE; SELECT pg_sleep(1.5); COMMIT; SELECT pg_sleep(0.3);
+[17:08:01.741] known state exp6-latency-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:08:09.747] exp6-latency-rep1: inject `python callable`
+[17:08:49.761] exp6-latency-rep1: restore at t+40.0s
+
+=== exp6-latency-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-9qcdw            1/1     Running     0             2m28s   10.244.0.33   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (72m ago)   23h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-9vklv   1/1     Running     0             24s     10.244.0.36   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             82m     10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             82m     10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (99m ago)   2d      10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             15m     10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (99m ago)   2d      10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d      <none>        ftr-endterm-control-plane   <none>           <none>
+  t=  -3.0s ok= 12 fail=  0 codes=200          max_lat=   25.0ms
+  t=  -1.0s ok= 11 fail=  0 codes=200          max_lat= 1454.4ms
+  t=  +1.0s ok= 13 fail=  0 codes=200          max_lat= 1427.6ms
+  t=  +3.0s ok= 12 fail=  0 codes=200          max_lat= 1398.6ms
+  t=  +5.0s ok= 12 fail=  0 codes=200          max_lat= 1370.6ms alerts=ApiHighLatencyP95:pending
+  t=  +7.0s ok= 12 fail=  0 codes=200          max_lat= 1510.7ms alerts=ApiHighLatencyP95:pending
+  t=  +9.0s ok= 12 fail=  0 codes=200          max_lat= 1480.2ms alerts=ApiHighLatencyP95:pending
+  t= +11.0s ok= 12 fail=  0 codes=200          max_lat= 1451.4ms alerts=ApiHighLatencyP95:pending
+  t= +13.0s ok= 11 fail=  0 codes=200          max_lat= 1395.2ms alerts=ApiHighLatencyP95:pending
+  t= +15.0s ok= 13 fail=  0 codes=200          max_lat= 1368.9ms alerts=ApiHighLatencyP95:firing
+  t= +17.0s ok= 12 fail=  0 codes=200          max_lat= 1505.8ms alerts=ApiHighLatencyP95:firing
+  t= +19.0s ok= 12 fail=  0 codes=200          max_lat= 1476.6ms alerts=ApiHighLatencyP95:firing
+  t= +21.0s ok= 12 fail=  0 codes=200          max_lat= 1449.6ms alerts=ApiHighLatencyP95:firing
+  t= +23.0s ok= 12 fail=  0 codes=200          max_lat= 1421.0ms alerts=ApiHighLatencyP95:firing
+  t= +25.0s ok= 12 fail=  0 codes=200          max_lat= 1394.8ms alerts=ApiHighLatencyP95:firing
+  t= +27.0s ok= 12 fail=  0 codes=200          max_lat= 1370.4ms alerts=ApiHighLatencyP95:firing
+  t= +29.0s ok= 12 fail=  0 codes=200          max_lat= 1503.8ms alerts=ApiHighLatencyP95:firing
+  t= +31.0s ok= 12 fail=  0 codes=200          max_lat= 1448.0ms alerts=ApiHighLatencyP95:firing
+  t= +33.0s ok= 12 fail=  0 codes=200          max_lat= 1418.0ms alerts=ApiHighLatencyP95:firing
+  t= +35.0s ok= 12 fail=  0 codes=200          max_lat= 1391.8ms alerts=ApiHighLatencyP95:firing
+  t= +37.0s ok= 12 fail=  0 codes=200          max_lat= 1360.6ms alerts=ApiHighLatencyP95:firing
+  t= +39.0s ok= 12 fail=  0 codes=200          max_lat=  527.2ms alerts=ApiHighLatencyP95:firing
+  t= +41.0s ok= 12 fail=  0 codes=200          max_lat=   30.5ms alerts=ApiHighLatencyP95:firing
+  t= +43.0s ok= 12 fail=  0 codes=200          max_lat=   23.0ms alerts=ApiHighLatencyP95:firing
+  t= +45.0s ok= 12 fail=  0 codes=200          max_lat=   10.7ms alerts=ApiHighLatencyP95:firing
+  t= +47.0s ok= 12 fail=  0 codes=200          max_lat=   27.4ms alerts=ApiHighLatencyP95:firing
+  t= +49.0s ok= 12 fail=  0 codes=200          max_lat=   25.7ms alerts=ApiHighLatencyP95:firing
+  t= +51.0s ok= 12 fail=  0 codes=200          max_lat=   10.5ms alerts=ApiHighLatencyP95:firing
+  t= +53.0s ok= 12 fail=  0 codes=200          max_lat=   31.6ms alerts=ApiHighLatencyP95:firing
+  t= +55.0s ok= 12 fail=  0 codes=200          max_lat=   30.8ms alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok= 12 fail=  0 codes=200          max_lat=   25.9ms alerts=ApiHighLatencyP95:firing
+  t= +59.0s ok= 12 fail=  0 codes=200          max_lat=   11.3ms alerts=ApiHighLatencyP95:firing
+  t= +61.0s ok= 12 fail=  0 codes=200          max_lat=   28.2ms alerts=ApiHighLatencyP95:firing
+  t= +63.0s ok= 12 fail=  0 codes=200          max_lat=   12.3ms alerts=ApiHighLatencyP95:firing
+  t= +65.0s ok= 12 fail=  0 codes=200          max_lat=   19.2ms alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 12 fail=  0 codes=200          max_lat=   10.9ms alerts=ApiHighLatencyP95:firing
+  t= +69.0s ok=  8 fail=  0 codes=200          max_lat=   11.1ms
+restore_s: 40.0
+expected_alert: ApiHighLatencyP95
+alerts: {'ApiHighLatencyP95': {'pending_s': 6.1, 'firing_s': 16.2, 'cleared_s': 69.8, 'activeAt': '2026-11-06T12:08:14.190008992Z'}}
+fired: ['ApiHighLatencyP95']
+correct: True
+probe_fault_window: {'requests': 240, 'success': 240, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 634.9, 'lat_p50_ms': 610.1, 'lat_p95_ms': 1421.0, 'lat_max_ms': 1510.7, 'codes': {'200': 240}}
+gateway: {'log_lines': 470, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 470}, 'max_request_time_s': 1.501}
+[17:09:20.750] saved evidence\results\exp6-latency-rep1.json
+lock script (x22): BEGIN; LOCK TABLE accounts IN ACCESS EXCLUSIVE MODE; SELECT pg_sleep(1.5); COMMIT; SELECT pg_sleep(0.3);
+[17:09:21.616] known state exp6-latency-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:09:29.620] exp6-latency-rep2: inject `python callable`
+[17:10:09.635] exp6-latency-rep2: restore at t+40.0s
+
+=== exp6-latency-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS       AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-9qcdw            1/1     Running     0              3m48s   10.244.0.33   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (74m ago)    23h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-9vklv   1/1     Running     0              104s    10.244.0.36   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0              83m     10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0              83m     10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (100m ago)   2d      10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0              16m     10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (100m ago)   2d      10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0              2d      <none>        ftr-endterm-control-plane   <none>           <none>
+  t=  -3.0s ok= 12 fail=  0 codes=200          max_lat=   11.7ms
+  t=  -1.0s ok= 11 fail=  0 codes=200          max_lat= 1443.8ms
+  t=  +1.0s ok= 13 fail=  0 codes=200          max_lat= 1414.7ms
+  t=  +3.0s ok= 12 fail=  0 codes=200          max_lat= 1386.8ms
+  t=  +5.0s ok= 12 fail=  0 codes=200          max_lat= 1357.5ms alerts=ApiHighLatencyP95:pending
+  t=  +7.0s ok= 11 fail=  0 codes=200          max_lat= 1497.1ms alerts=ApiHighLatencyP95:pending
+  t=  +9.0s ok= 13 fail=  0 codes=200          max_lat= 1466.6ms alerts=ApiHighLatencyP95:pending
+  t= +11.0s ok= 12 fail=  0 codes=200          max_lat= 1439.5ms alerts=ApiHighLatencyP95:pending
+  t= +13.0s ok= 12 fail=  0 codes=200          max_lat= 1380.1ms alerts=ApiHighLatencyP95:pending
+  t= +15.0s ok= 12 fail=  0 codes=200          max_lat= 1350.9ms alerts=ApiHighLatencyP95:firing
+  t= +17.0s ok= 12 fail=  0 codes=200          max_lat= 1490.7ms alerts=ApiHighLatencyP95:firing
+  t= +19.0s ok= 12 fail=  0 codes=200          max_lat= 1462.3ms alerts=ApiHighLatencyP95:firing
+  t= +21.0s ok= 12 fail=  0 codes=200          max_lat= 1437.5ms alerts=ApiHighLatencyP95:firing
+  t= +23.0s ok= 12 fail=  0 codes=200          max_lat= 1407.1ms alerts=ApiHighLatencyP95:firing
+  t= +25.0s ok= 12 fail=  0 codes=200          max_lat= 1381.0ms alerts=ApiHighLatencyP95:firing
+  t= +27.0s ok= 12 fail=  0 codes=200          max_lat= 1356.6ms alerts=ApiHighLatencyP95:firing
+  t= +29.0s ok= 12 fail=  0 codes=200          max_lat= 1492.3ms alerts=ApiHighLatencyP95:firing
+  t= +31.0s ok= 12 fail=  0 codes=200          max_lat= 1433.6ms alerts=ApiHighLatencyP95:firing
+  t= +33.0s ok= 12 fail=  0 codes=200          max_lat= 1407.1ms alerts=ApiHighLatencyP95:firing
+  t= +35.0s ok= 12 fail=  0 codes=200          max_lat= 1378.0ms alerts=ApiHighLatencyP95:firing
+  t= +37.0s ok= 12 fail=  0 codes=200          max_lat= 1519.3ms alerts=ApiHighLatencyP95:firing
+  t= +39.0s ok= 12 fail=  0 codes=200          max_lat=  523.3ms alerts=ApiHighLatencyP95:firing
+  t= +41.0s ok= 12 fail=  0 codes=200          max_lat=   18.6ms alerts=ApiHighLatencyP95:firing
+  t= +43.0s ok= 12 fail=  0 codes=200          max_lat=   13.7ms alerts=ApiHighLatencyP95:firing
+  t= +45.0s ok= 12 fail=  0 codes=200          max_lat=   11.8ms alerts=ApiHighLatencyP95:firing
+  t= +47.0s ok= 12 fail=  0 codes=200          max_lat=   30.5ms alerts=ApiHighLatencyP95:firing
+  t= +49.0s ok= 12 fail=  0 codes=200          max_lat=   32.5ms alerts=ApiHighLatencyP95:firing
+  t= +51.0s ok= 11 fail=  0 codes=200          max_lat=   28.9ms alerts=ApiHighLatencyP95:firing
+  t= +53.0s ok= 13 fail=  0 codes=200          max_lat=   22.9ms alerts=ApiHighLatencyP95:firing
+  t= +55.0s ok= 12 fail=  0 codes=200          max_lat=   27.9ms alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok= 12 fail=  0 codes=200          max_lat=   13.2ms alerts=ApiHighLatencyP95:firing
+  t= +59.0s ok= 12 fail=  0 codes=200          max_lat=   11.5ms alerts=ApiHighLatencyP95:firing
+  t= +61.0s ok= 12 fail=  0 codes=200          max_lat=   28.2ms alerts=ApiHighLatencyP95:firing
+  t= +63.0s ok= 12 fail=  0 codes=200          max_lat=   30.4ms alerts=ApiHighLatencyP95:firing
+  t= +65.0s ok= 12 fail=  0 codes=200          max_lat=   30.5ms alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 12 fail=  0 codes=200          max_lat=   29.9ms alerts=ApiHighLatencyP95:firing
+  t= +69.0s ok=  8 fail=  0 codes=200          max_lat=   29.4ms
+restore_s: 40.0
+expected_alert: ApiHighLatencyP95
+alerts: {'ApiHighLatencyP95': {'pending_s': 6.1, 'firing_s': 16.2, 'cleared_s': 70.7, 'activeAt': '2026-11-06T12:09:34.190008992Z'}}
+fired: ['ApiHighLatencyP95']
+correct: True
+probe_fault_window: {'requests': 240, 'success': 240, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 628.8, 'lat_p50_ms': 599.9, 'lat_p95_ms': 1411.6, 'lat_max_ms': 1519.3, 'codes': {'200': 240}}
+gateway: {'log_lines': 470, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 470}, 'max_request_time_s': 1.513}
+[17:10:40.539] saved evidence\results\exp6-latency-rep2.json

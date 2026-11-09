@@ -1,0 +1,22 @@
+{
+  "experiment": "Exp6 quiet window",
+  "duration_s": 120,
+  "polls": 120,
+  "alerts_seen": [],
+  "probe": {
+    "requests": 600,
+    "success": 600,
+    "failed": 0,
+    "excluded": 0,
+    "error_rate_pct": 0.0,
+    "availability_pct": 100.0,
+    "lat_avg_ms": 11.7,
+    "lat_p50_ms": 9.5,
+    "lat_p95_ms": 27.4,
+    "lat_max_ms": 94.0,
+    "codes": {
+      "200": 600
+    }
+  },
+  "t0": 1793965411.0069003
+}

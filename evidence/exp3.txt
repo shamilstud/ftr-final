@@ -1,0 +1,447 @@
+
+##### run_exp 3 started 2026-11-06 15:56:50 #####
+
+--- exp3('improved', 1) 15:56:50
+[15:56:50.648] known state exp3-improved-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[15:57:03.454] exp3-improved-rep1: netem 2000 ms on egress to :5432 of api-56b6dc48d5-qdjzv (pid 3336)
+[15:57:44.118] exp3-improved-rep1: removed at t+41.1s 
+
+=== exp3-improved-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (27m ago)   22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (90s ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (47s ago)   46h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             10m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             10m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (28m ago)   47h   10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     3 (28m ago)   46h   10.244.0.11   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (28m ago)   47h   10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h   <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 140728 bytes 598 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 1705b 16p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 34770 bytes 321 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 1705b 16p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat= 5011.9ms ready_eps=2
+  t=  +2.0s ok= 10 fail=  0 codes=200          max_lat= 5042.2ms ready_eps=2
+  t=  +7.0s ok= 10 fail=  0 codes=200          max_lat=   31.7ms ready_eps=2
+  t= +12.0s ok= 10 fail=  0 codes=200          max_lat= 5009.9ms ready_eps=2 alerts=ApiHighLatencyP95:pending
+  t= +17.0s ok= 10 fail=  0 codes=200          max_lat= 5011.6ms ready_eps=2 alerts=ApiHighLatencyP95:pending
+  t= +22.0s ok= 10 fail=  0 codes=200          max_lat= 5010.5ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +27.0s ok= 10 fail=  0 codes=200          max_lat= 5013.5ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat= 5011.3ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:firing
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 5014.6ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:firing
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=   28.1ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=   23.9ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   32.4ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   25.2ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   20.4ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   29.9ms ready_eps=2
+injection_verified: True
+netem_packets_delayed: 321
+stats_before: {'requests': 20, 'success': 20, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 13.4, 'lat_p50_ms': 9.9, 'lat_p95_ms': 33.3, 'lat_max_ms': 33.3, 'codes': {'200': 20}}
+stats_during: {'requests': 82, 'success': 82, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 830.9, 'lat_p50_ms': 10.4, 'lat_p95_ms': 5011.9, 'lat_max_ms': 5042.2, 'codes': {'200': 82}}
+stats_after_settled: {'requests': 34, 'success': 34, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 12.8, 'lat_p50_ms': 10.2, 'lat_p95_ms': 28.5, 'lat_max_ms': 29.9, 'codes': {'200': 34}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.0}
+recovery: {'last_slow_request_end_after_removal_s': 0.0}
+endpoint_changes: [(-11.35, 2)]
+gateway: {'log_lines': 166, 'requests_retried': 13, 'extra_upstream_tries': 13, 'max_tries_per_request': 2, 'failover_success': 13, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 153, '504, 200': 13}, 'max_request_time_s': 5.028}
+alerts: {'ApiHighErrorRate': {'pending_s': 33.4, 'firing_s': 43.5, 'cleared_s': 61.7, 'activeAt': '2026-11-06T10:57:34.190008992Z'}, 'ApiHighLatencyP95': {'pending_s': 12.3, 'firing_s': 22.4, 'cleared_s': 69.8, 'activeAt': '2026-11-06T10:57:12.190008992Z'}}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 4, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 4
+duplicates_db: 0
+[15:58:17.538] saved evidence\results\exp3-improved-rep1.json
+
+--- exp3('baseline', 1) 15:58:17
+[15:58:17.864] known state exp3-baseline-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[15:58:30.739] exp3-baseline-rep1: netem 2000 ms on egress to :5432 of api-baseline-69bbd8cf45-nhgcv (pid 13366)
+[15:59:11.265] exp3-baseline-rep1: removed at t+41.1s 
+
+=== exp3-baseline-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (29m ago)     22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (2m57s ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (2m14s ago)   46h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               12m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               12m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (29m ago)     47h   10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     3 (29m ago)     46h   10.244.0.11   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (29m ago)     47h   10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               47h   <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 336306 bytes 1808 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 10431b 56p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 178325 bytes 1070 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 10431b 56p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat=10016.0ms ready_eps=1
+  t=  +2.0s ok=  4 fail=  6 codes=200,ERR      max_lat=28740.7ms ready_eps=1
+  t=  +7.0s ok=  1 fail=  9 codes=200,ERR      max_lat=30825.4ms ready_eps=1
+  t= +12.0s ok=  4 fail=  6 codes=200,ERR      max_lat=30118.3ms ready_eps=1
+  t= +17.0s ok=  2 fail=  8 codes=200,ERR      max_lat=26124.9ms ready_eps=1
+  t= +22.0s ok=  1 fail=  9 codes=200,ERR      max_lat=21905.4ms ready_eps=1
+  t= +27.0s ok= 10 fail=  0 codes=200          max_lat=14888.1ms ready_eps=1
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat=12486.3ms ready_eps=1
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 5490.0ms ready_eps=1
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=   35.9ms ready_eps=1
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=   22.5ms ready_eps=1
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=  193.2ms ready_eps=1
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=  186.7ms ready_eps=1
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   19.8ms ready_eps=1
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   11.5ms ready_eps=1
+injection_verified: True
+netem_packets_delayed: 1070
+stats_before: {'requests': 20, 'success': 20, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 10.6, 'lat_p50_ms': 8.6, 'lat_p95_ms': 25.0, 'lat_max_ms': 25.0, 'codes': {'200': 20}}
+stats_during: {'requests': 82, 'success': 44, 'failed': 38, 'excluded': 0, 'error_rate_pct': 46.34, 'availability_pct': 53.66, 'lat_avg_ms': 15040.3, 'lat_p50_ms': 14548.9, 'lat_p95_ms': 28740.7, 'lat_max_ms': 30825.4, 'codes': {'200': 44, 'conn_error': 38}}
+stats_after_settled: {'requests': 80, 'success': 80, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 17.3, 'lat_p50_ms': 8.9, 'lat_p95_ms': 32.4, 'lat_max_ms': 193.2, 'codes': {'200': 80}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.0}
+recovery: {'last_slow_request_end_after_removal_s': 0.7}
+endpoint_changes: [(-11.36, 1)]
+gateway: None
+alerts: {}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 37, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 387
+duplicates_db: 0
+[16:00:07.041] saved evidence\results\exp3-baseline-rep1.json
+##### run_exp 3 finished 2026-11-06 16:00:07 #####
+NOTE 2026-11-06 16:10: runs above were made with Postgres at 256Mi; set aside (see test-plan.md amendment). Runs below use 1Gi.
+
+##### run_exp 3 started 2026-11-06 16:11:21 #####
+
+--- exp3('improved', 1) 16:11:21
+[16:11:21.795] known state exp3-improved-rep1: all workloads ready, no alerts (waited 0.1s for alerts to clear)
+[16:11:34.717] exp3-improved-rep1: netem 2000 ms on egress to :5432 of api-56b6dc48d5-qdjzv (pid 3336)
+[16:12:15.156] exp3-improved-rep1: removed at t+41.0s 
+
+=== exp3-improved-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (42m ago)   22h    10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (16m ago)   22h    10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (15m ago)   46h    10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             25m    10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             25m    10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (42m ago)   47h    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             3m8s   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (42m ago)   47h    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h    <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 140328 bytes 598 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 1518b 14p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 33757 bytes 308 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 1518b 14p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat= 5008.7ms ready_eps=2
+  t=  +2.0s ok= 10 fail=  0 codes=200          max_lat= 5027.1ms ready_eps=2
+  t=  +7.0s ok= 10 fail=  0 codes=200          max_lat=   43.6ms ready_eps=2
+  t= +12.0s ok= 10 fail=  0 codes=200          max_lat= 5008.6ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +17.0s ok= 10 fail=  0 codes=200          max_lat=   20.1ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +22.0s ok= 10 fail=  0 codes=200          max_lat=   13.5ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +27.0s ok= 10 fail=  0 codes=200          max_lat= 5020.5ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat= 5012.4ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 5028.9ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=   12.0ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=   59.3ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   23.0ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   17.3ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   23.0ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   24.9ms ready_eps=2
+injection_verified: True
+netem_packets_delayed: 308
+stats_before: {'requests': 19, 'success': 19, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.4, 'lat_p50_ms': 9.8, 'lat_p95_ms': 27.8, 'lat_max_ms': 27.8, 'codes': {'200': 19}}
+stats_during: {'requests': 82, 'success': 82, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 735.1, 'lat_p50_ms': 10.0, 'lat_p95_ms': 5013.4, 'lat_max_ms': 5028.9, 'codes': {'200': 82}}
+stats_after_settled: {'requests': 35, 'success': 35, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.9, 'lat_p50_ms': 9.9, 'lat_p95_ms': 23.0, 'lat_max_ms': 24.9, 'codes': {'200': 35}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.5}
+recovery: {'last_slow_request_end_after_removal_s': 0.0}
+endpoint_changes: [(-11.34, 2)]
+gateway: {'log_lines': 166, 'requests_retried': 11, 'extra_upstream_tries': 11, 'max_tries_per_request': 2, 'failover_success': 11, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 155, '504, 200': 11}, 'max_request_time_s': 5.009}
+alerts: {'ApiHighErrorRate': {'pending_s': 12.2, 'firing_s': 22.2, 'cleared_s': 64.6, 'activeAt': '2026-11-06T11:11:44.190008992Z'}, 'ApiHighLatencyP95': {'pending_s': 12.2, 'firing_s': 22.2, 'cleared_s': 68.6, 'activeAt': '2026-11-06T11:11:44.190008992Z'}}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 5, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 5
+duplicates_db: 0
+[16:12:48.568] saved evidence\results\exp3-improved-rep1.json
+
+--- exp3('improved', 2) 16:12:48
+[16:12:49.529] known state exp3-improved-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:13:02.481] exp3-improved-rep2: netem 2000 ms on egress to :5432 of api-56b6dc48d5-qdjzv (pid 3336)
+[16:13:42.921] exp3-improved-rep2: removed at t+40.9s 
+
+=== exp3-improved-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (43m ago)   22h     10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (17m ago)   22h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (16m ago)   46h     10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             26m     10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             26m     10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (44m ago)   47h     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             4m36s   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (44m ago)   47h     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h     <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 140853 bytes 563 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 2150b 20p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 37201 bytes 285 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 2150b 20p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat= 5009.8ms ready_eps=2
+  t=  +2.0s ok= 10 fail=  0 codes=200          max_lat= 5014.5ms ready_eps=2
+  t=  +7.0s ok= 10 fail=  0 codes=200          max_lat=   21.3ms ready_eps=2
+  t= +12.0s ok= 10 fail=  0 codes=200          max_lat= 5083.2ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +17.0s ok= 10 fail=  0 codes=200          max_lat=   25.5ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +22.0s ok= 10 fail=  0 codes=200          max_lat=   29.0ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:firing
+  t= +27.0s ok= 10 fail=  0 codes=200          max_lat= 5028.3ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:firing
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat= 5026.6ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 4245.7ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=   52.7ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=  235.4ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   32.2ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   22.4ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=  177.7ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+injection_verified: True
+netem_packets_delayed: 285
+stats_before: {'requests': 19, 'success': 19, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 10.5, 'lat_p50_ms': 9.6, 'lat_p95_ms': 25.8, 'lat_max_ms': 25.8, 'codes': {'200': 19}}
+stats_during: {'requests': 82, 'success': 82, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 578.4, 'lat_p50_ms': 10.1, 'lat_p95_ms': 5010.1, 'lat_max_ms': 5083.2, 'codes': {'200': 82}}
+stats_after_settled: {'requests': 35, 'success': 35, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 16.7, 'lat_p50_ms': 9.7, 'lat_p95_ms': 32.2, 'lat_max_ms': 177.7, 'codes': {'200': 35}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.0}
+recovery: {'last_slow_request_end_after_removal_s': 9.8}
+endpoint_changes: [(-11.35, 2)]
+gateway: {'log_lines': 166, 'requests_retried': 8, 'extra_upstream_tries': 8, 'max_tries_per_request': 2, 'failover_success': 8, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 158, '504, 200': 8}, 'max_request_time_s': 5.079}
+alerts: {'ApiHighErrorRate': {'pending_s': 14.3, 'firing_s': 36.5, 'cleared_s': 24.4, 'activeAt': '2026-11-06T11:13:14.190008992Z'}, 'ApiHighLatencyP95': {'pending_s': 14.3, 'firing_s': 24.4, 'cleared_s': None, 'activeAt': '2026-11-06T11:13:14.190008992Z'}}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 7, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 8
+duplicates_db: 0
+[16:14:16.555] saved evidence\results\exp3-improved-rep2.json
+
+--- exp3('improved', 3) 16:14:16
+[16:14:19.327] known state exp3-improved-rep3: all workloads ready, no alerts (waited 2.0s for alerts to clear)
+[16:14:32.344] exp3-improved-rep3: netem 2000 ms on egress to :5432 of api-56b6dc48d5-qdjzv (pid 3336)
+[16:15:12.828] exp3-improved-rep3: removed at t+41.1s 
+
+=== exp3-improved-rep3 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (45m ago)   22h    10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (18m ago)   22h    10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (18m ago)   46h    10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             28m    10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             28m    10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (45m ago)   47h    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             6m6s   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (45m ago)   47h    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h    <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 146735 bytes 612 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 2250b 11p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 35976 bytes 319 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 2250b 11p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat= 5037.8ms ready_eps=2
+  t=  +2.0s ok= 10 fail=  0 codes=200          max_lat= 5011.2ms ready_eps=2
+  t=  +7.0s ok= 10 fail=  0 codes=200          max_lat=   26.4ms ready_eps=2
+  t= +12.0s ok= 10 fail=  0 codes=200          max_lat= 5011.7ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:pending
+  t= +17.0s ok= 10 fail=  0 codes=200          max_lat= 5009.8ms ready_eps=2 alerts=ApiHighLatencyP95:pending
+  t= +22.0s ok= 10 fail=  0 codes=200          max_lat= 5017.8ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:firing
+  t= +27.0s ok= 10 fail=  0 codes=200          max_lat= 5009.7ms ready_eps=2 alerts=ApiHighErrorRate:pending,ApiHighLatencyP95:firing
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat= 5009.6ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 5013.8ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=   28.0ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=   34.3ms ready_eps=2 alerts=ApiHighErrorRate:firing,ApiHighLatencyP95:firing
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   24.6ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   12.9ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   32.1ms ready_eps=2 alerts=ApiHighLatencyP95:firing
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   15.1ms ready_eps=2
+injection_verified: True
+netem_packets_delayed: 319
+stats_before: {'requests': 19, 'success': 19, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 12.2, 'lat_p50_ms': 10.2, 'lat_p95_ms': 30.3, 'lat_max_ms': 30.3, 'codes': {'200': 19}}
+stats_during: {'requests': 83, 'success': 83, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 759.9, 'lat_p50_ms': 10.7, 'lat_p95_ms': 5011.2, 'lat_max_ms': 5037.8, 'codes': {'200': 83}}
+stats_after_settled: {'requests': 34, 'success': 34, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.3, 'lat_p50_ms': 10.5, 'lat_p95_ms': 15.1, 'lat_max_ms': 32.1, 'codes': {'200': 34}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.5}
+recovery: {'last_slow_request_end_after_removal_s': 0.0}
+endpoint_changes: [(-11.33, 2)]
+gateway: {'log_lines': 166, 'requests_retried': 12, 'extra_upstream_tries': 12, 'max_tries_per_request': 2, 'failover_success': 12, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 154, '504, 200': 12}, 'max_request_time_s': 5.014}
+alerts: {'ApiHighErrorRate': {'pending_s': 15.2, 'firing_s': 32.3, 'cleared_s': 21.2, 'activeAt': '2026-11-06T11:14:44.190008992Z'}, 'ApiHighLatencyP95': {'pending_s': 13.2, 'firing_s': 23.2, 'cleared_s': 70.5, 'activeAt': '2026-11-06T11:14:42.190008992Z'}}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 5, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 5
+duplicates_db: 0
+[16:15:46.136] saved evidence\results\exp3-improved-rep3.json
+
+--- exp3('baseline', 1) 16:15:46
+[16:15:47.361] known state exp3-baseline-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:16:00.318] exp3-baseline-rep1: netem 2000 ms on egress to :5432 of api-baseline-69bbd8cf45-nhgcv (pid 13366)
+[16:16:40.751] exp3-baseline-rep1: removed at t+40.9s 
+
+=== exp3-baseline-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (46m ago)   22h     10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (20m ago)   22h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (19m ago)   46h     10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             29m     10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             29m     10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (47m ago)   47h     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             7m34s   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (47m ago)   47h     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h     <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 322230 bytes 1742 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 10729b 50p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 170141 bytes 988 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 10729b 50p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat= 8008.8ms ready_eps=1
+  t=  +2.0s ok=  2 fail=  8 codes=200,ERR      max_lat=33648.2ms ready_eps=1
+  t=  +7.0s ok=  1 fail=  9 codes=200,ERR      max_lat=34030.4ms ready_eps=1
+  t= +12.0s ok=  0 fail= 10 codes=ERR          max_lat=29394.2ms ready_eps=1
+  t= +17.0s ok=  0 fail= 10 codes=ERR          max_lat=26947.7ms ready_eps=1
+  t= +22.0s ok=  0 fail= 10 codes=ERR          max_lat=21429.9ms ready_eps=1
+  t= +27.0s ok=  6 fail=  4 codes=200,ERR      max_lat=15728.4ms ready_eps=1
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat=11745.5ms ready_eps=1
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 6947.5ms ready_eps=1
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=  181.4ms ready_eps=1
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=   27.1ms ready_eps=1
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   13.1ms ready_eps=1
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   76.3ms ready_eps=1
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   13.0ms ready_eps=1
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   11.5ms ready_eps=1
+injection_verified: True
+netem_packets_delayed: 988
+stats_before: {'requests': 19, 'success': 19, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 13.5, 'lat_p50_ms': 9.3, 'lat_p95_ms': 55.8, 'lat_max_ms': 55.8, 'codes': {'200': 19}}
+stats_during: {'requests': 82, 'success': 31, 'failed': 51, 'excluded': 0, 'error_rate_pct': 62.2, 'availability_pct': 37.8, 'lat_avg_ms': 17452.5, 'lat_p50_ms': 18035.5, 'lat_p95_ms': 32048.1, 'lat_max_ms': 34030.4, 'codes': {'200': 31, 'conn_error': 51}}
+stats_after_settled: {'requests': 49, 'success': 49, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.6, 'lat_p50_ms': 8.1, 'lat_p95_ms': 28.4, 'lat_max_ms': 76.3, 'codes': {'200': 49}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.0}
+recovery: {'last_slow_request_end_after_removal_s': 1.1}
+endpoint_changes: [(-11.34, 1)]
+gateway: None
+alerts: {}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 34, 'replayed_200': 1, 'pass': True}
+client_retries_writer: 287
+duplicates_db: 0
+[16:17:20.557] saved evidence\results\exp3-baseline-rep1.json
+
+--- exp3('baseline', 2) 16:17:20
+[16:17:21.228] known state exp3-baseline-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:17:34.424] exp3-baseline-rep2: netem 2000 ms on egress to :5432 of api-baseline-69bbd8cf45-nhgcv (pid 13366)
+[16:18:14.876] exp3-baseline-rep2: removed at t+41.2s 
+
+=== exp3-baseline-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (48m ago)   22h    10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (22m ago)   22h    10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (21m ago)   46h    10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             31m    10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             31m    10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (48m ago)   2d     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             9m8s   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (48m ago)   2d     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d     <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 367074 bytes 1788 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 17624b 56p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 168166 bytes 1075 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 17624b 56p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat= 8008.8ms ready_eps=1
+  t=  +2.0s ok= 10 fail=  0 codes=200          max_lat=10034.9ms ready_eps=1
+  t=  +7.0s ok= 10 fail=  0 codes=200          max_lat=14025.0ms ready_eps=1
+  t= +12.0s ok= 10 fail=  0 codes=200          max_lat=14038.5ms ready_eps=1
+  t= +17.0s ok= 10 fail=  0 codes=200          max_lat=14508.5ms ready_eps=1
+  t= +22.0s ok=  3 fail=  7 codes=200,ERR      max_lat=22371.9ms ready_eps=1
+  t= +27.0s ok=  9 fail=  1 codes=200,ERR      max_lat=17867.3ms ready_eps=1
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat=11857.6ms ready_eps=1
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 5608.7ms ready_eps=1
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=   49.3ms ready_eps=1
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=    9.2ms ready_eps=1
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   24.4ms ready_eps=1
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   23.1ms ready_eps=1
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=    8.8ms ready_eps=1
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   31.2ms ready_eps=1
+injection_verified: True
+netem_packets_delayed: 1075
+stats_before: {'requests': 19, 'success': 19, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.8, 'lat_p50_ms': 9.0, 'lat_p95_ms': 32.4, 'lat_max_ms': 32.4, 'codes': {'200': 19}}
+stats_during: {'requests': 83, 'success': 75, 'failed': 8, 'excluded': 0, 'error_rate_pct': 9.64, 'availability_pct': 90.36, 'lat_avg_ms': 9887.0, 'lat_p50_ms': 10011.0, 'lat_p95_ms': 18641.6, 'lat_max_ms': 22371.9, 'codes': {'200': 75, 'conn_error': 8}}
+stats_after_settled: {'requests': 55, 'success': 55, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 9.9, 'lat_p50_ms': 8.2, 'lat_p95_ms': 26.0, 'lat_max_ms': 31.2, 'codes': {'200': 55}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.0}
+recovery: {'last_slow_request_end_after_removal_s': 0.5}
+endpoint_changes: [(-11.33, 1)]
+gateway: None
+alerts: {}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 41, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 393
+duplicates_db: 0
+[16:18:57.918] saved evidence\results\exp3-baseline-rep2.json
+
+--- exp3('baseline', 3) 16:18:58
+[16:18:58.544] known state exp3-baseline-rep3: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:19:11.294] exp3-baseline-rep3: netem 2000 ms on egress to :5432 of api-baseline-69bbd8cf45-nhgcv (pid 13366)
+[16:19:51.811] exp3-baseline-rep3: removed at t+41.0s 
+
+=== exp3-baseline-rep3 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (49m ago)   22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (23m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (22m ago)   46h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             33m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             33m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (50m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             10m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (50m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 357296 bytes 1773 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 8480b 57p requeues 0
+qdisc netem 30: parent 1:3 limit 1000 delay 2s
+ Sent 170345 bytes 1066 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 8480b 57p requeues 0
+
+  t=  -3.0s ok= 10 fail=  0 codes=200          max_lat=10012.3ms ready_eps=1
+  t=  +2.0s ok= 10 fail=  0 codes=200          max_lat=10036.7ms ready_eps=1
+  t=  +7.0s ok=  8 fail=  2 codes=200,ERR      max_lat=16036.4ms ready_eps=1
+  t= +12.0s ok= 10 fail=  0 codes=200          max_lat=12506.9ms ready_eps=1
+  t= +17.0s ok=  6 fail=  4 codes=200,ERR      max_lat=25528.4ms ready_eps=1
+  t= +22.0s ok=  5 fail=  5 codes=200,ERR      max_lat=19686.4ms ready_eps=1
+  t= +27.0s ok=  6 fail=  4 codes=200,ERR      max_lat=17028.3ms ready_eps=1
+  t= +32.0s ok= 10 fail=  0 codes=200          max_lat=13031.8ms ready_eps=1
+  t= +37.0s ok= 10 fail=  0 codes=200          max_lat= 5421.1ms ready_eps=1
+  t= +42.0s ok= 10 fail=  0 codes=200          max_lat=  129.3ms ready_eps=1
+  t= +47.0s ok= 10 fail=  0 codes=200          max_lat=    8.9ms ready_eps=1
+  t= +52.0s ok= 10 fail=  0 codes=200          max_lat=   32.6ms ready_eps=1
+  t= +57.0s ok= 10 fail=  0 codes=200          max_lat=   27.9ms ready_eps=1
+  t= +62.0s ok= 10 fail=  0 codes=200          max_lat=   20.6ms ready_eps=1
+  t= +67.0s ok= 10 fail=  0 codes=200          max_lat=   12.0ms ready_eps=1
+injection_verified: True
+netem_packets_delayed: 1066
+stats_before: {'requests': 19, 'success': 19, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 13.0, 'lat_p50_ms': 9.5, 'lat_p95_ms': 42.7, 'lat_max_ms': 42.7, 'codes': {'200': 19}}
+stats_during: {'requests': 82, 'success': 67, 'failed': 15, 'excluded': 0, 'error_rate_pct': 18.29, 'availability_pct': 81.71, 'lat_avg_ms': 10530.4, 'lat_p50_ms': 10011.3, 'lat_p95_ms': 19686.4, 'lat_max_ms': 25528.4, 'codes': {'200': 67, 'conn_error': 15}}
+stats_after_settled: {'requests': 41, 'success': 41, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 9.9, 'lat_p50_ms': 8.2, 'lat_p95_ms': 20.6, 'lat_max_ms': 32.6, 'codes': {'200': 41}}
+slow_threshold_ms: 200.0
+detection: {'first_slow_or_failed_request_s': 1.0}
+recovery: {'last_slow_request_end_after_removal_s': 0.7}
+endpoint_changes: [(-11.36, 1)]
+gateway: None
+alerts: {}
+integrity: {'logical_writes': 55, 'acknowledged': 55, 'unacknowledged': 0, 'rows_in_db': 55, 'distinct_client_id': 55, 'sum_amount_db': 7040.0, 'sum_amount_acknowledged': 7040, 'account_balance': -7040.0, 'retried_items': 25, 'replayed_200': 0, 'pass': True}
+client_retries_writer: 321
+duplicates_db: 0
+[16:20:28.123] saved evidence\results\exp3-baseline-rep3.json
+##### run_exp 3 finished 2026-11-06 16:20:28 #####

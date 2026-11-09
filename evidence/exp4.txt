@@ -1,0 +1,580 @@
+
+##### run_exp 4 started 2026-11-06 15:51:45 #####
+
+--- exp4('improved', 1) 15:51:45
+[15:51:45.943] known state exp4-improved-rep1: all workloads ready, no alerts (waited 0.1s for alerts to clear)
+NOTE 15:51 attempt above aborted before any kill (matcher looked for the wrong SQL statement); no fault injected, no result saved, not counted.
+
+##### run_exp 4 started 2026-11-06 15:53:16 #####
+
+--- exp4('improved', 1) 15:53:16
+[15:53:16.769] known state exp4-improved-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[15:53:26.414] exp4-improved-rep1: backend 2322 of api-56b6dc48d5-qdjzv blocked on the balance lock; SIGKILL at t+1.46s after the POST
+
+=== exp4-improved-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (24m ago)   22h     10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     2 (24m ago)   22h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     4 (24m ago)   46h     10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             7m23s   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             7m20s   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (24m ago)   47h     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     3 (24m ago)   46h     10.244.0.11   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (24m ago)   47h     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h     <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account b553ae42-4a9b-4d5c-bf77-d310e8bf2620 client_id cab4fa8f-2261-416d-bc44-f98f70ec15e7
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   25.7ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   10.5ms ready_eps=2
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=   78.1ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   23.3ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   29.9ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   14.1ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   13.2ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   55.2ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   31.6ms ready_eps=2
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=   26.7ms ready_eps=2
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   18.5ms ready_eps=2
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   11.5ms ready_eps=2
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=   28.4ms ready_eps=2
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   29.5ms ready_eps=2
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   11.8ms ready_eps=2
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   17.6ms ready_eps=2
+injection_verified: False
+blocked_backend: {'pid': '2322', 'client_addr': '10.244.0.7', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '11140', 'blocked_by': '{2739}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'users_email_key', 'RowShareLock', 't'], ['relation', 'currencies_pkey', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'household_record_counts_pkey', 'RowExclusiveLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'idx_users_email', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'users_email_lower_key', 'RowShareLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.46
+container_restarts: 2 -> 2
+lock_released_s: 1.3
+dead_backend_still_listed_after_success: 1
+postgres_log: ['2026-11-06 10:51:59.120 UTC [1523] LOG:  could not send data to client: Connection reset by peer']
+attempts: [{'try': 1, 't': -1.5, 'end': 1.3, 'status': 201, 'err': None, 'ms': 2751.9, 'body': '{"id":"61c41b46-d371-49f6-88ce-0b3eb186c7da","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-improved-rep1-try1","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 1.3, 'endpoint_drop_s': None, 'endpoints_back_s': None, 'last_failed_probe_end_s': None}
+detection: {'interrupted_client_error_s': 1.3, 'first_failed_probe_s': None}
+probe_after_kill: {'requests': 128, 'success': 128, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 13.0, 'lat_p50_ms': 9.7, 'lat_p95_ms': 30.9, 'lat_max_ms': 78.1, 'codes': {'200': 128}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 0, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: {'log_lines': 160, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'201': 3, '200': 157}, 'max_request_time_s': 2.735}
+[15:54:00.258] saved evidence\results\exp4-improved-rep1.json
+
+--- exp4('baseline', 1) 15:54:00
+[15:54:00.617] known state exp4-baseline-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[15:54:10.494] exp4-baseline-rep1: backend 108 of api-baseline-69bbd8cf45-nhgcv blocked on the balance lock; SIGKILL at t+1.84s after the POST
+
+=== exp4-baseline-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (24m ago)   22h    10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     2 (24m ago)   22h    10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     4 (24m ago)   46h    10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             8m7s   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             8m4s   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (25m ago)   47h    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     3 (25m ago)   46h    10.244.0.11   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (25m ago)   47h    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 85c93fd9-00e9-4b71-b143-71c236895ac0 client_id 2b46ef27-2e02-496a-b440-b70dc8892013
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   17.8ms ready_eps=1
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   26.7ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=   30.3ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   26.1ms ready_eps=1
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=    8.6ms ready_eps=1
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   30.9ms ready_eps=1
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   25.2ms ready_eps=1
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   32.5ms ready_eps=1
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   21.2ms ready_eps=1
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   30.1ms ready_eps=1
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=   21.3ms ready_eps=1
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   23.9ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   19.3ms ready_eps=1
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=   30.4ms ready_eps=1
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   29.5ms ready_eps=1
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   23.5ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   18.4ms ready_eps=1
+injection_verified: False
+blocked_backend: {'pid': '108', 'client_addr': '10.244.0.6', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '11245', 'blocked_by': '{2879}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['relation', 'users_email_lower_key', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'idx_users_email', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't'], ['relation', 'household_record_counts_pkey', 'RowExclusiveLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'currencies_pkey', 'RowShareLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'users_email_key', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.84
+container_restarts: 4 -> 4
+lock_released_s: 1.1
+dead_backend_still_listed_after_success: 1
+postgres_log: []
+attempts: [{'try': 1, 't': -1.8, 'end': 1.1, 'status': 201, 'err': None, 'ms': 2988.3, 'body': '{"id":"8bc7e970-11ab-4b04-b60f-5c0de6e15727","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-baseline-rep1-try1","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 1.1, 'endpoint_drop_s': None, 'endpoints_back_s': None, 'last_failed_probe_end_s': None}
+detection: {'interrupted_client_error_s': 1.1, 'first_failed_probe_s': None}
+probe_after_kill: {'requests': 126, 'success': 126, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 11.8, 'lat_p50_ms': 8.1, 'lat_p95_ms': 30.1, 'lat_max_ms': 32.5, 'codes': {'200': 126}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 0, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: None
+[15:54:43.984] saved evidence\results\exp4-baseline-rep1.json
+##### run_exp 4 finished 2026-11-06 15:54:43 #####
+NOTE 15:53 runs above are INVALID: SIGKILL had no effect (restartCount unchanged, first POST answered 201). Renamed *-INVALID-kill-not-effective.json, rerun below.
+Cause: a label rename had also changed the node name (ftr-improved-control-plane), so docker exec failed. Fixed.
+
+##### run_exp 4 started 2026-11-06 15:55:10 #####
+
+--- exp4('improved', 1) 15:55:10
+[15:55:10.445] known state exp4-improved-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[15:55:20.281] exp4-improved-rep1: backend 1515 of api-56b6dc48d5-v57tm blocked on the balance lock; SIGKILL at t+1.72s after the POST
+
+=== exp4-improved-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (26m ago)   22h     10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     2 (26m ago)   22h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     4 (26m ago)   46h     10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             9m17s   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             9m14s   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (26m ago)   47h     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     3 (26m ago)   46h     10.244.0.11   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (26m ago)   47h     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h     <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 145decf2-c794-4fa4-9944-5fa69fb8a74d client_id 0c316111-04c0-45f4-84f5-92ea963e38e4
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   29.4ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   41.2ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=  126.7ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   31.8ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   32.6ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   15.6ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   28.9ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   27.4ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=  420.9ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   17.2ms ready_eps=2
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=   29.0ms ready_eps=2
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   20.3ms ready_eps=2
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=    9.6ms ready_eps=2
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=   33.3ms ready_eps=2
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   24.8ms ready_eps=2
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   27.7ms ready_eps=2
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   30.8ms ready_eps=2
+injection_verified: True
+blocked_backend: {'pid': '1515', 'client_addr': '10.244.0.8', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '11379', 'blocked_by': '{3069}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'users_email_key', 'RowShareLock', 't'], ['relation', 'currencies_pkey', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'idx_users_email', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'users_email_lower_key', 'RowShareLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['relation', 'household_record_counts_pkey', 'RowExclusiveLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.72
+container_restarts: 2 -> 3
+lock_released_s: 1.3
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 10:55:21.286 UTC [1515] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.7, 'end': 0.2, 'status': 503, 'err': None, 'ms': 1959.4, 'body': '{"error":"service_unavailable","message":"upstream API is temporarily unavailable","request_id":"exp4-improved-rep1-try1"}'}, {'try': 2, 't': 0.7, 'end': 1.3, 'status': 201, 'err': None, 'ms': 532.1, 'body': '{"id":"e6478e7e-57a3-4723-95c4-a65d3137df6f","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-improved-rep1-try2","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 1.3, 'endpoint_drop_s': 0.3, 'endpoints_back_s': 2.1, 'last_failed_probe_end_s': None}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': None}
+probe_after_kill: {'requests': 127, 'success': 127, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 20.7, 'lat_p50_ms': 9.3, 'lat_p95_ms': 41.2, 'lat_max_ms': 420.9, 'codes': {'200': 127}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 0, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: {'log_lines': 161, 'requests_retried': 1, 'extra_upstream_tries': 1, 'max_tries_per_request': 2, 'failover_success': 1, 'gateway_degraded_503': 1, 'upstream_status_combos': {'201': 3, '200': 156, '502, 200': 1, '502': 1}, 'max_request_time_s': 1.95}
+[15:55:53.813] saved evidence\results\exp4-improved-rep1.json
+
+--- exp4('baseline', 1) 15:55:53
+[15:55:54.145] known state exp4-baseline-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[15:56:03.627] exp4-baseline-rep1: backend 117 of api-baseline-69bbd8cf45-nhgcv blocked on the balance lock; SIGKILL at t+1.38s after the POST
+
+=== exp4-baseline-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (26m ago)   22h     10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (34s ago)   22h     10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     4 (26m ago)   46h     10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             10m     10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             9m58s   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (27m ago)   47h     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     3 (27m ago)   46h     10.244.0.11   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (27m ago)   47h     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             47h     <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 5fa85862-5b84-41c8-b1dd-b19b6c87b1ff client_id 9d126ea2-5e3f-448d-8763-033cfe1367f0
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   35.2ms ready_eps=1
+  t=  -1.0s ok=  5 fail=  3 codes=200,ERR      max_lat=   14.6ms ready_eps=1
+  t=  +1.0s ok=  5 fail=  3 codes=200,ERR      max_lat= 1155.6ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   70.8ms ready_eps=1
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   24.3ms ready_eps=1
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   24.1ms ready_eps=1
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   29.3ms ready_eps=1
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   16.3ms ready_eps=1
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   11.6ms ready_eps=1
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   26.9ms ready_eps=1
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=   15.9ms ready_eps=1
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   12.2ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   28.6ms ready_eps=1
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=   20.1ms ready_eps=1
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   29.2ms ready_eps=1
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   27.8ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   28.9ms ready_eps=1
+injection_verified: True
+blocked_backend: {'pid': '117', 'client_addr': '10.244.0.6', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '11534', 'blocked_by': '{3239}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.38
+container_restarts: 4 -> 5
+lock_released_s: 1.3
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 10:55:21.286 UTC [1515] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 10:56:04.769 UTC [117] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.4, 'end': 0.3, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 1640.4, 'body': ''}, {'try': 2, 't': 0.8, 'end': 0.8, 'status': 0, 'err': 'URLError: <urlopen error [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение>', 'ms': 24.8, 'body': ''}, {'try': 3, 't': 1.3, 'end': 1.3, 'status': 0, 'err': 'URLError: <urlopen error [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение>', 'ms': 14.1, 'body': ''}, {'try': 4, 't': 1.8, 'end': 1.8, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 4.3, 'body': ''}, {'try': 5, 't': 2.3, 'end': 3.5, 'status': 201, 'err': None, 'ms': 1187.8, 'body': '{"id":"80ee0d5b-0c9b-493c-b99f-1f5d7780dfd1","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-baseline-rep1-try5","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 3.5, 'endpoint_drop_s': None, 'endpoints_back_s': 0.9, 'last_failed_probe_end_s': 1.6}
+detection: {'interrupted_client_error_s': 0.3, 'first_failed_probe_s': 0.4}
+probe_after_kill: {'requests': 128, 'success': 122, 'failed': 6, 'excluded': 0, 'error_rate_pct': 4.69, 'availability_pct': 95.31, 'lat_avg_ms': 37.0, 'lat_p50_ms': 8.7, 'lat_p95_ms': 50.2, 'lat_max_ms': 1155.6, 'codes': {'200': 122, 'conn_error': 6}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 1, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: None
+[15:56:37.217] saved evidence\results\exp4-baseline-rep1.json
+##### run_exp 4 finished 2026-11-06 15:56:37 #####
+NOTE 2026-11-06 16:10: runs above were made with Postgres at 256Mi; set aside (see test-plan.md amendment). Runs below use 1Gi.
+
+##### run_exp 4 started 2026-11-06 16:20:32 #####
+
+--- exp4('improved', 1) 16:20:32
+[16:20:33.506] known state exp4-improved-rep1: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:20:43.189] exp4-improved-rep1: backend 850 of api-56b6dc48d5-qdjzv blocked on the balance lock; SIGKILL at t+1.56s after the POST
+
+=== exp4-improved-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     2 (51m ago)   22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (25m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (24m ago)   46h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             34m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             34m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (51m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             12m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (51m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 44a3ea39-07ea-434a-bc4c-b48321f03e39 client_id a3d21595-9364-480c-8d3e-b3e31559bba1
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   11.3ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   41.9ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=  140.0ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   24.2ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   24.7ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   31.9ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   11.9ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   27.4ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   27.6ms ready_eps=2
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=   28.3ms ready_eps=2
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   25.8ms ready_eps=2
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   85.4ms ready_eps=2
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=    9.8ms ready_eps=2
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   13.9ms ready_eps=2
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   13.5ms ready_eps=2
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   29.1ms ready_eps=2
+injection_verified: True
+blocked_backend: {'pid': '850', 'client_addr': '10.244.0.7', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '14061', 'blocked_by': '{1621}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't'], ['relation', 'household_record_counts_pkey', 'RowExclusiveLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'users_email_lower_key', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'idx_users_email', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'currencies_pkey', 'RowShareLock', 't'], ['relation', 'users_email_key', 'RowShareLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.56
+container_restarts: 2 -> 3
+lock_released_s: 1.2
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 11:20:44.330 UTC [850] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.6, 'end': 0.2, 'status': 503, 'err': None, 'ms': 1776.4, 'body': '{"error":"service_unavailable","message":"upstream API is temporarily unavailable","request_id":"exp4-improved-rep1-try1"}'}, {'try': 2, 't': 0.7, 'end': 1.7, 'status': 201, 'err': None, 'ms': 962.4, 'body': '{"id":"844b6f34-d5d0-4b14-8b30-bc5cb4db035a","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-improved-rep1-try2","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 1.7, 'endpoint_drop_s': 0.5, 'endpoints_back_s': 1.5, 'last_failed_probe_end_s': None}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': None}
+probe_after_kill: {'requests': 127, 'success': 127, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 14.6, 'lat_p50_ms': 9.2, 'lat_p95_ms': 31.9, 'lat_max_ms': 140.0, 'codes': {'200': 127}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 0, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: {'log_lines': 161, 'requests_retried': 1, 'extra_upstream_tries': 1, 'max_tries_per_request': 2, 'failover_success': 1, 'gateway_degraded_503': 1, 'upstream_status_combos': {'201': 3, '200': 156, '502, 200': 1, '502': 1}, 'max_request_time_s': 1.771}
+[16:21:17.717] saved evidence\results\exp4-improved-rep1.json
+
+--- exp4('improved', 2) 16:21:17
+[16:21:18.367] known state exp4-improved-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:21:27.914] exp4-improved-rep2: backend 1667 of api-56b6dc48d5-qdjzv blocked on the balance lock; SIGKILL at t+1.48s after the POST
+
+=== exp4-improved-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     3 (35s ago)   22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (25m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (25m ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             35m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             35m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (52m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             13m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (52m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account a987cba0-a832-45f9-9279-91b2494780e7 client_id 6dae1fec-6f1b-4cee-877a-efbeb4771ee4
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   13.3ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=  138.8ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=   27.4ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   29.8ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   11.1ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   10.4ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   30.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   12.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   32.0ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   12.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat= 1024.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   51.5ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   31.5ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=  338.7ms ready_eps=2 alerts=ApiReplicaDown:firing
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   19.2ms ready_eps=2
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   11.0ms ready_eps=2
+  t= +29.0s ok=  6 fail=  0 codes=200          max_lat=   10.8ms ready_eps=2
+injection_verified: True
+blocked_backend: {'pid': '1667', 'client_addr': '10.244.0.7', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '14232', 'blocked_by': '{1795}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.48
+container_restarts: 3 -> 4
+lock_released_s: 1.2
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 11:20:44.330 UTC [850] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:21:28.916 UTC [1667] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.5, 'end': 0.2, 'status': 503, 'err': None, 'ms': 1694.7, 'body': '{"error":"service_unavailable","message":"upstream API is temporarily unavailable","request_id":"exp4-improved-rep2-try1"}'}, {'try': 2, 't': 0.7, 'end': 1.3, 'status': 201, 'err': None, 'ms': 539.9, 'body': '{"id":"1d555dcb-7d8e-4534-bbc2-4e43006697dd","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-improved-rep2-try2","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 1.3, 'endpoint_drop_s': 0.8, 'endpoints_back_s': 19.0, 'last_failed_probe_end_s': None}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': None}
+probe_after_kill: {'requests': 122, 'success': 122, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 38.4, 'lat_p50_ms': 9.6, 'lat_p95_ms': 138.8, 'lat_max_ms': 1024.8, 'codes': {'200': 122}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 25, 'acknowledged': 25, 'unacknowledged': 0, 'rows_in_db': 25, 'distinct_client_id': 25, 'sum_amount_db': 2825.0, 'sum_amount_acknowledged': 2825, 'account_balance': -2825.0, 'retried_items': 0, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {'ApiReplicaDown': {'pending_s': 4.6, 'firing_s': 10.6, 'cleared_s': 26.8, 'activeAt': '2026-11-06T11:21:30.190008992Z'}}
+gateway: {'log_lines': 155, 'requests_retried': 1, 'extra_upstream_tries': 1, 'max_tries_per_request': 2, 'failover_success': 1, 'gateway_degraded_503': 1, 'upstream_status_combos': {'201': 3, '200': 150, '502, 200': 1, '502': 1}, 'max_request_time_s': 1.685}
+[16:22:00.530] saved evidence\results\exp4-improved-rep2.json
+
+--- exp4('improved', 3) 16:22:00
+[16:22:01.179] known state exp4-improved-rep3: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:22:10.816] exp4-improved-rep3: backend 1874 of api-56b6dc48d5-qdjzv blocked on the balance lock; SIGKILL at t+1.57s after the POST
+
+=== exp4-improved-rep3 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     4 (34s ago)   22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (26m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (25m ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             36m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             36m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (53m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             13m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (53m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account e5774ad6-56fb-4cb5-a3f6-b9ed4d948ede client_id 873a3e5c-db87-4071-bb08-9dafa9b5e069
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   24.0ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   64.3ms ready_eps=2
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=   11.3ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   10.8ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   10.1ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=    9.3ms ready_eps=1 alerts=ApiReplicaDown:pending
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   13.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   21.4ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   26.3ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   30.8ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=   24.1ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   23.7ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=   18.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=   10.9ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   32.6ms ready_eps=1 alerts=ApiReplicaDown:firing
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   26.5ms ready_eps=1 alerts=ApiReplicaDown:firing
+injection_verified: True
+blocked_backend: {'pid': '1874', 'client_addr': '10.244.0.7', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '14374', 'blocked_by': '{1969}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'currencies_pkey', 'RowShareLock', 't'], ['relation', 'users_email_key', 'RowShareLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'household_record_counts_pkey', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'idx_users_email', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'users_email_lower_key', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.57
+container_restarts: 4 -> 5
+lock_released_s: 1.2
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 11:20:44.330 UTC [850] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:21:28.916 UTC [1667] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:22:11.822 UTC [1874] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.6, 'end': 0.2, 'status': 503, 'err': None, 'ms': 1776.5, 'body': '{"error":"service_unavailable","message":"upstream API is temporarily unavailable","request_id":"exp4-improved-rep3-try1"}'}, {'try': 2, 't': 0.7, 'end': 1.2, 'status': 201, 'err': None, 'ms': 544.5, 'body': '{"id":"7b6b271b-a86a-4da6-bbb3-1afc46f6216e","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-improved-rep3-try2","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 1.2, 'endpoint_drop_s': 1.2, 'endpoints_back_s': 31.3, 'last_failed_probe_end_s': None}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': None}
+probe_after_kill: {'requests': 127, 'success': 127, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 12.7, 'lat_p50_ms': 9.2, 'lat_p95_ms': 26.5, 'lat_max_ms': 117.0, 'codes': {'200': 127}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 0, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {'ApiReplicaDown': {'pending_s': 3.5, 'firing_s': 9.6, 'cleared_s': None, 'activeAt': '2026-11-06T11:22:12.190008992Z'}}
+gateway: {'log_lines': 161, 'requests_retried': 1, 'extra_upstream_tries': 1, 'max_tries_per_request': 2, 'failover_success': 1, 'gateway_degraded_503': 1, 'upstream_status_combos': {'201': 3, '200': 156, '502': 1, '502, 200': 1}, 'max_request_time_s': 1.773}
+[16:22:45.313] saved evidence\results\exp4-improved-rep3.json
+
+--- exp4('baseline', 1) 16:22:45
+[16:22:50.177] known state exp4-baseline-rep1: all workloads ready, no alerts (waited 4.0s for alerts to clear)
+[16:22:59.848] exp4-baseline-rep1: backend 1523 of api-baseline-69bbd8cf45-nhgcv blocked on the balance lock; SIGKILL at t+1.59s after the POST
+
+=== exp4-baseline-rep1 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     5             22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (27m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     5 (26m ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             36m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             36m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (54m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             14m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (54m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 4d677e91-8925-46e7-a138-1ae2fce91887 client_id 447d81da-bb4d-469f-8631-279746eb9d5d
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=1
+  t=  -1.0s ok=  5 fail=  3 codes=200,ERR      max_lat=   10.9ms ready_eps=1
+  t=  +1.0s ok=  3 fail=  5 codes=200,ERR      max_lat=  929.8ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=  282.1ms ready_eps=1
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   20.0ms ready_eps=1
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   27.6ms ready_eps=1
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   16.9ms ready_eps=1
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=    9.9ms ready_eps=1
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=    9.2ms ready_eps=1
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=    8.2ms ready_eps=1
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=    9.3ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   26.8ms ready_eps=1
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=    9.5ms ready_eps=1
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=    9.8ms ready_eps=1
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   18.9ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   24.0ms ready_eps=1
+injection_verified: True
+blocked_backend: {'pid': '1523', 'client_addr': '10.244.0.6', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '14507', 'blocked_by': '{2148}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_household', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'idx_accounts_name_trgm', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'idx_accounts_cashback_category', 'RowShareLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'users_email_key', 'RowShareLock', 't'], ['relation', 'accounts_pkey', 'RowShareLock', 't'], ['relation', 'currencies_pkey', 'RowShareLock', 't'], ['relation', 'users_email_lower_key', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['relation', 'idx_accounts_bank', 'RowShareLock', 't'], ['relation', 'idx_users_email', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'idx_accounts_primary_per_user', 'RowShareLock', 't'], ['relation', 'household_record_counts_pkey', 'RowExclusiveLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.59
+container_restarts: 5 -> 6
+lock_released_s: 1.2
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 11:21:28.916 UTC [1667] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:22:11.822 UTC [1874] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:23:00.851 UTC [1523] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.6, 'end': 0.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 1792.1, 'body': ''}, {'try': 2, 't': 0.7, 'end': 0.7, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 5.5, 'body': ''}, {'try': 3, 't': 1.2, 'end': 1.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 4.6, 'body': ''}, {'try': 4, 't': 1.7, 'end': 1.7, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 6.3, 'body': ''}, {'try': 5, 't': 2.2, 'end': 3.6, 'status': 201, 'err': None, 'ms': 1370.1, 'body': '{"id":"e8ff6516-a844-42b4-b23c-e9e9d34e0768","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-baseline-rep1-try5","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 3.6, 'endpoint_drop_s': None, 'endpoints_back_s': 1.3, 'last_failed_probe_end_s': 2.2}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': 0.4}
+probe_after_kill: {'requests': 127, 'success': 119, 'failed': 8, 'excluded': 0, 'error_rate_pct': 6.3, 'availability_pct': 93.7, 'lat_avg_ms': 27.4, 'lat_p50_ms': 8.4, 'lat_p95_ms': 26.8, 'lat_max_ms': 929.8, 'codes': {'200': 119, 'conn_error': 8}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 1, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: None
+[16:23:33.181] saved evidence\results\exp4-baseline-rep1.json
+
+--- exp4('baseline', 2) 16:23:33
+[16:23:33.817] known state exp4-baseline-rep2: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:23:43.463] exp4-baseline-rep2: backend 2201 of api-baseline-69bbd8cf45-nhgcv blocked on the balance lock; SIGKILL at t+1.53s after the POST
+
+=== exp4-baseline-rep2 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     5             22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (28m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     6 (34s ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             37m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             37m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (54m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             15m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (54m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 00d14269-db33-4c22-bc18-7e9040efb988 client_id 99adf85f-1bbc-4a83-962d-f93a64097c99
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   12.8ms ready_eps=1
+  t=  -1.0s ok=  4 fail=  4 codes=200,ERR      max_lat=   11.4ms ready_eps=1
+  t=  +1.0s ok=  0 fail=  8 codes=ERR          max_lat= 5917.3ms ready_eps=1
+  t=  +3.0s ok=  0 fail=  8 codes=ERR          max_lat=12001.1ms ready_eps=1
+  t=  +5.0s ok=  0 fail=  8 codes=ERR          max_lat=12011.2ms ready_eps=1
+  t=  +7.0s ok=  2 fail=  6 codes=200,ERR      max_lat=12019.8ms ready_eps=1
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=11426.3ms ready_eps=1
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat= 9376.0ms ready_eps=1
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat= 7981.4ms ready_eps=1
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat= 5528.5ms ready_eps=1
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat= 3526.9ms ready_eps=1
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat= 1726.0ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=  328.4ms ready_eps=1
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat=   10.8ms ready_eps=1
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat=    9.6ms ready_eps=1
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=    8.4ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   26.8ms ready_eps=1
+injection_verified: True
+blocked_backend: {'pid': '2201', 'client_addr': '10.244.0.6', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '14643', 'blocked_by': '{2310}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.53
+container_restarts: 6 -> 7
+lock_released_s: 1.3
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 11:22:11.822 UTC [1874] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:23:00.851 UTC [1523] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:23:44.469 UTC [2201] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.5, 'end': 0.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 1752.8, 'body': ''}, {'try': 2, 't': 0.7, 'end': 0.7, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 4.4, 'body': ''}, {'try': 3, 't': 1.2, 'end': 1.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 4.1, 'body': ''}, {'try': 4, 't': 1.7, 'end': 2.8, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 1017.6, 'body': ''}, {'try': 5, 't': 3.3, 'end': 12.0, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 8710.3, 'body': ''}, {'try': 6, 't': 12.5, 'end': 22.2, 'status': 201, 'err': None, 'ms': 9687.6, 'body': '{"id":"5d55e2fa-410b-4aa4-9f20-a55a535fa7d9","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-baseline-rep2-try6","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 22.2, 'endpoint_drop_s': None, 'endpoints_back_s': 0.8, 'last_failed_probe_end_s': 20.5}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': 0.2}
+probe_after_kill: {'requests': 127, 'success': 93, 'failed': 34, 'excluded': 0, 'error_rate_pct': 26.77, 'availability_pct': 73.23, 'lat_avg_ms': 4473.7, 'lat_p50_ms': 2828.8, 'lat_p95_ms': 12004.9, 'lat_max_ms': 12019.8, 'codes': {'conn_error': 18, 'timeout': 16, '200': 93}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 26, 'acknowledged': 26, 'unacknowledged': 0, 'rows_in_db': 26, 'distinct_client_id': 26, 'sum_amount_db': 2951.0, 'sum_amount_acknowledged': 2951, 'account_balance': -2951.0, 'retried_items': 6, 'replayed_200': 0, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: None
+[16:24:16.856] saved evidence\results\exp4-baseline-rep2.json
+
+--- exp4('baseline', 3) 16:24:17
+[16:24:17.480] known state exp4-baseline-rep3: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:24:26.999] exp4-baseline-rep3: backend 2413 of api-baseline-69bbd8cf45-nhgcv blocked on the balance lock; SIGKILL at t+1.48s after the POST
+
+=== exp4-baseline-rep3 ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     5             22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (28m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     7 (34s ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             38m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             38m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (55m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             16m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (55m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+interrupted create: account 553a4f6d-0b12-4fe1-b58e-66c6cc4782fc client_id b5e89d0a-cb4c-423b-ac06-ebd11bdd71d2
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   13.8ms ready_eps=1
+  t=  -1.0s ok=  5 fail=  3 codes=200,ERR      max_lat=    9.1ms ready_eps=1
+  t=  +1.0s ok=  0 fail=  8 codes=ERR          max_lat= 5909.2ms ready_eps=1
+  t=  +3.0s ok=  0 fail=  8 codes=ERR          max_lat=12010.9ms ready_eps=1
+  t=  +5.0s ok=  0 fail=  8 codes=ERR          max_lat=12026.6ms ready_eps=1
+  t=  +7.0s ok=  0 fail=  8 codes=ERR          max_lat=12009.7ms ready_eps=1
+  t=  +9.0s ok=  0 fail=  8 codes=ERR          max_lat=12012.7ms ready_eps=1
+  t= +11.0s ok=  0 fail=  8 codes=ERR          max_lat=12028.5ms ready_eps=1
+  t= +13.0s ok=  0 fail=  8 codes=ERR          max_lat=12023.5ms ready_eps=1
+  t= +15.0s ok=  0 fail=  8 codes=ERR          max_lat=12027.0ms ready_eps=1
+  t= +17.0s ok=  0 fail=  8 codes=ERR          max_lat=12025.5ms ready_eps=1
+  t= +19.0s ok=  3 fail=  5 codes=200,ERR      max_lat=12008.0ms ready_eps=1
+  t= +21.0s ok=  7 fail=  1 codes=200,ERR      max_lat=11998.3ms ready_eps=1
+  t= +23.0s ok=  8 fail=  0 codes=200          max_lat= 8810.0ms ready_eps=1
+  t= +25.0s ok=  8 fail=  0 codes=200          max_lat= 7257.8ms ready_eps=1
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat= 5210.6ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat= 3408.2ms ready_eps=1
+  t= +31.0s ok=  8 fail=  0 codes=200          max_lat= 1664.1ms ready_eps=1
+  t= +33.0s ok=  8 fail=  0 codes=200          max_lat=  409.1ms ready_eps=1
+injection_verified: True
+blocked_backend: {'pid': '2413', 'client_addr': '10.244.0.6', 'wait_type': 'Lock', 'wait_event': 'transactionid', 'state': 'active', 'xid': '14768', 'blocked_by': '{2524}', 'query': 'SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE'}
+backend_locks_at_kill: [['relation', 'transactions', 'RowExclusiveLock', 't'], ['relation', 'households_pkey', 'RowShareLock', 't'], ['relation', 'currencies', 'RowShareLock', 't'], ['relation', 'users_pkey', 'RowShareLock', 't'], ['transactionid', '', 'ShareLock', 'f'], ['transactionid', '', 'ExclusiveLock', 't'], ['relation', 'accounts', 'RowShareLock', 't'], ['relation', 'households', 'RowShareLock', 't'], ['relation', 'users', 'RowShareLock', 't'], ['relation', 'household_record_counts', 'RowExclusiveLock', 't']]
+insert_done_at_kill: True
+committed_rows_visible_at_kill: 0
+kill_after_post_s: 1.48
+container_restarts: 7 -> 8
+lock_released_s: 1.2
+dead_backend_still_listed_after_success: 0
+postgres_log: ['2026-11-06 11:23:00.851 UTC [1523] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:23:44.469 UTC [2201] LOG:  unexpected EOF on client connection with an open transaction', '2026-11-06 11:24:28.003 UTC [2413] LOG:  unexpected EOF on client connection with an open transaction']
+attempts: [{'try': 1, 't': -1.5, 'end': 0.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 1673.5, 'body': ''}, {'try': 2, 't': 0.7, 'end': 0.7, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 4.7, 'body': ''}, {'try': 3, 't': 1.2, 'end': 1.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 4.4, 'body': ''}, {'try': 4, 't': 1.7, 'end': 3.6, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'ms': 1856.7, 'body': ''}, {'try': 5, 't': 4.1, 'end': 16.1, 'status': 0, 'err': 'TimeoutError: timed out', 'ms': 12008.8, 'body': ''}, {'try': 6, 't': 16.6, 'end': 28.6, 'status': 0, 'err': 'TimeoutError: timed out', 'ms': 12003.0, 'body': ''}, {'try': 7, 't': 29.1, 'end': 34.1, 'status': 201, 'err': None, 'ms': 5054.6, 'body': '{"id":"be499735-5a18-477a-98a5-474037150653","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c","type":"expense","description":"exp4-baseline-rep3-try7","amount":"103","currency":"KZT","amount_base'}]
+final_status: 201
+recovery: {'time_to_successful_retry_s': 34.1, 'endpoint_drop_s': None, 'endpoints_back_s': 0.4, 'last_failed_probe_end_s': 33.0}
+detection: {'interrupted_client_error_s': 0.2, 'first_failed_probe_s': 0.3}
+probe_after_kill: {'requests': 146, 'success': 65, 'failed': 81, 'excluded': 0, 'error_rate_pct': 55.48, 'availability_pct': 44.52, 'lat_avg_ms': 7745.8, 'lat_p50_ms': 10355.6, 'lat_p95_ms': 12018.6, 'lat_max_ms': 12028.5, 'codes': {'200': 65, 'conn_error': 16, 'timeout': 65}}
+integrity_target: {'rows_on_account': 3, 'expected_rows': 3, 'distinct_client_id': 3, 'rows_with_interrupted_client_id': 1, 'sum_amount': 306.0, 'expected_sum': 306, 'balance': -306.0, 'expected_balance': -306, 'pass': True}
+integrity_background: {'logical_writes': 29, 'acknowledged': 29, 'unacknowledged': 0, 'rows_in_db': 29, 'distinct_client_id': 29, 'sum_amount_db': 3335.0, 'sum_amount_acknowledged': 3335, 'account_balance': -3335.0, 'retried_items': 14, 'replayed_200': 1, 'pass': True}
+duplicates_db: 0
+alerts: {}
+gateway: None
+[16:25:05.452] saved evidence\results\exp4-baseline-rep3.json
+##### run_exp 4 finished 2026-11-06 16:25:05 #####

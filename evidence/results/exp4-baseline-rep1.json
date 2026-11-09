@@ -1,0 +1,1589 @@
+{
+  "experiment": "Exp4 interrupted multi-step transaction",
+  "config": "baseline",
+  "rep": 1,
+  "t0": 1793964179.6226077,
+  "t_end": 1793964209.9783337,
+  "victim": "api-baseline-69bbd8cf45-nhgcv",
+  "inject": "docker exec ftr-endterm-control-plane kill -KILL 13366",
+  "injection_verified": true,
+  "blocked_backend": {
+    "pid": "1523",
+    "client_addr": "10.244.0.6",
+    "wait_type": "Lock",
+    "wait_event": "transactionid",
+    "state": "active",
+    "xid": "14507",
+    "blocked_by": "{2148}",
+    "query": "SELECT id FROM accounts WHERE id = $1 FOR NO KEY UPDATE"
+  },
+  "backend_locks_at_kill": [
+    [
+      "relation",
+      "transactions",
+      "RowExclusiveLock",
+      "t"
+    ],
+    [
+      "relation",
+      "idx_accounts_household",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "users_pkey",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "idx_accounts_name_trgm",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "transactionid",
+      "",
+      "ShareLock",
+      "f"
+    ],
+    [
+      "relation",
+      "idx_accounts_cashback_category",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "transactionid",
+      "",
+      "ExclusiveLock",
+      "t"
+    ],
+    [
+      "relation",
+      "households_pkey",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "currencies",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "users_email_key",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "accounts_pkey",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "currencies_pkey",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "users_email_lower_key",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "household_record_counts",
+      "RowExclusiveLock",
+      "t"
+    ],
+    [
+      "relation",
+      "idx_accounts_bank",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "idx_users_email",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "households",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "accounts",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "users",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "idx_accounts_primary_per_user",
+      "RowShareLock",
+      "t"
+    ],
+    [
+      "relation",
+      "household_record_counts_pkey",
+      "RowExclusiveLock",
+      "t"
+    ]
+  ],
+  "insert_done_at_kill": true,
+  "committed_rows_visible_at_kill": 0,
+  "kill_after_post_s": 1.59,
+  "container_restarts": "5 -> 6",
+  "lock_released_s": 1.2,
+  "dead_backend_still_listed_after_success": 0,
+  "postgres_log": [
+    "2026-11-06 11:21:28.916 UTC [1667] LOG:  unexpected EOF on client connection with an open transaction",
+    "2026-11-06 11:22:11.822 UTC [1874] LOG:  unexpected EOF on client connection with an open transaction",
+    "2026-11-06 11:23:00.851 UTC [1523] LOG:  unexpected EOF on client connection with an open transaction"
+  ],
+  "attempts": [
+    {
+      "try": 1,
+      "t": -1.6,
+      "end": 0.2,
+      "status": 0,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "ms": 1792.1,
+      "body": ""
+    },
+    {
+      "try": 2,
+      "t": 0.7,
+      "end": 0.7,
+      "status": 0,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "ms": 5.5,
+      "body": ""
+    },
+    {
+      "try": 3,
+      "t": 1.2,
+      "end": 1.2,
+      "status": 0,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "ms": 4.6,
+      "body": ""
+    },
+    {
+      "try": 4,
+      "t": 1.7,
+      "end": 1.7,
+      "status": 0,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "ms": 6.3,
+      "body": ""
+    },
+    {
+      "try": 5,
+      "t": 2.2,
+      "end": 3.6,
+      "status": 201,
+      "err": null,
+      "ms": 1370.1,
+      "body": "{\"id\":\"e8ff6516-a844-42b4-b23c-e9e9d34e0768\",\"household_id\":\"38e982f4-64c0-41d8-934d-4d1c1504cd3c\",\"type\":\"expense\",\"description\":\"exp4-baseline-rep1-try5\",\"amount\":\"103\",\"currency\":\"KZT\",\"amount_base"
+    }
+  ],
+  "client_attempts": 5,
+  "final_status": 201,
+  "recovery": {
+    "time_to_successful_retry_s": 3.6,
+    "endpoint_drop_s": null,
+    "endpoints_back_s": 1.3,
+    "last_failed_probe_end_s": 2.2
+  },
+  "detection": {
+    "interrupted_client_error_s": 0.2,
+    "first_failed_probe_s": 0.4
+  },
+  "probe_after_kill": {
+    "requests": 127,
+    "success": 119,
+    "failed": 8,
+    "excluded": 0,
+    "error_rate_pct": 6.3,
+    "availability_pct": 93.7,
+    "lat_avg_ms": 27.4,
+    "lat_p50_ms": 8.4,
+    "lat_p95_ms": 26.8,
+    "lat_max_ms": 929.8,
+    "codes": {
+      "200": 119,
+      "conn_error": 8
+    }
+  },
+  "probe_total": {
+    "requests": 157,
+    "success": 149,
+    "failed": 8,
+    "excluded": 0,
+    "error_rate_pct": 5.1,
+    "availability_pct": 94.9,
+    "lat_avg_ms": 24.0,
+    "lat_p50_ms": 8.4,
+    "lat_p95_ms": 26.8,
+    "lat_max_ms": 929.8,
+    "codes": {
+      "200": 149,
+      "conn_error": 8
+    }
+  },
+  "integrity_target": {
+    "rows_on_account": 3,
+    "expected_rows": 3,
+    "distinct_client_id": 3,
+    "rows_with_interrupted_client_id": 1,
+    "sum_amount": 306.0,
+    "expected_sum": 306,
+    "balance": -306.0,
+    "expected_balance": -306,
+    "pass": true
+  },
+  "integrity_background": {
+    "logical_writes": 26,
+    "acknowledged": 26,
+    "unacknowledged": 0,
+    "rows_in_db": 26,
+    "distinct_client_id": 26,
+    "sum_amount_db": 2951.0,
+    "sum_amount_acknowledged": 2951,
+    "account_balance": -2951.0,
+    "retried_items": 1,
+    "replayed_200": 0,
+    "pass": true
+  },
+  "duplicates_db": 0,
+  "alerts": {},
+  "gateway": null,
+  "writes_background": [
+    {
+      "client_id": "7a5e9f0c-f4ad-4857-8804-688dfe4fcb86",
+      "amount": 101,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "d63c7e47-a440-48ad-b4b5-2b03a4b88e9a",
+      "amount": 102,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "3c176de4-7d71-4ce4-b084-38a977ff3b43",
+      "amount": 103,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "c47df560-5264-45b3-8bfd-38232b9485c7",
+      "amount": 104,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "4ad58171-5c15-4169-ba60-8a89824a049a",
+      "amount": 105,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "20493dfc-9d6d-4aef-832b-83e89f2c29fb",
+      "amount": 106,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "397bcce8-617a-40ac-9853-f51233fe1ecd",
+      "amount": 107,
+      "statuses": [
+        "ERR",
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "e8398fb6-51a1-4eb3-9495-bb9b801ffb72",
+      "amount": 108,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "2d5d49d3-df69-4d72-ba68-9e2961f46f2f",
+      "amount": 109,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "67e520c0-7dbc-40f3-bbea-5836d5b5f3e6",
+      "amount": 110,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "8e0508ae-c71c-4644-b2e5-873d42b203b1",
+      "amount": 111,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "5be57d64-74a1-4a88-9169-752888c129be",
+      "amount": 112,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "13d5fbe8-5812-43d0-8766-2464c3570e2a",
+      "amount": 113,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "22c39221-ebc2-4677-8c7f-f436269bcf69",
+      "amount": 114,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "f35d4cdb-f2b9-4c25-8108-246b03aea4da",
+      "amount": 115,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "62ac0774-c1f1-4e27-9eef-c608631f1ab2",
+      "amount": 116,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "c8296f86-ae0a-4c71-9730-f383bb6c66a7",
+      "amount": 117,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "de30d568-8f46-4fe1-bb75-997196a3fef8",
+      "amount": 118,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "8d463d81-377b-44e8-9cf9-adb02cf86c8a",
+      "amount": 119,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "30892861-098a-476f-b270-ae7425407da1",
+      "amount": 120,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "ad06ec7b-c355-4793-8f71-619e8f45e087",
+      "amount": 121,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "f10cdd1d-1cc4-4ba0-b8d1-801be196a8f2",
+      "amount": 122,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "d6b3c699-bd1f-4d25-889e-71386ff10f36",
+      "amount": 123,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "db7562ac-e78d-4e9b-8ba6-73ee6951eba7",
+      "amount": 124,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "62d5ec1c-78cf-4766-9e5e-b77e4fc40d36",
+      "amount": 125,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "95ce3d41-bb9a-4720-bf41-f5f4d34b675c",
+      "amount": 126,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    }
+  ],
+  "records": [
+    {
+      "t": 1793964172.288,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964172.538,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964172.787,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964173.037,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964173.287,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964173.537,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964173.787,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964174.037,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964174.287,
+      "s": 200,
+      "ms": 28.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964174.538,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964174.787,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964175.037,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964175.287,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964175.537,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964175.787,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964176.037,
+      "s": 200,
+      "ms": 7.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964176.287,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964176.537,
+      "s": 200,
+      "ms": 24.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964176.787,
+      "s": 200,
+      "ms": 6.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964177.037,
+      "s": 200,
+      "ms": 7.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964177.287,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964177.537,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964177.787,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964178.038,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964178.288,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964178.538,
+      "s": 200,
+      "ms": 6.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964178.787,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964179.037,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964179.287,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964179.537,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964179.787,
+      "s": 200,
+      "ms": 7.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964180.037,
+      "s": 0,
+      "ms": 10.9,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964180.287,
+      "s": 0,
+      "ms": 5.3,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964180.537,
+      "s": 0,
+      "ms": 5.7,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964180.787,
+      "s": 0,
+      "ms": 5.7,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964181.037,
+      "s": 0,
+      "ms": 5.4,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964181.287,
+      "s": 0,
+      "ms": 4.8,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964181.537,
+      "s": 0,
+      "ms": 19.7,
+      "err": "ConnectionAbortedError: [WinError 10053] \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u043d\u0430 \u0432\u0430\u0448\u0435\u043c \u0445\u043e\u0441\u0442-\u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u0435 \u0440\u0430\u0437\u043e\u0440\u0432\u0430\u043b\u0430 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u043e\u0435 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435",
+      "body": ""
+    },
+    {
+      "t": 1793964181.787,
+      "s": 0,
+      "ms": 5.8,
+      "err": "RemoteDisconnected: Remote end closed connection without response",
+      "body": ""
+    },
+    {
+      "t": 1793964182.037,
+      "s": 200,
+      "ms": 929.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964182.288,
+      "s": 200,
+      "ms": 683.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964182.539,
+      "s": 200,
+      "ms": 428.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964182.788,
+      "s": 200,
+      "ms": 282.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964183.039,
+      "s": 200,
+      "ms": 27.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964183.287,
+      "s": 200,
+      "ms": 19.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964183.537,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964183.787,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964184.037,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964184.287,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964184.537,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964184.787,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964185.037,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964185.287,
+      "s": 200,
+      "ms": 11.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964185.537,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964185.787,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964186.037,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964186.287,
+      "s": 200,
+      "ms": 20.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964186.537,
+      "s": 200,
+      "ms": 19.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964186.787,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964187.037,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964187.287,
+      "s": 200,
+      "ms": 6.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964187.537,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964187.787,
+      "s": 200,
+      "ms": 27.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964188.037,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964188.287,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964188.537,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964188.787,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964189.037,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964189.287,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964189.537,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964189.787,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964190.037,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964190.287,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964190.537,
+      "s": 200,
+      "ms": 16.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964190.787,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964191.037,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964191.287,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964191.537,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964191.787,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964192.037,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964192.287,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964192.537,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964192.787,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964193.037,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964193.288,
+      "s": 200,
+      "ms": 6.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964193.537,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964193.787,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964194.037,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964194.287,
+      "s": 200,
+      "ms": 6.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964194.537,
+      "s": 200,
+      "ms": 6.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964194.787,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964195.037,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964195.287,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964195.537,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964195.787,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964196.037,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964196.287,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964196.537,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964196.787,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964197.037,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964197.287,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964197.537,
+      "s": 200,
+      "ms": 6.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964197.787,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964198.037,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964198.287,
+      "s": 200,
+      "ms": 7.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964198.537,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964198.787,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964199.037,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964199.287,
+      "s": 200,
+      "ms": 6.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964199.537,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964199.787,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964200.037,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964200.287,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964200.537,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964200.787,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964201.037,
+      "s": 200,
+      "ms": 7.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964201.287,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964201.537,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964201.787,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964202.037,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964202.287,
+      "s": 200,
+      "ms": 26.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964202.537,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964202.787,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964203.037,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964203.287,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964203.537,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964203.787,
+      "s": 200,
+      "ms": 6.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964204.037,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964204.287,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964204.537,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964204.787,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964205.037,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964205.287,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964205.537,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964205.787,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964206.037,
+      "s": 200,
+      "ms": 7.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964206.287,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964206.537,
+      "s": 200,
+      "ms": 6.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964206.788,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964207.037,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964207.287,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964207.537,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964207.788,
+      "s": 200,
+      "ms": 18.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964208.037,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964208.287,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964208.537,
+      "s": 200,
+      "ms": 14.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964208.787,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964209.037,
+      "s": 200,
+      "ms": 14.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964209.287,
+      "s": 200,
+      "ms": 7.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964209.537,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964209.787,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964210.037,
+      "s": 200,
+      "ms": 24.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964210.287,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964210.537,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964210.787,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964211.037,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793964211.287,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    }
+  ]
+}

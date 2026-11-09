@@ -1,0 +1,668 @@
+
+##### run_exp 1 started 2026-11-06 16:27:49 #####
+
+--- e1_once('improved', 1, 'graceful') 16:27:49
+[16:27:50.108] known state exp1-improved-rep1-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:27:56.822] exp1-improved-rep1-graceful: inject `kubectl -n university delete pod api-56b6dc48d5-qdjzv --wait=false`
+[16:27:57.052]   -> pod "api-56b6dc48d5-qdjzv" deleted from university namespace
+
+=== exp1-improved-rep1-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qdjzv            1/1     Running     5               22h   10.244.0.7    ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (32m ago)     22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     8 (3m24s ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               41m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               41m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (59m ago)     2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0               19m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (59m ago)     2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 16:27:56: kubectl -n university delete pod api-56b6dc48d5-qdjzv --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=2
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   13.1ms ready_eps=2
+  t=  +0.0s ok=  8 fail=  0 codes=200          max_lat=   93.5ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=  189.5ms ready_eps=2
+  t=  +2.0s ok=  8 fail=  0 codes=200          max_lat=   18.6ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   27.1ms ready_eps=2
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   27.5ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   94.3ms ready_eps=2
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   11.0ms ready_eps=2
+  t=  +8.0s ok=  8 fail=  0 codes=200          max_lat=   11.3ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   11.0ms ready_eps=2
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=   26.5ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   20.4ms ready_eps=2
+  t= +12.0s ok=  8 fail=  0 codes=200          max_lat=   10.1ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   30.1ms ready_eps=2
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=   27.9ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t= +16.0s ok=  3 fail=  0 codes=200          max_lat=    9.4ms ready_eps=2
+stats_interval: {'requests': 170, 'success': 170, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 14.7, 'lat_p50_ms': 9.6, 'lat_p95_ms': 29.0, 'lat_max_ms': 189.5, 'codes': {'200': 170}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': None}
+recovery: {'endpoints_back_s': 1.0, 'last_failed_request_end_s': None, 'recovery_s': 1.0, 'user_visible_outage_s': 0.0}
+alerts: {}
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-82q92   1/1     Running   0             17s   10.244.0.21   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (32m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+gateway: {'log_lines': 170, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 170}, 'max_request_time_s': 0.184}
+[16:28:14.320] saved evidence\results\exp1-improved-rep1-graceful.json
+
+--- e1_once('improved', 2, 'graceful') 16:28:14
+[16:28:14.998] known state exp1-improved-rep2-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:28:21.668] exp1-improved-rep2-graceful: inject `kubectl -n university delete pod api-56b6dc48d5-82q92 --wait=false`
+[16:28:21.899]   -> pod "api-56b6dc48d5-82q92" deleted from university namespace
+
+=== exp1-improved-rep2-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-82q92            1/1     Running     0               17s   10.244.0.21   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (32m ago)     22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     8 (3m48s ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               42m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               42m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (59m ago)     2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0               20m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (59m ago)     2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 16:28:21: kubectl -n university delete pod api-56b6dc48d5-82q92 --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   11.1ms ready_eps=2
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   28.2ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   23.0ms ready_eps=2
+  t=  +0.0s ok=  8 fail=  0 codes=200          max_lat=   94.6ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=  342.1ms ready_eps=2
+  t=  +2.0s ok=  8 fail=  0 codes=200          max_lat=   31.9ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   21.4ms ready_eps=2
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   27.3ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=  192.7ms ready_eps=2
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   17.3ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t=  +8.0s ok=  8 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   24.5ms ready_eps=2
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=   10.5ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   30.9ms ready_eps=2
+  t= +12.0s ok=  8 fail=  0 codes=200          max_lat=   24.8ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   18.6ms ready_eps=2
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=   31.8ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   29.2ms ready_eps=2
+  t= +16.0s ok=  8 fail=  0 codes=200          max_lat=    9.9ms ready_eps=2
+  t= +17.0s ok=  3 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+stats_interval: {'requests': 178, 'success': 178, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 18.2, 'lat_p50_ms': 9.5, 'lat_p95_ms': 69.0, 'lat_max_ms': 342.1, 'codes': {'200': 178}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': None}
+recovery: {'endpoints_back_s': 1.3, 'last_failed_request_end_s': None, 'recovery_s': 1.3, 'user_visible_outage_s': 0.0}
+alerts: {}
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-45kgw   1/1     Running   0             19s   10.244.0.22   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (33m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+gateway: {'log_lines': 178, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 178}, 'max_request_time_s': 0.337}
+[16:28:40.205] saved evidence\results\exp1-improved-rep2-graceful.json
+
+--- e1_once('improved', 3, 'crash') 16:28:40
+[16:28:40.848] known state exp1-improved-rep3-crash: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:28:47.507] exp1-improved-rep3-crash: inject `kubectl -n university delete pod api-56b6dc48d5-45kgw --wait=false --grace-period=0 --force`
+[16:28:47.733]   -> pod "api-56b6dc48d5-45kgw" force deleted from university namespace
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+
+=== exp1-improved-rep3-crash ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-45kgw            1/1     Running     0               19s   10.244.0.22   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (33m ago)     22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     8 (4m14s ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               42m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               42m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (60m ago)     2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0               20m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (60m ago)     2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 16:28:47: kubectl -n university delete pod api-56b6dc48d5-45kgw --wait=false --grace-period=0 --force
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   10.8ms ready_eps=2
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   17.4ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t=  +0.0s ok=  8 fail=  0 codes=200          max_lat=   76.0ms ready_eps=1
+  t=  +1.0s ok=  7 fail=  1 codes=200,500      max_lat=  430.2ms ready_eps=2
+  t=  +2.0s ok=  8 fail=  0 codes=200          max_lat=   27.6ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=   10.1ms ready_eps=2
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   40.5ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   12.0ms ready_eps=2
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   24.7ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   17.1ms ready_eps=2
+  t=  +8.0s ok=  8 fail=  0 codes=200          max_lat=   12.7ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   11.1ms ready_eps=2
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=   26.6ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   22.5ms ready_eps=2
+  t= +12.0s ok=  8 fail=  0 codes=200          max_lat=   20.2ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   10.1ms ready_eps=2
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=   11.4ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   12.0ms ready_eps=2
+  t= +16.0s ok=  8 fail=  0 codes=200          max_lat=   31.6ms ready_eps=2
+  t= +17.0s ok=  3 fail=  0 codes=200          max_lat=   28.2ms ready_eps=2
+stats_interval: {'requests': 178, 'success': 177, 'failed': 1, 'excluded': 0, 'error_rate_pct': 0.56, 'availability_pct': 99.44, 'lat_avg_ms': 18.7, 'lat_p50_ms': 9.2, 'lat_p95_ms': 49.4, 'lat_max_ms': 430.2, 'codes': {'200': 177, '500': 1}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': 1.1}
+recovery: {'endpoints_back_s': 1.5, 'last_failed_request_end_s': 1.5, 'recovery_s': 1.5, 'user_visible_outage_s': 0.4}
+alerts: {}
+failed samples: [{'t': 1.1, 'status': 500, 'err': None, 'body': '{"error":"failed to list accounts"}\n'}]
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc   1/1     Running   0             18s   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (33m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+gateway: {'log_lines': 178, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 177, '500': 1}, 'max_request_time_s': 0.408}
+[16:29:06.048] saved evidence\results\exp1-improved-rep3-crash.json
+
+--- e1_once('baseline', 1, 'graceful') 16:29:06
+[16:29:06.707] known state exp1-baseline-rep1-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:29:13.368] exp1-baseline-rep1-graceful: inject `kubectl -n university delete pod api-baseline-69bbd8cf45-nhgcv --wait=false`
+[16:29:13.638]   -> pod "api-baseline-69bbd8cf45-nhgcv" deleted from university namespace
+
+=== exp1-baseline-rep1-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     0               19s   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (33m ago)     22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-nhgcv   1/1     Running     8 (4m40s ago)   47h   10.244.0.6    ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0               43m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0               43m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (60m ago)     2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0               20m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (60m ago)     2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0               2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 16:29:13: kubectl -n university delete pod api-baseline-69bbd8cf45-nhgcv --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   11.6ms ready_eps=1
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   26.9ms ready_eps=1
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   25.6ms ready_eps=1
+  t=  +0.0s ok=  2 fail=  6 codes=200,ERR      max_lat= 6009.9ms ready_eps=0
+  t=  +1.0s ok=  0 fail=  8 codes=ERR          max_lat= 6020.5ms ready_eps=1
+  t=  +2.0s ok=  0 fail=  8 codes=ERR          max_lat= 6020.8ms ready_eps=1
+  t=  +3.0s ok=  0 fail=  8 codes=ERR          max_lat= 6028.1ms ready_eps=1
+  t=  +4.0s ok=  0 fail=  8 codes=ERR          max_lat= 6027.2ms ready_eps=1
+  t=  +5.0s ok=  0 fail=  8 codes=ERR          max_lat= 6015.6ms ready_eps=1
+  t=  +6.0s ok=  0 fail=  8 codes=ERR          max_lat= 6029.4ms ready_eps=1
+  t=  +7.0s ok=  0 fail=  8 codes=ERR          max_lat= 6008.4ms ready_eps=1
+  t=  +8.0s ok=  0 fail=  8 codes=ERR          max_lat= 6014.2ms ready_eps=1
+  t=  +9.0s ok=  0 fail=  8 codes=ERR          max_lat= 6024.3ms ready_eps=1
+  t= +10.0s ok=  0 fail=  8 codes=ERR          max_lat= 6010.3ms ready_eps=1
+  t= +11.0s ok=  0 fail=  8 codes=ERR          max_lat= 6009.4ms ready_eps=1
+  t= +12.0s ok=  0 fail=  8 codes=ERR          max_lat= 6031.3ms ready_eps=1
+  t= +13.0s ok=  0 fail=  8 codes=ERR          max_lat= 6026.2ms ready_eps=1
+  t= +14.0s ok=  0 fail=  8 codes=ERR          max_lat= 6014.7ms ready_eps=1
+  t= +15.0s ok=  0 fail=  8 codes=ERR          max_lat= 6016.1ms ready_eps=1
+  t= +16.0s ok=  0 fail=  8 codes=ERR          max_lat= 6038.8ms ready_eps=1
+  t= +17.0s ok=  0 fail=  4 codes=ERR          max_lat= 6006.6ms ready_eps=1
+stats_interval: {'requests': 179, 'success': 41, 'failed': 138, 'excluded': 0, 'error_rate_pct': 77.09, 'availability_pct': 22.91, 'lat_avg_ms': 4534.8, 'lat_p50_ms': 6005.7, 'lat_p95_ms': 6025.8, 'lat_max_ms': 6038.8, 'codes': {'200': 41, 'conn_error': 3, 'timeout': 135}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': 0.3}
+recovery: {'endpoints_back_s': 1.7, 'last_failed_request_end_s': 23.4, 'recovery_s': 23.4, 'user_visible_outage_s': 23.1}
+alerts: {}
+failed samples: [{'t': 0.3, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.4, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.5, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.6, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}, {'t': 0.8, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}]
+pods after:
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-baseline-69bbd8cf45-t75b9   1/1     Running   0          24s   10.244.0.24   ftr-endterm-control-plane   <none>           <none>
+[16:29:37.799] saved evidence\results\exp1-baseline-rep1-graceful.json
+
+--- e1_once('baseline', 2, 'graceful') 16:29:37
+[16:29:38.513] known state exp1-baseline-rep2-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:29:45.178] exp1-baseline-rep2-graceful: inject `kubectl -n university delete pod api-baseline-69bbd8cf45-t75b9 --wait=false`
+[16:29:45.446]   -> pod "api-baseline-69bbd8cf45-t75b9" deleted from university namespace
+
+=== exp1-baseline-rep2-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     0             51s   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (34m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-t75b9   1/1     Running     0             25s   10.244.0.24   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             43m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             43m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (61m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             21m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (61m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 16:29:45: kubectl -n university delete pod api-baseline-69bbd8cf45-t75b9 --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   24.2ms ready_eps=1
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   30.8ms ready_eps=1
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   24.7ms ready_eps=1
+  t=  +0.0s ok=  2 fail=  6 codes=200,ERR      max_lat= 6004.3ms ready_eps=1
+  t=  +1.0s ok=  0 fail=  8 codes=ERR          max_lat= 6014.4ms ready_eps=1
+  t=  +2.0s ok=  0 fail=  8 codes=ERR          max_lat= 6037.7ms ready_eps=1
+  t=  +3.0s ok=  0 fail=  8 codes=ERR          max_lat= 6033.4ms ready_eps=1
+  t=  +4.0s ok=  0 fail=  8 codes=ERR          max_lat= 6033.1ms ready_eps=1
+  t=  +5.0s ok=  0 fail=  8 codes=ERR          max_lat= 6035.3ms ready_eps=1
+  t=  +6.0s ok=  0 fail=  8 codes=ERR          max_lat= 6027.4ms ready_eps=1
+  t=  +7.0s ok=  0 fail=  8 codes=ERR          max_lat= 6025.5ms ready_eps=1
+  t=  +8.0s ok=  0 fail=  8 codes=ERR          max_lat= 6007.9ms ready_eps=1
+  t=  +9.0s ok=  0 fail=  8 codes=ERR          max_lat= 6015.3ms ready_eps=1
+  t= +10.0s ok=  0 fail=  8 codes=ERR          max_lat= 6026.7ms ready_eps=1
+  t= +11.0s ok=  0 fail=  8 codes=ERR          max_lat= 6011.0ms ready_eps=1
+  t= +12.0s ok=  0 fail=  8 codes=ERR          max_lat= 6017.2ms ready_eps=1
+  t= +13.0s ok=  0 fail=  8 codes=ERR          max_lat= 6015.3ms ready_eps=1
+  t= +14.0s ok=  0 fail=  8 codes=ERR          max_lat= 6022.9ms ready_eps=1
+  t= +15.0s ok=  0 fail=  8 codes=ERR          max_lat= 6020.2ms ready_eps=1
+  t= +16.0s ok=  0 fail=  4 codes=ERR          max_lat= 6002.3ms ready_eps=1
+stats_interval: {'requests': 171, 'success': 41, 'failed': 130, 'excluded': 0, 'error_rate_pct': 76.02, 'availability_pct': 23.98, 'lat_avg_ms': 4466.6, 'lat_p50_ms': 6004.4, 'lat_p95_ms': 6026.4, 'lat_max_ms': 6037.7, 'codes': {'200': 41, 'conn_error': 3, 'timeout': 127}}
+detection: {'endpoint_drop_s': 0.3, 'first_failed_request_s': 0.3}
+recovery: {'endpoints_back_s': 1.0, 'last_failed_request_end_s': 22.4, 'recovery_s': 22.4, 'user_visible_outage_s': 22.1}
+alerts: {}
+failed samples: [{'t': 0.3, 'status': 0, 'err': 'ConnectionAbortedError: [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение', 'body': ''}, {'t': 0.4, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.5, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.6, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}, {'t': 0.8, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}]
+pods after:
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-baseline-69bbd8cf45-hxcpc   1/1     Running   0          23s   10.244.0.25   ftr-endterm-control-plane   <none>           <none>
+[16:30:08.634] saved evidence\results\exp1-baseline-rep2-graceful.json
+
+--- e1_once('baseline', 3, 'crash') 16:30:08
+[16:30:09.356] known state exp1-baseline-rep3-crash: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[16:30:16.029] exp1-baseline-rep3-crash: inject `kubectl -n university delete pod api-baseline-69bbd8cf45-hxcpc --wait=false --grace-period=0 --force`
+[16:30:16.264]   -> pod "api-baseline-69bbd8cf45-hxcpc" force deleted from university namespace
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+
+=== exp1-baseline-rep3-crash ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     0             82s   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (34m ago)   22h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-hxcpc   1/1     Running     0             24s   10.244.0.25   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             44m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             44m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (61m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             21m   10.244.0.16   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (61m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 16:30:16: kubectl -n university delete pod api-baseline-69bbd8cf45-hxcpc --wait=false --grace-period=0 --force
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   25.1ms ready_eps=1
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   23.1ms ready_eps=1
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   17.5ms ready_eps=1
+  t=  +0.0s ok=  2 fail=  6 codes=200,ERR      max_lat=   23.4ms ready_eps=0
+  t=  +1.0s ok=  5 fail=  3 codes=200,ERR      max_lat= 2323.4ms ready_eps=1
+  t=  +2.0s ok=  8 fail=  0 codes=200          max_lat= 1663.9ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=  699.3ms ready_eps=1
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   25.3ms ready_eps=1
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   31.3ms ready_eps=1
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   29.7ms ready_eps=1
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   23.1ms ready_eps=1
+  t=  +8.0s ok=  8 fail=  0 codes=200          max_lat=   22.8ms ready_eps=1
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   26.9ms ready_eps=1
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=   26.6ms ready_eps=1
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   12.4ms ready_eps=1
+  t= +12.0s ok=  8 fail=  0 codes=200          max_lat=   11.8ms ready_eps=1
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=1
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=   11.8ms ready_eps=1
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t= +16.0s ok=  3 fail=  0 codes=200          max_lat=    9.0ms ready_eps=1
+stats_interval: {'requests': 170, 'success': 161, 'failed': 9, 'excluded': 0, 'error_rate_pct': 5.29, 'availability_pct': 94.71, 'lat_avg_ms': 153.2, 'lat_p50_ms': 8.9, 'lat_p95_ms': 1422.2, 'lat_max_ms': 2323.4, 'codes': {'200': 161, 'conn_error': 9}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': 0.3}
+recovery: {'endpoints_back_s': 1.2, 'last_failed_request_end_s': 2.3, 'recovery_s': 2.3, 'user_visible_outage_s': 2.0}
+alerts: {}
+failed samples: [{'t': 0.3, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.4, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.5, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.6, 'status': 0, 'err': 'ConnectionAbortedError: [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение', 'body': ''}, {'t': 0.8, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}]
+pods after:
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-baseline-69bbd8cf45-pdthl   1/1     Running   0          17s   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+[16:30:33.356] saved evidence\results\exp1-baseline-rep3-crash.json
+##### run_exp 1 finished 2026-11-06 16:30:33 #####
+NOTE 2026-11-06 17:10: runs above stopped too early for the baseline (test-plan.md amendment); moved to results/superseded/. Runs below use the corrected stop condition.
+
+##### run_exp 1 started 2026-11-06 17:04:33 #####
+
+--- e1_once('improved', 1, 'graceful') 17:04:33
+[17:04:34.561] known state exp1-improved-rep1-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:04:41.234] exp1-improved-rep1-graceful: inject `kubectl -n university delete pod api-56b6dc48d5-c6hnc --wait=false`
+[17:04:41.505]   -> pod "api-56b6dc48d5-c6hnc" deleted from university namespace
+
+=== exp1-improved-rep1-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-c6hnc            1/1     Running     3 (13m ago)   35m   10.244.0.23   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (69m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             34m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             78m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             78m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (95m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             11m   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (95m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 17:04:41: kubectl -n university delete pod api-56b6dc48d5-c6hnc --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   11.2ms ready_eps=2
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   21.3ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=    9.7ms ready_eps=2
+  t=  +0.0s ok=  8 fail=  0 codes=200          max_lat=   22.7ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=  349.8ms ready_eps=2
+  t=  +2.0s ok=  9 fail=  0 codes=200          max_lat=   28.7ms ready_eps=2
+  t=  +3.0s ok=  7 fail=  0 codes=200          max_lat=   12.0ms ready_eps=2
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   24.7ms ready_eps=2
+  t=  +5.0s ok=  9 fail=  0 codes=200          max_lat=   32.2ms ready_eps=2
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   29.4ms ready_eps=2
+  t=  +7.0s ok=  7 fail=  0 codes=200          max_lat=   14.9ms ready_eps=2
+  t=  +8.0s ok=  9 fail=  0 codes=200          max_lat=   29.9ms ready_eps=2
+  t=  +9.0s ok=  7 fail=  0 codes=200          max_lat=   31.7ms ready_eps=2
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=  129.5ms ready_eps=2
+  t= +11.0s ok=  9 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+  t= +12.0s ok=  7 fail=  0 codes=200          max_lat=   22.8ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   10.6ms ready_eps=2
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=   11.7ms ready_eps=2
+  t= +15.0s ok=  9 fail=  0 codes=200          max_lat=   24.7ms ready_eps=2
+  t= +16.0s ok=  7 fail=  0 codes=200          max_lat=   11.5ms ready_eps=2
+  t= +17.0s ok=  4 fail=  0 codes=200          max_lat=   11.1ms ready_eps=2
+stats_interval: {'requests': 179, 'success': 179, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 18.3, 'lat_p50_ms': 9.8, 'lat_p95_ms': 32.2, 'lat_max_ms': 349.8, 'codes': {'200': 179}}
+detection: {'endpoint_drop_s': 0.3, 'first_failed_request_s': None}
+recovery: {'endpoints_back_s': 1.3, 'last_failed_request_end_s': None, 'recovery_s': 1.3, 'user_visible_outage_s': 0.0}
+alerts: {}
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qlrkn   1/1     Running   0             18s   10.244.0.31   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (69m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+gateway: {'log_lines': 179, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 179}, 'max_request_time_s': 0.344}
+[17:04:59.826] saved evidence\results\exp1-improved-rep1-graceful.json
+
+--- e1_once('improved', 2, 'graceful') 17:04:59
+[17:05:00.506] known state exp1-improved-rep2-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:05:07.180] exp1-improved-rep2-graceful: inject `kubectl -n university delete pod api-56b6dc48d5-qlrkn --wait=false`
+[17:05:07.419]   -> pod "api-56b6dc48d5-qlrkn" deleted from university namespace
+
+=== exp1-improved-rep2-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-qlrkn            1/1     Running     0             19s   10.244.0.31   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (69m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             34m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             79m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             79m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (96m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             12m   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (96m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 17:05:07: kubectl -n university delete pod api-56b6dc48d5-qlrkn --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   11.2ms ready_eps=2
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   22.7ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   31.9ms ready_eps=2
+  t=  +0.0s ok=  8 fail=  0 codes=200          max_lat=  926.0ms ready_eps=1
+  t=  +1.0s ok=  8 fail=  0 codes=200          max_lat=  356.0ms ready_eps=2
+  t=  +2.0s ok=  8 fail=  0 codes=200          max_lat=   21.2ms ready_eps=2
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=    9.5ms ready_eps=2
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=    9.8ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=  252.8ms ready_eps=2
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   30.0ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+  t=  +8.0s ok=  8 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   26.7ms ready_eps=2
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=   10.7ms ready_eps=2
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   17.9ms ready_eps=2
+  t= +12.0s ok=  8 fail=  0 codes=200          max_lat=   10.6ms ready_eps=2
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=   75.1ms ready_eps=2
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=   32.3ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   29.3ms ready_eps=2
+  t= +16.0s ok=  8 fail=  0 codes=200          max_lat=   10.9ms ready_eps=2
+  t= +17.0s ok=  2 fail=  0 codes=200          max_lat=    9.4ms ready_eps=2
+stats_interval: {'requests': 178, 'success': 178, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 25.5, 'lat_p50_ms': 9.6, 'lat_p95_ms': 100.6, 'lat_max_ms': 926.0, 'codes': {'200': 178}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': None}
+recovery: {'endpoints_back_s': 1.4, 'last_failed_request_end_s': None, 'recovery_s': 1.4, 'user_visible_outage_s': 0.0}
+alerts: {}
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-4hzdj   1/1     Running   0             18s   10.244.0.32   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (70m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+gateway: {'log_lines': 178, 'requests_retried': 0, 'extra_upstream_tries': 0, 'max_tries_per_request': 1, 'failover_success': 0, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 178}, 'max_request_time_s': 0.92}
+[17:05:25.694] saved evidence\results\exp1-improved-rep2-graceful.json
+
+--- e1_once('improved', 3, 'crash') 17:05:25
+[17:05:26.324] known state exp1-improved-rep3-crash: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:05:32.999] exp1-improved-rep3-crash: inject `kubectl -n university delete pod api-56b6dc48d5-4hzdj --wait=false --grace-period=0 --force`
+[17:05:33.305]   -> pod "api-56b6dc48d5-4hzdj" force deleted from university namespace
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+
+=== exp1-improved-rep3-crash ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-4hzdj            1/1     Running     0             19s   10.244.0.32   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (70m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             35m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             79m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             79m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (96m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             12m   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (96m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 17:05:32: kubectl -n university delete pod api-56b6dc48d5-4hzdj --wait=false --grace-period=0 --force
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   12.6ms ready_eps=2
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   11.0ms ready_eps=2
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   27.7ms ready_eps=2
+  t=  +0.0s ok=  9 fail=  0 codes=200          max_lat=  205.4ms ready_eps=1
+  t=  +1.0s ok=  7 fail=  0 codes=200          max_lat=  329.5ms ready_eps=2
+  t=  +2.0s ok=  9 fail=  0 codes=200          max_lat=   11.3ms ready_eps=2
+  t=  +3.0s ok=  7 fail=  0 codes=200          max_lat=   26.4ms ready_eps=2
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   27.5ms ready_eps=2
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=   12.6ms ready_eps=2
+  t=  +6.0s ok=  9 fail=  0 codes=200          max_lat=   31.3ms ready_eps=2
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2 alerts=ApiReplicaDown:pending
+  t=  +8.0s ok=  7 fail=  0 codes=200          max_lat=   11.1ms ready_eps=2 alerts=ApiReplicaDown:pending
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   28.3ms ready_eps=2 alerts=ApiReplicaDown:pending
+  t= +10.0s ok=  9 fail=  0 codes=200          max_lat=   11.2ms ready_eps=2 alerts=ApiReplicaDown:pending
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   18.3ms ready_eps=2
+  t= +12.0s ok=  7 fail=  0 codes=200          max_lat=   10.4ms ready_eps=2
+  t= +13.0s ok=  9 fail=  0 codes=200          max_lat=   24.7ms ready_eps=2
+  t= +14.0s ok=  7 fail=  0 codes=200          max_lat=   10.0ms ready_eps=2
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   10.3ms ready_eps=2
+  t= +16.0s ok=  8 fail=  0 codes=200          max_lat=   21.7ms ready_eps=2
+  t= +17.0s ok=  4 fail=  0 codes=200          max_lat=    9.1ms ready_eps=2
+stats_interval: {'requests': 179, 'success': 179, 'failed': 0, 'excluded': 0, 'error_rate_pct': 0.0, 'availability_pct': 100.0, 'lat_avg_ms': 17.8, 'lat_p50_ms': 9.7, 'lat_p95_ms': 31.3, 'lat_max_ms': 329.5, 'codes': {'200': 179}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': None}
+recovery: {'endpoints_back_s': 1.7, 'last_failed_request_end_s': None, 'recovery_s': 1.7, 'user_visible_outage_s': 0.0}
+alerts: {'ApiReplicaDown': {'pending_s': 7.1, 'firing_s': None, 'cleared_s': 11.2, 'activeAt': '2026-11-06T12:05:38.190008992Z'}}
+pods after:
+NAME                   READY   STATUS    RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-9qcdw   1/1     Running   0             18s   10.244.0.33   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm   1/1     Running   3 (70m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+gateway: {'log_lines': 179, 'requests_retried': 1, 'extra_upstream_tries': 1, 'max_tries_per_request': 2, 'failover_success': 1, 'gateway_degraded_503': 0, 'upstream_status_combos': {'200': 178, '502, 200': 1}, 'max_request_time_s': 0.324}
+[17:05:51.581] saved evidence\results\exp1-improved-rep3-crash.json
+
+--- e1_once('baseline', 1, 'graceful') 17:05:51
+[17:05:52.222] known state exp1-baseline-rep1-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:05:58.897] exp1-baseline-rep1-graceful: inject `kubectl -n university delete pod api-baseline-69bbd8cf45-pdthl --wait=false`
+[17:05:59.113]   -> pod "api-baseline-69bbd8cf45-pdthl" deleted from university namespace
+
+=== exp1-baseline-rep1-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-9qcdw            1/1     Running     0             19s   10.244.0.33   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (70m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-pdthl   1/1     Running     0             35m   10.244.0.26   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             79m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             79m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (97m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             13m   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (97m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 17:05:58: kubectl -n university delete pod api-baseline-69bbd8cf45-pdthl --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   25.5ms ready_eps=1
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=    8.6ms ready_eps=1
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=   11.3ms ready_eps=1
+  t=  +0.0s ok=  1 fail=  6 codes=200,ERR      max_lat= 6007.8ms ready_eps=1
+  t=  +1.0s ok=  0 fail=  8 codes=ERR          max_lat= 6027.0ms ready_eps=1
+  t=  +2.0s ok=  0 fail=  9 codes=ERR          max_lat= 6026.4ms ready_eps=1
+  t=  +3.0s ok=  0 fail=  7 codes=ERR          max_lat= 6021.0ms ready_eps=1
+  t=  +4.0s ok=  0 fail=  8 codes=ERR          max_lat= 6013.6ms ready_eps=1
+  t=  +5.0s ok=  0 fail=  8 codes=ERR          max_lat= 6016.4ms ready_eps=1
+  t=  +6.0s ok=  0 fail=  9 codes=ERR          max_lat= 6016.2ms ready_eps=1
+  t=  +7.0s ok=  0 fail=  8 codes=ERR          max_lat= 6008.0ms ready_eps=1
+  t=  +8.0s ok=  0 fail=  8 codes=ERR          max_lat= 6030.6ms ready_eps=1
+  t=  +9.0s ok=  0 fail=  8 codes=ERR          max_lat= 6014.7ms ready_eps=1
+  t= +10.0s ok=  0 fail=  8 codes=ERR          max_lat= 6022.8ms ready_eps=1
+  t= +11.0s ok=  0 fail=  8 codes=ERR          max_lat= 6021.4ms ready_eps=1
+  t= +12.0s ok=  0 fail=  8 codes=ERR          max_lat= 6006.1ms ready_eps=1
+  t= +13.0s ok=  0 fail=  8 codes=ERR          max_lat= 6015.6ms ready_eps=1
+  t= +14.0s ok=  0 fail=  8 codes=ERR          max_lat= 6012.8ms ready_eps=1
+  t= +15.0s ok=  0 fail=  8 codes=ERR          max_lat= 6010.7ms ready_eps=1
+  t= +16.0s ok=  0 fail=  8 codes=ERR          max_lat= 6008.8ms ready_eps=1
+  t= +17.0s ok=  1 fail=  7 codes=200,ERR      max_lat= 6020.3ms ready_eps=1
+  t= +18.0s ok=  5 fail=  3 codes=200,ERR      max_lat= 6016.7ms ready_eps=1
+  t= +19.0s ok=  4 fail=  4 codes=200,ERR      max_lat= 6013.9ms ready_eps=1
+  t= +20.0s ok=  8 fail=  0 codes=200          max_lat= 5305.5ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat= 4877.7ms ready_eps=1
+  t= +22.0s ok=  7 fail=  0 codes=200          max_lat= 3431.8ms ready_eps=1
+  t= +23.0s ok=  9 fail=  0 codes=200          max_lat= 1629.3ms ready_eps=1
+  t= +24.0s ok=  7 fail=  0 codes=200          max_lat=  751.4ms ready_eps=1
+  t= +25.0s ok=  9 fail=  0 codes=200          max_lat= 1007.2ms ready_eps=1
+  t= +26.0s ok=  8 fail=  0 codes=200          max_lat=   24.9ms ready_eps=1
+  t= +27.0s ok=  8 fail=  0 codes=200          max_lat=   18.1ms ready_eps=1
+  t= +28.0s ok=  8 fail=  0 codes=200          max_lat=   10.5ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   22.4ms ready_eps=1
+  t= +30.0s ok=  8 fail=  0 codes=200          max_lat=   10.6ms ready_eps=1
+  t= +31.0s ok=  8 fail=  0 codes=200          max_lat=   10.2ms ready_eps=1
+  t= +32.0s ok=  7 fail=  0 codes=200          max_lat=   18.4ms ready_eps=1
+  t= +33.0s ok=  9 fail=  0 codes=200          max_lat=   27.1ms ready_eps=1
+  t= +34.0s ok=  8 fail=  0 codes=200          max_lat=   18.6ms ready_eps=1
+  t= +35.0s ok=  8 fail=  0 codes=200          max_lat=   24.5ms ready_eps=1
+  t= +36.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t= +37.0s ok=  8 fail=  0 codes=200          max_lat=   16.6ms ready_eps=1
+  t= +38.0s ok=  8 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1
+  t= +39.0s ok=  8 fail=  0 codes=200          max_lat=   12.7ms ready_eps=1
+  t= +40.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t= +41.0s ok=  2 fail=  0 codes=200          max_lat=    9.6ms ready_eps=1
+stats_interval: {'requests': 370, 'success': 221, 'failed': 149, 'excluded': 0, 'error_rate_pct': 40.27, 'availability_pct': 59.73, 'lat_avg_ms': 2786.4, 'lat_p50_ms': 1056.5, 'lat_p95_ms': 6015.0, 'lat_max_ms': 6030.6, 'codes': {'200': 221, 'conn_error': 2, 'timeout': 147}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': 0.2}
+recovery: {'endpoints_back_s': 0.9, 'last_failed_request_end_s': 25.9, 'recovery_s': 25.9, 'user_visible_outage_s': 25.6}
+alerts: {}
+failed samples: [{'t': 0.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.4, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.5, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}, {'t': 0.6, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}, {'t': 0.8, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}]
+pods after:
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-baseline-69bbd8cf45-qfm7w   1/1     Running   0          41s   10.244.0.34   ftr-endterm-control-plane   <none>           <none>
+[17:06:40.449] saved evidence\results\exp1-baseline-rep1-graceful.json
+
+--- e1_once('baseline', 2, 'graceful') 17:06:40
+[17:06:41.125] known state exp1-baseline-rep2-graceful: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:06:47.791] exp1-baseline-rep2-graceful: inject `kubectl -n university delete pod api-baseline-69bbd8cf45-qfm7w --wait=false`
+[17:06:48.010]   -> pod "api-baseline-69bbd8cf45-qfm7w" deleted from university namespace
+
+=== exp1-baseline-rep2-graceful ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-9qcdw            1/1     Running     0             68s   10.244.0.33   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (71m ago)   23h   10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-qfm7w   1/1     Running     0             42s   10.244.0.34   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             80m   10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             80m   10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (98m ago)   2d    10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             13m   10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (98m ago)   2d    10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d    <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 17:06:47: kubectl -n university delete pod api-baseline-69bbd8cf45-qfm7w --wait=false
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   16.9ms ready_eps=1
+  t=  -2.0s ok=  9 fail=  0 codes=200          max_lat=   14.6ms ready_eps=1
+  t=  -1.0s ok=  7 fail=  0 codes=200          max_lat=   21.2ms ready_eps=1
+  t=  +0.0s ok=  2 fail=  6 codes=200,ERR      max_lat= 6014.2ms ready_eps=0
+  t=  +1.0s ok=  0 fail=  8 codes=ERR          max_lat= 6029.4ms ready_eps=1
+  t=  +2.0s ok=  0 fail=  8 codes=ERR          max_lat= 6013.1ms ready_eps=1
+  t=  +3.0s ok=  0 fail=  8 codes=ERR          max_lat= 6039.6ms ready_eps=1
+  t=  +4.0s ok=  0 fail=  8 codes=ERR          max_lat= 6022.7ms ready_eps=1
+  t=  +5.0s ok=  0 fail=  8 codes=ERR          max_lat= 6015.9ms ready_eps=1
+  t=  +6.0s ok=  0 fail=  9 codes=ERR          max_lat= 6012.6ms ready_eps=1
+  t=  +7.0s ok=  0 fail=  8 codes=ERR          max_lat= 6025.3ms ready_eps=1
+  t=  +8.0s ok=  0 fail=  7 codes=ERR          max_lat= 6006.9ms ready_eps=1
+  t=  +9.0s ok=  0 fail=  9 codes=ERR          max_lat= 6036.7ms ready_eps=1
+  t= +10.0s ok=  0 fail=  8 codes=ERR          max_lat= 6016.9ms ready_eps=1
+  t= +11.0s ok=  0 fail=  7 codes=ERR          max_lat= 6013.8ms ready_eps=1
+  t= +12.0s ok=  0 fail=  8 codes=ERR          max_lat= 6035.1ms ready_eps=1
+  t= +13.0s ok=  0 fail=  9 codes=ERR          max_lat= 6016.6ms ready_eps=1
+  t= +14.0s ok=  0 fail=  8 codes=ERR          max_lat= 6028.7ms ready_eps=1
+  t= +15.0s ok=  0 fail=  7 codes=ERR          max_lat= 6026.1ms ready_eps=1
+  t= +16.0s ok=  0 fail=  9 codes=ERR          max_lat= 6030.9ms ready_eps=1
+  t= +17.0s ok=  1 fail=  7 codes=200,ERR      max_lat= 6016.1ms ready_eps=1
+  t= +18.0s ok=  8 fail=  0 codes=200          max_lat= 5886.4ms ready_eps=1
+  t= +19.0s ok=  5 fail=  2 codes=200,ERR      max_lat= 6014.3ms ready_eps=1
+  t= +20.0s ok=  8 fail=  0 codes=200          max_lat= 5084.6ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat= 4110.5ms ready_eps=1
+  t= +22.0s ok=  8 fail=  0 codes=200          max_lat= 3581.7ms ready_eps=1
+  t= +23.0s ok=  9 fail=  0 codes=200          max_lat= 1955.4ms ready_eps=1
+  t= +24.0s ok=  8 fail=  0 codes=200          max_lat= 1029.8ms ready_eps=1
+  t= +25.0s ok=  7 fail=  0 codes=200          max_lat=  454.8ms ready_eps=1
+  t= +26.0s ok=  9 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t= +27.0s ok=  7 fail=  0 codes=200          max_lat=   25.4ms ready_eps=1
+  t= +28.0s ok=  8 fail=  0 codes=200          max_lat=   21.5ms ready_eps=1
+  t= +29.0s ok=  8 fail=  0 codes=200          max_lat=   10.6ms ready_eps=1
+  t= +30.0s ok=  9 fail=  0 codes=200          max_lat=    9.6ms ready_eps=1
+  t= +31.0s ok=  7 fail=  0 codes=200          max_lat=   29.1ms ready_eps=1
+  t= +32.0s ok=  9 fail=  0 codes=200          max_lat=   23.6ms ready_eps=1
+  t= +33.0s ok=  7 fail=  0 codes=200          max_lat=   19.9ms ready_eps=1
+  t= +34.0s ok=  9 fail=  0 codes=200          max_lat=   18.5ms ready_eps=1
+  t= +35.0s ok=  8 fail=  0 codes=200          max_lat=   10.8ms ready_eps=1
+  t= +36.0s ok=  8 fail=  0 codes=200          max_lat=   10.4ms ready_eps=1
+  t= +37.0s ok=  7 fail=  0 codes=200          max_lat=   22.5ms ready_eps=1
+  t= +38.0s ok=  8 fail=  0 codes=200          max_lat=    9.8ms ready_eps=1
+  t= +39.0s ok=  8 fail=  0 codes=200          max_lat=   29.8ms ready_eps=1
+  t= +40.0s ok=  8 fail=  0 codes=200          max_lat=   28.2ms ready_eps=1
+  t= +41.0s ok=  3 fail=  0 codes=200          max_lat=    9.4ms ready_eps=1
+stats_interval: {'requests': 370, 'success': 226, 'failed': 144, 'excluded': 0, 'error_rate_pct': 38.92, 'availability_pct': 61.08, 'lat_avg_ms': 2763.3, 'lat_p50_ms': 1029.8, 'lat_p95_ms': 6016.0, 'lat_max_ms': 6039.6, 'codes': {'200': 226, 'conn_error': 2, 'timeout': 142}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': 0.3}
+recovery: {'endpoints_back_s': 1.1, 'last_failed_request_end_s': 25.3, 'recovery_s': 25.3, 'user_visible_outage_s': 25.0}
+alerts: {}
+failed samples: [{'t': 0.3, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.4, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.5, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}, {'t': 0.6, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}, {'t': 0.8, 'status': 0, 'err': 'TimeoutError: timed out', 'body': ''}]
+pods after:
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-baseline-69bbd8cf45-dvml8   1/1     Running   0          41s   10.244.0.35   ftr-endterm-control-plane   <none>           <none>
+[17:07:29.451] saved evidence\results\exp1-baseline-rep2-graceful.json
+
+--- e1_once('baseline', 3, 'crash') 17:07:29
+[17:07:30.119] known state exp1-baseline-rep3-crash: all workloads ready, no alerts (waited 0.0s for alerts to clear)
+[17:07:36.777] exp1-baseline-rep3-crash: inject `kubectl -n university delete pod api-baseline-69bbd8cf45-dvml8 --wait=false --grace-period=0 --force`
+[17:07:37.028]   -> pod "api-baseline-69bbd8cf45-dvml8" force deleted from university namespace
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+
+=== exp1-baseline-rep3-crash ===
+pods before:
+NAME                            READY   STATUS      RESTARTS      AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+api-56b6dc48d5-9qcdw            1/1     Running     0             117s   10.244.0.33   ftr-endterm-control-plane   <none>           <none>
+api-56b6dc48d5-v57tm            1/1     Running     3 (72m ago)   23h    10.244.0.8    ftr-endterm-control-plane   <none>           <none>
+api-baseline-69bbd8cf45-dvml8   1/1     Running     0             42s    10.244.0.35   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-92rxg        1/1     Running     0             81m    10.244.0.13   ftr-endterm-control-plane   <none>           <none>
+gateway-7bc4484f59-p8zs9        1/1     Running     0             81m    10.244.0.14   ftr-endterm-control-plane   <none>           <none>
+grafana-978bd745f-7ct2r         1/1     Running     2 (98m ago)   2d     10.244.0.3    ftr-endterm-control-plane   <none>           <none>
+postgres-0                      1/1     Running     0             14m    10.244.0.30   ftr-endterm-control-plane   <none>           <none>
+prometheus-6885ddbd9b-77c8q     1/1     Running     2 (98m ago)   2d     10.244.0.12   ftr-endterm-control-plane   <none>           <none>
+university-migrate-2xjg6        0/1     Completed   0             2d     <none>        ftr-endterm-control-plane   <none>           <none>
+inject at 17:07:36: kubectl -n university delete pod api-baseline-69bbd8cf45-dvml8 --wait=false --grace-period=0 --force
+timeline (t=0 is the injection):
+  t=  -3.0s ok=  8 fail=  0 codes=200          max_lat=   22.9ms ready_eps=1
+  t=  -2.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t=  -1.0s ok=  8 fail=  0 codes=200          max_lat=    9.3ms ready_eps=1
+  t=  +0.0s ok=  1 fail=  7 codes=200,ERR      max_lat=   24.2ms ready_eps=0
+  t=  +1.0s ok=  6 fail=  2 codes=200,ERR      max_lat= 2145.5ms ready_eps=1
+  t=  +2.0s ok=  8 fail=  0 codes=200          max_lat= 1473.1ms ready_eps=1
+  t=  +3.0s ok=  8 fail=  0 codes=200          max_lat=  700.4ms ready_eps=1
+  t=  +4.0s ok=  8 fail=  0 codes=200          max_lat=   14.0ms ready_eps=1
+  t=  +5.0s ok=  8 fail=  0 codes=200          max_lat=    9.9ms ready_eps=1
+  t=  +6.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t=  +7.0s ok=  8 fail=  0 codes=200          max_lat=    9.7ms ready_eps=1
+  t=  +8.0s ok=  8 fail=  0 codes=200          max_lat=    9.9ms ready_eps=1
+  t=  +9.0s ok=  8 fail=  0 codes=200          max_lat=   10.7ms ready_eps=1
+  t= +10.0s ok=  8 fail=  0 codes=200          max_lat=   10.5ms ready_eps=1
+  t= +11.0s ok=  8 fail=  0 codes=200          max_lat=   15.9ms ready_eps=1
+  t= +12.0s ok=  8 fail=  0 codes=200          max_lat=   11.5ms ready_eps=1
+  t= +13.0s ok=  8 fail=  0 codes=200          max_lat=    9.3ms ready_eps=1
+  t= +14.0s ok=  8 fail=  0 codes=200          max_lat=    9.6ms ready_eps=1
+  t= +15.0s ok=  8 fail=  0 codes=200          max_lat=   10.0ms ready_eps=1
+  t= +16.0s ok=  8 fail=  0 codes=200          max_lat=    9.2ms ready_eps=1
+  t= +17.0s ok=  8 fail=  0 codes=200          max_lat=    9.3ms ready_eps=1
+  t= +18.0s ok=  8 fail=  0 codes=200          max_lat=    9.5ms ready_eps=1
+  t= +19.0s ok=  8 fail=  0 codes=200          max_lat=    9.9ms ready_eps=1
+  t= +20.0s ok=  8 fail=  0 codes=200          max_lat=   11.0ms ready_eps=1
+  t= +21.0s ok=  8 fail=  0 codes=200          max_lat=   20.6ms ready_eps=1
+  t= +22.0s ok=  3 fail=  0 codes=200          max_lat=   26.9ms ready_eps=1
+stats_interval: {'requests': 219, 'success': 210, 'failed': 9, 'excluded': 0, 'error_rate_pct': 4.11, 'availability_pct': 95.89, 'lat_avg_ms': 114.5, 'lat_p50_ms': 9.0, 'lat_p95_ms': 1009.5, 'lat_max_ms': 2145.5, 'codes': {'200': 210, 'conn_error': 9}}
+detection: {'endpoint_drop_s': 0.2, 'first_failed_request_s': 0.2}
+recovery: {'endpoints_back_s': 1.3, 'last_failed_request_end_s': 2.3, 'recovery_s': 2.3, 'user_visible_outage_s': 2.0}
+alerts: {}
+failed samples: [{'t': 0.2, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.4, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.5, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}, {'t': 0.6, 'status': 0, 'err': 'ConnectionAbortedError: [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение', 'body': ''}, {'t': 0.7, 'status': 0, 'err': 'RemoteDisconnected: Remote end closed connection without response', 'body': ''}]
+pods after:
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+api-baseline-69bbd8cf45-9vklv   1/1     Running   0          23s   10.244.0.36   ftr-endterm-control-plane   <none>           <none>
+[17:08:00.212] saved evidence\results\exp1-baseline-rep3-crash.json
+##### run_exp 1 finished 2026-11-06 17:08:00 #####

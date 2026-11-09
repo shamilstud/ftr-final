@@ -1,0 +1,1729 @@
+{
+  "experiment": "Exp3 network delay on the api->postgres link",
+  "config": "improved",
+  "rep": 1,
+  "victim": "api-56b6dc48d5-qdjzv",
+  "inject": [
+    "docker exec ftr-endterm-control-plane nsenter -t 3336 -n tc qdisc add dev eth0 root handle 1: prio",
+    "docker exec ftr-endterm-control-plane nsenter -t 3336 -n tc qdisc add dev eth0 parent 1:3 handle 30: netem delay 2000ms",
+    "docker exec ftr-endterm-control-plane nsenter -t 3336 -n tc filter add dev eth0 parent 1:0 protocol ip u32 match ip dport 5432 0xffff flowid 1:3"
+  ],
+  "delay_ms": 2000,
+  "t0": 1793962622.7265666,
+  "t_end": 1793962694.138327,
+  "restore_s": 41.1,
+  "injection_verified": true,
+  "netem_packets_delayed": 321,
+  "qdisc_at_removal": "qdisc prio 1: root refcnt 17 bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1\n Sent 140728 bytes 598 pkt (dropped 0, overlimits 0 requeues 0) \n backlog 1705b 16p requeues 0\nqdisc netem 30: parent 1:3 limit 1000 delay 2s\n Sent 34770 bytes 321 pkt (dropped 0, overlimits 0 requeues 0) \n backlog 1705b 16p requeues 0",
+  "client_timeout_s": 60,
+  "stats_before": {
+    "requests": 20,
+    "success": 20,
+    "failed": 0,
+    "excluded": 0,
+    "error_rate_pct": 0.0,
+    "availability_pct": 100.0,
+    "lat_avg_ms": 13.4,
+    "lat_p50_ms": 9.9,
+    "lat_p95_ms": 33.3,
+    "lat_max_ms": 33.3,
+    "codes": {
+      "200": 20
+    }
+  },
+  "stats_during": {
+    "requests": 82,
+    "success": 82,
+    "failed": 0,
+    "excluded": 0,
+    "error_rate_pct": 0.0,
+    "availability_pct": 100.0,
+    "lat_avg_ms": 830.9,
+    "lat_p50_ms": 10.4,
+    "lat_p95_ms": 5011.9,
+    "lat_max_ms": 5042.2,
+    "codes": {
+      "200": 82
+    }
+  },
+  "stats_after_settled": {
+    "requests": 34,
+    "success": 34,
+    "failed": 0,
+    "excluded": 0,
+    "error_rate_pct": 0.0,
+    "availability_pct": 100.0,
+    "lat_avg_ms": 12.8,
+    "lat_p50_ms": 10.2,
+    "lat_p95_ms": 28.5,
+    "lat_max_ms": 29.9,
+    "codes": {
+      "200": 34
+    }
+  },
+  "slow_threshold_ms": 200.0,
+  "detection": {
+    "first_slow_or_failed_request_s": 1.0
+  },
+  "recovery": {
+    "last_slow_request_end_after_removal_s": 0.0
+  },
+  "endpoint_changes": [
+    [
+      -11.35,
+      2
+    ]
+  ],
+  "gateway": {
+    "log_lines": 166,
+    "requests_retried": 13,
+    "extra_upstream_tries": 13,
+    "max_tries_per_request": 2,
+    "failover_success": 13,
+    "gateway_degraded_503": 0,
+    "upstream_status_combos": {
+      "200": 153,
+      "504, 200": 13
+    },
+    "max_request_time_s": 5.028
+  },
+  "alerts": {
+    "ApiHighErrorRate": {
+      "pending_s": 33.4,
+      "firing_s": 43.5,
+      "cleared_s": 61.7,
+      "activeAt": "2026-11-06T10:57:34.190008992Z"
+    },
+    "ApiHighLatencyP95": {
+      "pending_s": 12.3,
+      "firing_s": 22.4,
+      "cleared_s": 69.8,
+      "activeAt": "2026-11-06T10:57:12.190008992Z"
+    }
+  },
+  "integrity": {
+    "logical_writes": 55,
+    "acknowledged": 55,
+    "unacknowledged": 0,
+    "rows_in_db": 55,
+    "distinct_client_id": 55,
+    "sum_amount_db": 7040.0,
+    "sum_amount_acknowledged": 7040,
+    "account_balance": -7040.0,
+    "retried_items": 4,
+    "replayed_200": 0,
+    "pass": true
+  },
+  "client_retries_writer": 4,
+  "duplicates_db": 0,
+  "writes": [
+    {
+      "client_id": "3fe549eb-4167-4995-a871-6b6c645b2129",
+      "amount": 101,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "a1476fcc-181e-49eb-b1e4-64ce7fc8dee6",
+      "amount": 102,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "7b67bbd9-c6d2-4155-aa34-fd986ceaae4f",
+      "amount": 103,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "a70ff6a8-2e97-4ba8-8e73-c9336681b6a4",
+      "amount": 104,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "8c2941b2-bfde-4a58-92b5-c63abd4422b2",
+      "amount": 105,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "add6a9df-b718-4e02-ae8d-8eeebabe8bf1",
+      "amount": 106,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "15cc7991-dd73-46e9-b87d-0526b0bd924b",
+      "amount": 107,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "dceb583e-9dd6-40da-a306-a902547473ed",
+      "amount": 108,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "a99cf869-1a71-4650-8ad1-18abb12986f3",
+      "amount": 109,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "b70fe2f8-dfb2-4b71-ac2d-27d6424447df",
+      "amount": 110,
+      "statuses": [
+        503,
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "98b05dc6-a606-40aa-a920-24daf537a9da",
+      "amount": 111,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "4463889f-cb89-4d90-a9e7-59cb4dd08ee4",
+      "amount": 112,
+      "statuses": [
+        503,
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "6704ac68-12d9-4fc2-b477-5f0543246bf5",
+      "amount": 113,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "8521a754-ac70-4200-a855-aebd1f683a8e",
+      "amount": 114,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "32109aa1-d8a9-448d-bc1d-ff4c6aed002c",
+      "amount": 115,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "21530be4-c511-43cf-809e-d508c4c40131",
+      "amount": 116,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "930b9c3d-89fe-42da-815d-f7d9066ea9be",
+      "amount": 117,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "d4d4da69-d49d-4d50-ad6b-e2bae7be78a1",
+      "amount": 118,
+      "statuses": [
+        503,
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "7fd5aeb8-3a70-45db-8e75-11a2a673ee07",
+      "amount": 119,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "7c1db7e0-2465-4de1-913b-1992ebd18868",
+      "amount": 120,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "f79f518b-ba39-408b-a78c-68a52b340748",
+      "amount": 121,
+      "statuses": [
+        503,
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "1d5e0505-dea4-43e0-ac71-efddace39b6c",
+      "amount": 122,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "905ea28c-fc85-4dab-a502-07ea681d2066",
+      "amount": 123,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "6e89dc4b-a865-4920-bc27-ed9ca0d265a9",
+      "amount": 124,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "00233514-2214-480f-9160-2286e41a2e8f",
+      "amount": 125,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "3c1cdf30-24ff-4d40-a25c-3d0e6c6654bc",
+      "amount": 126,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "72fd0f22-c236-4471-8ad7-5c8393bd487e",
+      "amount": 127,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "6d4e4c29-588e-4833-a641-220ef14e2218",
+      "amount": 128,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "45c45302-46e2-4e01-925a-bae805467f1a",
+      "amount": 129,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "c2e778a0-7c4a-46c7-91d4-24049b639c99",
+      "amount": 130,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "811fae75-5a6d-4a6a-84fb-5cb8f86b1894",
+      "amount": 131,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "97186e86-13bb-4f8c-9249-9b50ac9061ed",
+      "amount": 132,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "d3843391-f0c0-411d-894f-5736c9d89b06",
+      "amount": 133,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "817cdf68-b8a3-4692-a6f0-2cc78102cef4",
+      "amount": 134,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "6ad18eb4-4ddb-4cc8-8a51-ee61985ab3be",
+      "amount": 135,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "3803c7d6-943e-4250-993d-24ecdf54516b",
+      "amount": 136,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "65572979-3a56-4399-b0c7-f5b609c01141",
+      "amount": 137,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "d04be7f7-4bed-4550-99d8-56f45a98bf37",
+      "amount": 138,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "30c3549b-cbd1-4ba2-a4c5-bbceb0e0446c",
+      "amount": 139,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "40fde528-bd44-4eb7-9019-834fc91db0b3",
+      "amount": 140,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "60304303-11d8-457b-978e-397b29ad261d",
+      "amount": 141,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "0d1da3a8-70c8-494f-8113-115386b8bde7",
+      "amount": 142,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "0388c0a0-8143-4e04-80aa-877f532590cb",
+      "amount": 143,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "72af99bb-f233-4bc6-bded-17531f1cc209",
+      "amount": 144,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "96f1fc87-1298-4bd9-bf8b-fd4b231c65ea",
+      "amount": 145,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "2ef5e186-30a3-45d9-91e0-bb4df025313b",
+      "amount": 146,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "e26a3cc7-373e-4e42-bc89-2e08bc1d8f24",
+      "amount": 147,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "ac1131b7-eede-4ad2-9cb2-2cd6a0f8b897",
+      "amount": 148,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "53f172e1-aa19-4a91-8395-678c2931dbe0",
+      "amount": 149,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "63ed458b-ad2f-4bef-a0d6-6e259ed5b302",
+      "amount": 150,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "db89f0b7-4bc6-483c-b727-9c48413d930d",
+      "amount": 151,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "c7e403b7-93f1-4a27-907c-64a9321e77bf",
+      "amount": 152,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "8c07e817-a597-418e-aa66-83035e8084a1",
+      "amount": 153,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "29767064-b595-4b0a-b3cd-55f0038143ab",
+      "amount": 154,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    },
+    {
+      "client_id": "ceea388c-2fd1-48b9-85c0-4f85647a4690",
+      "amount": 155,
+      "statuses": [
+        201
+      ],
+      "final": 201
+    }
+  ],
+  "records": [
+    {
+      "t": 1793962613.226,
+      "s": 200,
+      "ms": 17.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962613.725,
+      "s": 200,
+      "ms": 29.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962614.225,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962614.725,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962615.224,
+      "s": 200,
+      "ms": 29.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962615.725,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962616.224,
+      "s": 200,
+      "ms": 13.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962616.725,
+      "s": 200,
+      "ms": 11.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962617.224,
+      "s": 200,
+      "ms": 10.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962617.724,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962618.224,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962618.724,
+      "s": 200,
+      "ms": 11.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962619.225,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962619.725,
+      "s": 200,
+      "ms": 33.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962620.225,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962620.724,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962621.225,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962621.724,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962622.224,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962622.725,
+      "s": 200,
+      "ms": 11.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962623.225,
+      "s": 200,
+      "ms": 10.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962623.724,
+      "s": 200,
+      "ms": 5010.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962624.224,
+      "s": 200,
+      "ms": 22.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962624.725,
+      "s": 200,
+      "ms": 5011.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962625.225,
+      "s": 200,
+      "ms": 5011.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962625.725,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962626.226,
+      "s": 200,
+      "ms": 5011.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962626.725,
+      "s": 200,
+      "ms": 11.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962627.224,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962627.724,
+      "s": 200,
+      "ms": 5032.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962628.226,
+      "s": 200,
+      "ms": 5042.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962628.725,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962629.226,
+      "s": 200,
+      "ms": 13.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962629.725,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962630.225,
+      "s": 200,
+      "ms": 31.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962630.725,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962631.224,
+      "s": 200,
+      "ms": 11.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962631.725,
+      "s": 200,
+      "ms": 10.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962632.225,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962632.725,
+      "s": 200,
+      "ms": 17.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962633.225,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962633.725,
+      "s": 200,
+      "ms": 21.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962634.225,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962634.725,
+      "s": 200,
+      "ms": 17.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962635.225,
+      "s": 200,
+      "ms": 5009.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962635.724,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962636.225,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962636.724,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962637.224,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962637.724,
+      "s": 200,
+      "ms": 13.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962638.224,
+      "s": 200,
+      "ms": 26.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962638.724,
+      "s": 200,
+      "ms": 22.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962639.225,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962639.725,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962640.225,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962640.724,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962641.224,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962641.725,
+      "s": 200,
+      "ms": 12.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962642.225,
+      "s": 200,
+      "ms": 19.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962642.725,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962643.225,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962643.724,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962644.225,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962644.725,
+      "s": 200,
+      "ms": 5011.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962645.225,
+      "s": 200,
+      "ms": 26.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962645.725,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962646.225,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962646.724,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962647.225,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962647.724,
+      "s": 200,
+      "ms": 5009.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962648.225,
+      "s": 200,
+      "ms": 5010.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962648.724,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962649.225,
+      "s": 200,
+      "ms": 23.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962649.725,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962650.224,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962650.724,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962651.224,
+      "s": 200,
+      "ms": 5013.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962651.724,
+      "s": 200,
+      "ms": 10.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962652.224,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962652.724,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962653.224,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962653.724,
+      "s": 200,
+      "ms": 30.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962654.225,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962654.725,
+      "s": 200,
+      "ms": 28.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962655.224,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962655.725,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962656.225,
+      "s": 200,
+      "ms": 13.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962656.725,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962657.224,
+      "s": 200,
+      "ms": 10.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962657.725,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962658.225,
+      "s": 200,
+      "ms": 24.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962658.725,
+      "s": 200,
+      "ms": 5011.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962659.225,
+      "s": 200,
+      "ms": 24.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962659.724,
+      "s": 200,
+      "ms": 19.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962660.224,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962660.725,
+      "s": 200,
+      "ms": 10.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962661.225,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962661.725,
+      "s": 200,
+      "ms": 5014.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962662.225,
+      "s": 200,
+      "ms": 2072.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962662.725,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962663.224,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962663.725,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962664.225,
+      "s": 200,
+      "ms": 22.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962664.724,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962665.225,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962665.725,
+      "s": 200,
+      "ms": 11.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962666.225,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962666.725,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962667.225,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962667.725,
+      "s": 200,
+      "ms": 28.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962668.224,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962668.724,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962669.225,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962669.725,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962670.224,
+      "s": 200,
+      "ms": 14.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962670.724,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962671.224,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962671.725,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962672.225,
+      "s": 200,
+      "ms": 11.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962672.725,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962673.225,
+      "s": 200,
+      "ms": 23.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962673.724,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962674.225,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962674.724,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962675.224,
+      "s": 200,
+      "ms": 13.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962675.725,
+      "s": 200,
+      "ms": 7.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962676.225,
+      "s": 200,
+      "ms": 10.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962676.725,
+      "s": 200,
+      "ms": 10.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962677.225,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962677.725,
+      "s": 200,
+      "ms": 32.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962678.225,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962678.724,
+      "s": 200,
+      "ms": 28.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962679.225,
+      "s": 200,
+      "ms": 11.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962679.725,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962680.225,
+      "s": 200,
+      "ms": 25.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962680.725,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962681.225,
+      "s": 200,
+      "ms": 18.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962681.725,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962682.225,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962682.724,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962683.225,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962683.725,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962684.225,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962684.725,
+      "s": 200,
+      "ms": 11.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962685.225,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962685.725,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962686.225,
+      "s": 200,
+      "ms": 11.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962686.725,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962687.225,
+      "s": 200,
+      "ms": 20.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962687.725,
+      "s": 200,
+      "ms": 16.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962688.225,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962688.725,
+      "s": 200,
+      "ms": 7.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962689.225,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962689.724,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962690.225,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962690.725,
+      "s": 200,
+      "ms": 28.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962691.224,
+      "s": 200,
+      "ms": 28.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962691.724,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962692.225,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962692.725,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962693.224,
+      "s": 200,
+      "ms": 21.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962693.725,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962694.225,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962694.724,
+      "s": 200,
+      "ms": 29.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962695.224,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793962695.725,
+      "s": 200,
+      "ms": 11.7,
+      "err": null,
+      "body": ""
+    }
+  ]
+}

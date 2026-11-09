@@ -1,0 +1,2866 @@
+{
+  "name": "exp6-error-rate-rep1",
+  "t0": 1793965876.2497282,
+  "restore_s": 25.2,
+  "expected_alert": "ApiHighErrorRate",
+  "alerts": {
+    "ApiHighErrorRate": {
+      "pending_s": 6.1,
+      "firing_s": 16.2,
+      "cleared_s": 53.4,
+      "activeAt": "2026-11-06T11:51:20.190008992Z"
+    },
+    "ApiHighLatencyP95": {
+      "pending_s": 12.1,
+      "firing_s": 22.2,
+      "cleared_s": 57.5,
+      "activeAt": "2026-11-06T11:51:26.190008992Z"
+    }
+  },
+  "probe_fault_window": {
+    "requests": 152,
+    "success": 6,
+    "failed": 146,
+    "excluded": 0,
+    "error_rate_pct": 96.05,
+    "availability_pct": 3.95,
+    "lat_avg_ms": 1651.4,
+    "lat_p50_ms": 6.5,
+    "lat_p95_ms": 5009.2,
+    "lat_max_ms": 10007.7,
+    "codes": {
+      "200": 6,
+      "500": 22,
+      "503": 124
+    }
+  },
+  "probe_total": {
+    "requests": 398,
+    "success": 240,
+    "failed": 158,
+    "excluded": 0,
+    "error_rate_pct": 39.7,
+    "availability_pct": 60.3,
+    "lat_avg_ms": 648.8,
+    "lat_p50_ms": 9.3,
+    "lat_p95_ms": 5007.1,
+    "lat_max_ms": 10007.7,
+    "codes": {
+      "200": 240,
+      "500": 22,
+      "503": 136
+    }
+  },
+  "fired": [
+    "ApiHighErrorRate",
+    "ApiHighLatencyP95"
+  ],
+  "correct": false,
+  "records": [
+    {
+      "t": 1793965868.417,
+      "s": 200,
+      "ms": 30.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965868.584,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965868.75,
+      "s": 200,
+      "ms": 22.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965868.917,
+      "s": 200,
+      "ms": 29.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965869.084,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965869.25,
+      "s": 200,
+      "ms": 10.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965869.417,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965869.584,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965869.75,
+      "s": 200,
+      "ms": 19.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965869.917,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965870.084,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965870.25,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965870.417,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965870.584,
+      "s": 200,
+      "ms": 10.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965870.751,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965870.917,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965871.084,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965871.25,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965871.417,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965871.583,
+      "s": 200,
+      "ms": 26.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965871.75,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965871.917,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965872.084,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965872.25,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965872.417,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965872.584,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965872.751,
+      "s": 200,
+      "ms": 23.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965872.917,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965873.083,
+      "s": 200,
+      "ms": 7.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965873.25,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965873.417,
+      "s": 200,
+      "ms": 10.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965873.583,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965873.75,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965873.917,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965874.084,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965874.25,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965874.417,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965874.584,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965874.75,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965874.917,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965875.083,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965875.25,
+      "s": 200,
+      "ms": 30.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965875.417,
+      "s": 200,
+      "ms": 18.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965875.584,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965875.75,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965875.917,
+      "s": 200,
+      "ms": 7.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965876.083,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965876.25,
+      "s": 200,
+      "ms": 11.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965876.417,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965876.584,
+      "s": 500,
+      "ms": 383.8,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965876.75,
+      "s": 500,
+      "ms": 311.5,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965876.919,
+      "s": 500,
+      "ms": 49.9,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965877.084,
+      "s": 500,
+      "ms": 78.3,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965877.25,
+      "s": 500,
+      "ms": 31.8,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965877.417,
+      "s": 500,
+      "ms": 9.9,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965877.584,
+      "s": 500,
+      "ms": 8.7,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965877.75,
+      "s": 500,
+      "ms": 9.4,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965877.917,
+      "s": 500,
+      "ms": 7.7,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965878.087,
+      "s": 500,
+      "ms": 14.8,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965878.251,
+      "s": 500,
+      "ms": 8.5,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965878.417,
+      "s": 503,
+      "ms": 10007.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-61\"}"
+    },
+    {
+      "t": 1793965878.583,
+      "s": 500,
+      "ms": 2039.9,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965878.75,
+      "s": 500,
+      "ms": 1009.9,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965878.917,
+      "s": 500,
+      "ms": 9099.6,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965879.085,
+      "s": 503,
+      "ms": 5007.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-65\"}"
+    },
+    {
+      "t": 1793965879.251,
+      "s": 503,
+      "ms": 5006.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-66\"}"
+    },
+    {
+      "t": 1793965879.417,
+      "s": 503,
+      "ms": 5007.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-67\"}"
+    },
+    {
+      "t": 1793965879.584,
+      "s": 500,
+      "ms": 2063.9,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965879.751,
+      "s": 503,
+      "ms": 5008.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-69\"}"
+    },
+    {
+      "t": 1793965879.918,
+      "s": 503,
+      "ms": 5006.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-70\"}"
+    },
+    {
+      "t": 1793965880.084,
+      "s": 503,
+      "ms": 5008.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-71\"}"
+    },
+    {
+      "t": 1793965880.251,
+      "s": 503,
+      "ms": 5007.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-72\"}"
+    },
+    {
+      "t": 1793965880.419,
+      "s": 503,
+      "ms": 5009.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-73\"}"
+    },
+    {
+      "t": 1793965880.584,
+      "s": 503,
+      "ms": 5007.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-74\"}"
+    },
+    {
+      "t": 1793965880.751,
+      "s": 503,
+      "ms": 5005.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-75\"}"
+    },
+    {
+      "t": 1793965880.917,
+      "s": 503,
+      "ms": 5008.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-76\"}"
+    },
+    {
+      "t": 1793965881.084,
+      "s": 503,
+      "ms": 5008.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-77\"}"
+    },
+    {
+      "t": 1793965881.25,
+      "s": 503,
+      "ms": 5007.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-78\"}"
+    },
+    {
+      "t": 1793965881.417,
+      "s": 503,
+      "ms": 5007.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-79\"}"
+    },
+    {
+      "t": 1793965881.584,
+      "s": 503,
+      "ms": 5007.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-80\"}"
+    },
+    {
+      "t": 1793965881.751,
+      "s": 500,
+      "ms": 2041.4,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965881.917,
+      "s": 503,
+      "ms": 5016.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-82\"}"
+    },
+    {
+      "t": 1793965882.084,
+      "s": 503,
+      "ms": 5006.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-83\"}"
+    },
+    {
+      "t": 1793965882.251,
+      "s": 503,
+      "ms": 5006.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-84\"}"
+    },
+    {
+      "t": 1793965882.418,
+      "s": 503,
+      "ms": 5017.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-85\"}"
+    },
+    {
+      "t": 1793965882.586,
+      "s": 503,
+      "ms": 5006.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-86\"}"
+    },
+    {
+      "t": 1793965882.75,
+      "s": 500,
+      "ms": 2066.6,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965882.918,
+      "s": 503,
+      "ms": 5008.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-88\"}"
+    },
+    {
+      "t": 1793965883.084,
+      "s": 503,
+      "ms": 5005.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-89\"}"
+    },
+    {
+      "t": 1793965883.251,
+      "s": 503,
+      "ms": 5006.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-90\"}"
+    },
+    {
+      "t": 1793965883.418,
+      "s": 503,
+      "ms": 5005.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-91\"}"
+    },
+    {
+      "t": 1793965883.584,
+      "s": 503,
+      "ms": 5006.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-92\"}"
+    },
+    {
+      "t": 1793965883.751,
+      "s": 500,
+      "ms": 1033.1,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965883.917,
+      "s": 500,
+      "ms": 4099.3,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965884.084,
+      "s": 503,
+      "ms": 5006.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-95\"}"
+    },
+    {
+      "t": 1793965884.251,
+      "s": 503,
+      "ms": 5006.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-96\"}"
+    },
+    {
+      "t": 1793965884.417,
+      "s": 503,
+      "ms": 4.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-97\"}"
+    },
+    {
+      "t": 1793965884.584,
+      "s": 503,
+      "ms": 5.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-98\"}"
+    },
+    {
+      "t": 1793965884.75,
+      "s": 503,
+      "ms": 16.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-99\"}"
+    },
+    {
+      "t": 1793965884.917,
+      "s": 503,
+      "ms": 4.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-100\"}"
+    },
+    {
+      "t": 1793965885.084,
+      "s": 503,
+      "ms": 5.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-101\"}"
+    },
+    {
+      "t": 1793965885.25,
+      "s": 503,
+      "ms": 28.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-102\"}"
+    },
+    {
+      "t": 1793965885.417,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-103\"}"
+    },
+    {
+      "t": 1793965885.584,
+      "s": 503,
+      "ms": 5.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-104\"}"
+    },
+    {
+      "t": 1793965885.75,
+      "s": 503,
+      "ms": 6.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-105\"}"
+    },
+    {
+      "t": 1793965885.917,
+      "s": 503,
+      "ms": 4.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-106\"}"
+    },
+    {
+      "t": 1793965886.084,
+      "s": 503,
+      "ms": 5.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-107\"}"
+    },
+    {
+      "t": 1793965886.25,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-108\"}"
+    },
+    {
+      "t": 1793965886.417,
+      "s": 503,
+      "ms": 4.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-109\"}"
+    },
+    {
+      "t": 1793965886.583,
+      "s": 503,
+      "ms": 15.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-110\"}"
+    },
+    {
+      "t": 1793965886.75,
+      "s": 503,
+      "ms": 5.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-111\"}"
+    },
+    {
+      "t": 1793965886.917,
+      "s": 503,
+      "ms": 8.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-112\"}"
+    },
+    {
+      "t": 1793965887.084,
+      "s": 503,
+      "ms": 6.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-113\"}"
+    },
+    {
+      "t": 1793965887.25,
+      "s": 503,
+      "ms": 4.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-114\"}"
+    },
+    {
+      "t": 1793965887.417,
+      "s": 503,
+      "ms": 4.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-115\"}"
+    },
+    {
+      "t": 1793965887.583,
+      "s": 503,
+      "ms": 5.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-116\"}"
+    },
+    {
+      "t": 1793965887.75,
+      "s": 503,
+      "ms": 4.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-117\"}"
+    },
+    {
+      "t": 1793965887.917,
+      "s": 503,
+      "ms": 4.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-118\"}"
+    },
+    {
+      "t": 1793965888.084,
+      "s": 503,
+      "ms": 4.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-119\"}"
+    },
+    {
+      "t": 1793965888.25,
+      "s": 503,
+      "ms": 6.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-120\"}"
+    },
+    {
+      "t": 1793965888.417,
+      "s": 503,
+      "ms": 6.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-121\"}"
+    },
+    {
+      "t": 1793965888.583,
+      "s": 503,
+      "ms": 4.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-122\"}"
+    },
+    {
+      "t": 1793965888.75,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-123\"}"
+    },
+    {
+      "t": 1793965888.917,
+      "s": 503,
+      "ms": 5.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-124\"}"
+    },
+    {
+      "t": 1793965889.083,
+      "s": 503,
+      "ms": 6.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-125\"}"
+    },
+    {
+      "t": 1793965889.25,
+      "s": 503,
+      "ms": 5.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-126\"}"
+    },
+    {
+      "t": 1793965889.417,
+      "s": 503,
+      "ms": 5006.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-127\"}"
+    },
+    {
+      "t": 1793965889.584,
+      "s": 503,
+      "ms": 4.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-128\"}"
+    },
+    {
+      "t": 1793965889.75,
+      "s": 503,
+      "ms": 5.2,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-129\"}"
+    },
+    {
+      "t": 1793965889.917,
+      "s": 503,
+      "ms": 4.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-130\"}"
+    },
+    {
+      "t": 1793965890.084,
+      "s": 503,
+      "ms": 6.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-131\"}"
+    },
+    {
+      "t": 1793965890.251,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-132\"}"
+    },
+    {
+      "t": 1793965890.417,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-133\"}"
+    },
+    {
+      "t": 1793965890.584,
+      "s": 503,
+      "ms": 4.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-134\"}"
+    },
+    {
+      "t": 1793965890.75,
+      "s": 503,
+      "ms": 5.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-135\"}"
+    },
+    {
+      "t": 1793965890.917,
+      "s": 503,
+      "ms": 6.2,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-136\"}"
+    },
+    {
+      "t": 1793965891.083,
+      "s": 503,
+      "ms": 5005.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-137\"}"
+    },
+    {
+      "t": 1793965891.25,
+      "s": 503,
+      "ms": 5005.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-138\"}"
+    },
+    {
+      "t": 1793965891.417,
+      "s": 503,
+      "ms": 5.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-139\"}"
+    },
+    {
+      "t": 1793965891.584,
+      "s": 503,
+      "ms": 5.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-140\"}"
+    },
+    {
+      "t": 1793965891.75,
+      "s": 503,
+      "ms": 5.2,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-141\"}"
+    },
+    {
+      "t": 1793965891.917,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-142\"}"
+    },
+    {
+      "t": 1793965892.084,
+      "s": 503,
+      "ms": 5006.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-143\"}"
+    },
+    {
+      "t": 1793965892.25,
+      "s": 503,
+      "ms": 6.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-144\"}"
+    },
+    {
+      "t": 1793965892.417,
+      "s": 503,
+      "ms": 4.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-145\"}"
+    },
+    {
+      "t": 1793965892.584,
+      "s": 503,
+      "ms": 5.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-146\"}"
+    },
+    {
+      "t": 1793965892.75,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-147\"}"
+    },
+    {
+      "t": 1793965892.917,
+      "s": 500,
+      "ms": 4090.1,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965893.084,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-149\"}"
+    },
+    {
+      "t": 1793965893.25,
+      "s": 503,
+      "ms": 7.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-150\"}"
+    },
+    {
+      "t": 1793965893.417,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-151\"}"
+    },
+    {
+      "t": 1793965893.584,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-152\"}"
+    },
+    {
+      "t": 1793965893.75,
+      "s": 503,
+      "ms": 5.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-153\"}"
+    },
+    {
+      "t": 1793965893.917,
+      "s": 503,
+      "ms": 4.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-154\"}"
+    },
+    {
+      "t": 1793965894.084,
+      "s": 500,
+      "ms": 4108.3,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965894.25,
+      "s": 200,
+      "ms": 9159.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965894.417,
+      "s": 503,
+      "ms": 6.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-157\"}"
+    },
+    {
+      "t": 1793965894.584,
+      "s": 503,
+      "ms": 6.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-158\"}"
+    },
+    {
+      "t": 1793965894.75,
+      "s": 503,
+      "ms": 6.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-159\"}"
+    },
+    {
+      "t": 1793965894.917,
+      "s": 503,
+      "ms": 5.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-160\"}"
+    },
+    {
+      "t": 1793965895.083,
+      "s": 503,
+      "ms": 5006.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-161\"}"
+    },
+    {
+      "t": 1793965895.25,
+      "s": 503,
+      "ms": 5.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-162\"}"
+    },
+    {
+      "t": 1793965895.417,
+      "s": 503,
+      "ms": 5.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-163\"}"
+    },
+    {
+      "t": 1793965895.583,
+      "s": 503,
+      "ms": 6.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-164\"}"
+    },
+    {
+      "t": 1793965895.75,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-165\"}"
+    },
+    {
+      "t": 1793965895.917,
+      "s": 503,
+      "ms": 5.2,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-166\"}"
+    },
+    {
+      "t": 1793965896.084,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-167\"}"
+    },
+    {
+      "t": 1793965896.25,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-168\"}"
+    },
+    {
+      "t": 1793965896.417,
+      "s": 503,
+      "ms": 5.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-169\"}"
+    },
+    {
+      "t": 1793965896.584,
+      "s": 503,
+      "ms": 7.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-170\"}"
+    },
+    {
+      "t": 1793965896.75,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-171\"}"
+    },
+    {
+      "t": 1793965896.917,
+      "s": 503,
+      "ms": 6.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-172\"}"
+    },
+    {
+      "t": 1793965897.084,
+      "s": 503,
+      "ms": 5009.2,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-173\"}"
+    },
+    {
+      "t": 1793965897.25,
+      "s": 503,
+      "ms": 7.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-174\"}"
+    },
+    {
+      "t": 1793965897.417,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-175\"}"
+    },
+    {
+      "t": 1793965897.583,
+      "s": 503,
+      "ms": 5008.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-176\"}"
+    },
+    {
+      "t": 1793965897.75,
+      "s": 503,
+      "ms": 7.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-177\"}"
+    },
+    {
+      "t": 1793965897.917,
+      "s": 503,
+      "ms": 4.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-178\"}"
+    },
+    {
+      "t": 1793965898.084,
+      "s": 503,
+      "ms": 5006.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-179\"}"
+    },
+    {
+      "t": 1793965898.25,
+      "s": 503,
+      "ms": 5.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-180\"}"
+    },
+    {
+      "t": 1793965898.417,
+      "s": 503,
+      "ms": 5027.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-181\"}"
+    },
+    {
+      "t": 1793965898.584,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-182\"}"
+    },
+    {
+      "t": 1793965898.75,
+      "s": 500,
+      "ms": 1041.0,
+      "err": null,
+      "body": "{\"error\":\"failed to check household membership\"}\n"
+    },
+    {
+      "t": 1793965898.917,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-184\"}"
+    },
+    {
+      "t": 1793965899.084,
+      "s": 503,
+      "ms": 5005.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-185\"}"
+    },
+    {
+      "t": 1793965899.25,
+      "s": 503,
+      "ms": 4.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-186\"}"
+    },
+    {
+      "t": 1793965899.417,
+      "s": 503,
+      "ms": 4.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-187\"}"
+    },
+    {
+      "t": 1793965899.584,
+      "s": 200,
+      "ms": 4108.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965899.75,
+      "s": 503,
+      "ms": 5.2,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-189\"}"
+    },
+    {
+      "t": 1793965899.917,
+      "s": 503,
+      "ms": 4.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-190\"}"
+    },
+    {
+      "t": 1793965900.084,
+      "s": 200,
+      "ms": 4177.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965900.25,
+      "s": 200,
+      "ms": 4110.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965900.417,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-193\"}"
+    },
+    {
+      "t": 1793965900.584,
+      "s": 503,
+      "ms": 5.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-194\"}"
+    },
+    {
+      "t": 1793965900.75,
+      "s": 503,
+      "ms": 5.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-195\"}"
+    },
+    {
+      "t": 1793965900.917,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-196\"}"
+    },
+    {
+      "t": 1793965901.084,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-197\"}"
+    },
+    {
+      "t": 1793965901.25,
+      "s": 503,
+      "ms": 5.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-198\"}"
+    },
+    {
+      "t": 1793965901.417,
+      "s": 503,
+      "ms": 5.7,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-199\"}"
+    },
+    {
+      "t": 1793965901.583,
+      "s": 503,
+      "ms": 7.0,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-200\"}"
+    },
+    {
+      "t": 1793965901.75,
+      "s": 503,
+      "ms": 5.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-201\"}"
+    },
+    {
+      "t": 1793965901.917,
+      "s": 503,
+      "ms": 5.8,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-202\"}"
+    },
+    {
+      "t": 1793965902.084,
+      "s": 200,
+      "ms": 2088.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965902.25,
+      "s": 503,
+      "ms": 5.6,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-204\"}"
+    },
+    {
+      "t": 1793965902.417,
+      "s": 200,
+      "ms": 1074.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965902.583,
+      "s": 503,
+      "ms": 5.4,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-206\"}"
+    },
+    {
+      "t": 1793965902.751,
+      "s": 503,
+      "ms": 6.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-207\"}"
+    },
+    {
+      "t": 1793965902.917,
+      "s": 503,
+      "ms": 22.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-208\"}"
+    },
+    {
+      "t": 1793965903.084,
+      "s": 200,
+      "ms": 1088.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965903.253,
+      "s": 503,
+      "ms": 8.1,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-210\"}"
+    },
+    {
+      "t": 1793965903.417,
+      "s": 503,
+      "ms": 4.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-211\"}"
+    },
+    {
+      "t": 1793965903.584,
+      "s": 503,
+      "ms": 7.3,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-212\"}"
+    },
+    {
+      "t": 1793965903.75,
+      "s": 503,
+      "ms": 4.5,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-213\"}"
+    },
+    {
+      "t": 1793965903.917,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965904.084,
+      "s": 503,
+      "ms": 5.9,
+      "err": null,
+      "body": "{\"error\":\"service_unavailable\",\"message\":\"upstream API is temporarily unavailable\",\"request_id\":\"exp6-error-rate-rep1-215\"}"
+    },
+    {
+      "t": 1793965904.25,
+      "s": 200,
+      "ms": 26.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965904.417,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965904.584,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965904.75,
+      "s": 200,
+      "ms": 29.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965904.917,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965905.084,
+      "s": 200,
+      "ms": 25.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965905.25,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965905.417,
+      "s": 200,
+      "ms": 10.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965905.583,
+      "s": 200,
+      "ms": 28.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965905.75,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965905.917,
+      "s": 200,
+      "ms": 25.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965906.084,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965906.25,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965906.417,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965906.583,
+      "s": 200,
+      "ms": 10.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965906.75,
+      "s": 200,
+      "ms": 26.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965906.917,
+      "s": 200,
+      "ms": 93.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965907.084,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965907.25,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965907.417,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965907.583,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965907.75,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965907.917,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965908.083,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965908.25,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965908.417,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965908.584,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965908.75,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965908.917,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965909.084,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965909.25,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965909.417,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965909.584,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965909.75,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965909.917,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965910.083,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965910.25,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965910.417,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965910.584,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965910.75,
+      "s": 200,
+      "ms": 24.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965910.917,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965911.084,
+      "s": 200,
+      "ms": 26.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965911.25,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965911.417,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965911.584,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965911.75,
+      "s": 200,
+      "ms": 29.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965911.917,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965912.084,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965912.25,
+      "s": 200,
+      "ms": 28.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965912.417,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965912.584,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965912.75,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965912.917,
+      "s": 200,
+      "ms": 21.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965913.083,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965913.25,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965913.417,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965913.584,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965913.75,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965913.917,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965914.084,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965914.25,
+      "s": 200,
+      "ms": 28.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965914.417,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965914.584,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965914.75,
+      "s": 200,
+      "ms": 25.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965914.917,
+      "s": 200,
+      "ms": 27.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965915.084,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965915.25,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965915.417,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965915.584,
+      "s": 200,
+      "ms": 26.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965915.75,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965915.917,
+      "s": 200,
+      "ms": 26.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965916.084,
+      "s": 200,
+      "ms": 10.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965916.25,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965916.417,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965916.584,
+      "s": 200,
+      "ms": 28.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965916.75,
+      "s": 200,
+      "ms": 26.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965916.917,
+      "s": 200,
+      "ms": 27.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965917.084,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965917.25,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965917.417,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965917.584,
+      "s": 200,
+      "ms": 27.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965917.75,
+      "s": 200,
+      "ms": 28.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965917.917,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965918.084,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965918.25,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965918.417,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965918.584,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965918.75,
+      "s": 200,
+      "ms": 26.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965918.917,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965919.084,
+      "s": 200,
+      "ms": 27.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965919.25,
+      "s": 200,
+      "ms": 18.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965919.417,
+      "s": 200,
+      "ms": 11.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965919.584,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965919.75,
+      "s": 200,
+      "ms": 32.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965919.917,
+      "s": 200,
+      "ms": 10.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965920.083,
+      "s": 200,
+      "ms": 11.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965920.25,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965920.417,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965920.584,
+      "s": 200,
+      "ms": 10.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965920.75,
+      "s": 200,
+      "ms": 10.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965920.917,
+      "s": 200,
+      "ms": 31.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965921.083,
+      "s": 200,
+      "ms": 8.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965921.251,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965921.417,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965921.583,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965921.75,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965921.917,
+      "s": 200,
+      "ms": 26.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965922.084,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965922.25,
+      "s": 200,
+      "ms": 7.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965922.417,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965922.584,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965922.75,
+      "s": 200,
+      "ms": 9.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965922.917,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965923.084,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965923.25,
+      "s": 200,
+      "ms": 8.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965923.417,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965923.583,
+      "s": 200,
+      "ms": 10.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965923.75,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965923.917,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965924.084,
+      "s": 200,
+      "ms": 10.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965924.25,
+      "s": 200,
+      "ms": 10.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965924.417,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965924.583,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965924.75,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965924.917,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965925.084,
+      "s": 200,
+      "ms": 10.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965925.25,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965925.417,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965925.583,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965925.75,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965925.917,
+      "s": 200,
+      "ms": 9.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965926.084,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965926.25,
+      "s": 200,
+      "ms": 10.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965926.417,
+      "s": 200,
+      "ms": 8.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965926.583,
+      "s": 200,
+      "ms": 23.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965926.75,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965926.917,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965927.084,
+      "s": 200,
+      "ms": 22.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965927.25,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965927.417,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965927.584,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965927.75,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965927.917,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965928.084,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965928.25,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965928.417,
+      "s": 200,
+      "ms": 8.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965928.584,
+      "s": 200,
+      "ms": 11.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965928.75,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965928.917,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965929.083,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965929.25,
+      "s": 200,
+      "ms": 10.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965929.417,
+      "s": 200,
+      "ms": 11.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965929.583,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965929.75,
+      "s": 200,
+      "ms": 8.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965929.917,
+      "s": 200,
+      "ms": 10.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965930.084,
+      "s": 200,
+      "ms": 9.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965930.251,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965930.417,
+      "s": 200,
+      "ms": 9.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965930.584,
+      "s": 200,
+      "ms": 9.7,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965930.75,
+      "s": 200,
+      "ms": 8.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965930.917,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965931.084,
+      "s": 200,
+      "ms": 8.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965931.25,
+      "s": 200,
+      "ms": 10.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965931.417,
+      "s": 200,
+      "ms": 7.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965931.584,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965931.75,
+      "s": 200,
+      "ms": 7.9,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965931.917,
+      "s": 200,
+      "ms": 32.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965932.084,
+      "s": 200,
+      "ms": 11.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965932.25,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965932.417,
+      "s": 200,
+      "ms": 10.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965932.584,
+      "s": 200,
+      "ms": 7.6,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965932.751,
+      "s": 200,
+      "ms": 9.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965932.917,
+      "s": 200,
+      "ms": 9.4,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965933.084,
+      "s": 200,
+      "ms": 9.1,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965933.25,
+      "s": 200,
+      "ms": 8.3,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965933.417,
+      "s": 200,
+      "ms": 8.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965933.583,
+      "s": 200,
+      "ms": 8.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965933.751,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965933.917,
+      "s": 200,
+      "ms": 9.5,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965934.084,
+      "s": 200,
+      "ms": 27.8,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965934.25,
+      "s": 200,
+      "ms": 9.0,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965934.417,
+      "s": 200,
+      "ms": 10.2,
+      "err": null,
+      "body": ""
+    },
+    {
+      "t": 1793965934.584,
+      "s": 200,
+      "ms": 10.8,
+      "err": null,
+      "body": ""
+    }
+  ],
+  "gateway": {
+    "log_lines": 398,
+    "requests_retried": 40,
+    "extra_upstream_tries": 40,
+    "max_tries_per_request": 2,
+    "failover_success": 1,
+    "gateway_degraded_503": 136,
+    "upstream_status_combos": {
+      "200": 239,
+      "500": 21,
+      "504, 502": 37,
+      "502": 98,
+      "504, 504": 1,
+      "504, 500": 1,
+      "504, 200": 1
+    },
+    "max_request_time_s": 10.002
+  },
+  "gateway_added_after_the_run_from_gateway_logs": true
+}

@@ -1,0 +1,244 @@
+{
+  "experiment": "Exp7 access control",
+  "rep": 1,
+  "cases": [
+    {
+      "rid": "exp7a-r1-01",
+      "case": "no token GET /api/accounts",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": 401,
+      "expected": 401,
+      "pass": true,
+      "body": "{\"error\":\"missing authorization header\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-02",
+      "case": "no token POST /api/transactions",
+      "method": "POST",
+      "path": "/api/transactions",
+      "status": 401,
+      "expected": 401,
+      "pass": true,
+      "body": "{\"error\":\"missing authorization header\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-03",
+      "case": "garbage token GET /api/households",
+      "method": "GET",
+      "path": "/api/households",
+      "status": 401,
+      "expected": 401,
+      "pass": true,
+      "body": "{\"error\":\"invalid or expired token\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-04",
+      "case": "token signed with wrong secret",
+      "method": "GET",
+      "path": "/api/households",
+      "status": 401,
+      "expected": 401,
+      "pass": true,
+      "body": "{\"error\":\"invalid or expired token\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-05",
+      "case": "B reads A's accounts (X-Household-ID=A)",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": 404,
+      "expected": 404,
+      "pass": true,
+      "body": "{\"error\":\"household not found\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-06",
+      "case": "B reads A's transactions",
+      "method": "GET",
+      "path": "/api/transactions",
+      "status": 404,
+      "expected": 404,
+      "pass": true,
+      "body": "{\"error\":\"household not found\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-07",
+      "case": "B creates expense on A's account",
+      "method": "POST",
+      "path": "/api/transactions",
+      "status": 404,
+      "expected": 404,
+      "pass": true,
+      "body": "{\"error\":\"household not found\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-08",
+      "case": "B deletes A's account",
+      "method": "DELETE",
+      "path": "/api/accounts/3f87334c-c16b-4b13-8cfc-4c512c0b0cd1",
+      "status": 404,
+      "expected": 404,
+      "pass": true,
+      "body": "{\"error\":\"household not found\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-09",
+      "case": "B uses own household but A's account id",
+      "method": "POST",
+      "path": "/api/transactions",
+      "status": 400,
+      "expected": "4xx refusal",
+      "pass": true,
+      "body": "{\"error\":\"account not found\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-10",
+      "case": "B GET /api/households/{A}",
+      "method": "GET",
+      "path": "/api/households/23fc0d3c-a859-4642-a4ba-f8063b184520",
+      "status": 405,
+      "expected": 404,
+      "pass": false,
+      "body": "",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7a-r1-11",
+      "case": "A reads own accounts (control)",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": 200,
+      "expected": 200,
+      "pass": true,
+      "body": "[{\"id\":\"3f87334c-c16b-4b13-8cfc-4c512c0b0cd1\",\"household_id\":\"23fc0d3c-a859-4642-a4ba-f8063b184520\",\"name\":\"probe-acc\",\"type\":\"cash\",\"balance\":\"-1503\",\"currency\":\"KZT\",\"balance_base\":\"-1503\",\"exclude_",
+      "gateway_logged": true,
+      "api_logged": true
+    }
+  ],
+  "snapshot_before": [
+    "1",
+    "3",
+    "64d5427127689e23895fb89ecfba6c93",
+    "9dc3d41628b40a13e1e3681585de990e"
+  ],
+  "snapshot_after": [
+    "1",
+    "3",
+    "64d5427127689e23895fb89ecfba6c93",
+    "9dc3d41628b40a13e1e3681585de990e"
+  ],
+  "data_unchanged": true,
+  "app_logs_rows": 11,
+  "all_requests_logged": true,
+  "log_lines": {
+    "exp7a-r1-01": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-01\",\"method\":\"GET\",\"uri\":\"/api/accounts\",\"status\":401,\"upstream_addr\":\"10.244.0.8:8080\",\"request_time\":0.001,\"upstream_response_time\":\"0.001\",\"upstream_status\":\"401\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.382270167Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/accounts\",\"status\":401,\"duration\":129706,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-01\"}"
+      ]
+    },
+    "exp7a-r1-02": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-02\",\"method\":\"POST\",\"uri\":\"/api/transactions\",\"status\":401,\"upstream_addr\":\"10.244.0.8:8080\",\"request_time\":0.001,\"upstream_response_time\":\"0.001\",\"upstream_status\":\"401\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.387739281Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"POST\",\"path\":\"/api/transactions\",\"status\":401,\"duration\":59413,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-02\"}"
+      ]
+    },
+    "exp7a-r1-03": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-03\",\"method\":\"GET\",\"uri\":\"/api/households\",\"status\":401,\"upstream_addr\":\"10.244.0.23:8080\",\"request_time\":0.001,\"upstream_response_time\":\"0.001\",\"upstream_status\":\"401\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.393616221Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/households\",\"status\":401,\"duration\":103937,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-03\"}"
+      ]
+    },
+    "exp7a-r1-04": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-04\",\"method\":\"GET\",\"uri\":\"/api/households\",\"status\":401,\"upstream_addr\":\"10.244.0.8:8080\",\"request_time\":0.000,\"upstream_response_time\":\"0.001\",\"upstream_status\":\"401\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.398811991Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/households\",\"status\":401,\"duration\":168720,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-04\"}"
+      ]
+    },
+    "exp7a-r1-05": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-05\",\"method\":\"GET\",\"uri\":\"/api/accounts\",\"status\":404,\"upstream_addr\":\"10.244.0.23:8080\",\"request_time\":0.001,\"upstream_response_time\":\"0.002\",\"upstream_status\":\"404\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.405638776Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/accounts\",\"status\":404,\"duration\":875722,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-05\",\"user_id\":\"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8\"}"
+      ]
+    },
+    "exp7a-r1-06": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-06\",\"method\":\"GET\",\"uri\":\"/api/transactions\",\"status\":404,\"upstream_addr\":\"10.244.0.8:8080\",\"request_time\":0.003,\"upstream_response_time\":\"0.003\",\"upstream_status\":\"404\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.413146463Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/transactions\",\"status\":404,\"duration\":1874364,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-06\",\"user_id\":\"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8\"}"
+      ]
+    },
+    "exp7a-r1-07": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-07\",\"method\":\"POST\",\"uri\":\"/api/transactions\",\"status\":404,\"upstream_addr\":\"10.244.0.23:8080\",\"request_time\":0.003,\"upstream_response_time\":\"0.002\",\"upstream_status\":\"404\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.420525646Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"POST\",\"path\":\"/api/transactions\",\"status\":404,\"duration\":907319,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-07\",\"user_id\":\"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8\"}"
+      ]
+    },
+    "exp7a-r1-08": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-08\",\"method\":\"DELETE\",\"uri\":\"/api/accounts/3f87334c-c16b-4b13-8cfc-4c512c0b0cd1\",\"status\":404,\"upstream_addr\":\"10.244.0.23:8080\",\"request_time\":0.002,\"upstream_response_time\":\"0.002\",\"upstream_status\":\"404\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.42805108Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"DELETE\",\"path\":\"/api/accounts/3f87334c-c16b-4b13-8cfc-4c512c0b0cd1\",\"status\":404,\"duration\":917335,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-08\",\"user_id\":\"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8\"}"
+      ]
+    },
+    "exp7a-r1-09": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-09\",\"method\":\"POST\",\"uri\":\"/api/transactions\",\"status\":400,\"upstream_addr\":\"10.244.0.8:8080\",\"request_time\":0.012,\"upstream_response_time\":\"0.012\",\"upstream_status\":\"400\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.444193441Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"POST\",\"path\":\"/api/transactions\",\"status\":400,\"duration\":10608838,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-09\",\"user_id\":\"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8\",\"household_id\":\"32a9b20c-6637-4885-9fb1-b223063eb2d7\"}"
+      ]
+    },
+    "exp7a-r1-10": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-10\",\"method\":\"GET\",\"uri\":\"/api/households/23fc0d3c-a859-4642-a4ba-f8063b184520\",\"status\":405,\"upstream_addr\":\"10.244.0.23:8080\",\"request_time\":0.001,\"upstream_response_time\":\"0.001\",\"upstream_status\":\"405\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.450605512Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/households/23fc0d3c-a859-4642-a4ba-f8063b184520\",\"status\":405,\"duration\":531668,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-10\",\"user_id\":\"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8\"}"
+      ]
+    },
+    "exp7a-r1-11": {
+      "gateway": [
+        "{\"time\":\"2026-11-06T11:55:58+00:00\",\"request_id\":\"exp7a-r1-11\",\"method\":\"GET\",\"uri\":\"/api/accounts\",\"status\":200,\"upstream_addr\":\"10.244.0.8:8080\",\"request_time\":0.003,\"upstream_response_time\":\"0.003\",\"upstream_status\":\"200\"}"
+      ],
+      "api": [
+        "{\"time\":\"2026-11-06T11:55:58.458621894Z\",\"level\":\"INFO\",\"msg\":\"request\",\"method\":\"GET\",\"path\":\"/api/accounts\",\"status\":200,\"duration\":2642221,\"remote\":\"10.244.0.1\",\"request_id\":\"exp7a-r1-11\",\"user_id\":\"fa89b564-4bd6-4a96-8bd1-372141a07231\",\"household_id\":\"23fc0d3c-a859-4642-a4ba-f8063b184520\"}"
+      ]
+    }
+  },
+  "pass": false
+}

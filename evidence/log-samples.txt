@@ -1,0 +1,90 @@
+=== Gateway retry: slow replica cut at the 5 s read timeout, retried on the healthy replica (exp3) (request id prefix exp3-improved-rep3-, 12 matching gateway entries, showing up to 3) ===
+[exp3-improved-rep3-23]
+  gateway: {"time":"2026-11-06T11:14:38+00:00","request_id":"exp3-improved-rep3-23","method":"GET","uri":"/api/accounts","status":200,"upstream_addr":"10.244.0.7:8080, 10.244.0.8:8080","request_time":5.014,"upstream_response_time":"5.004, 0.010","upstream_status":"504, 200"}
+  api:     {"time":"2026-11-06T11:14:38.064989312Z","level":"WARN","msg":"request","method":"GET","path":"/api/accounts","status":499,"duration":5004384082,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-23","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+  api:     {"time":"2026-11-06T11:14:38.07356853Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":200,"duration":8037163,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-23","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+[exp3-improved-rep3-25]
+  gateway: {"time":"2026-11-06T11:14:39+00:00","request_id":"exp3-improved-rep3-25","method":"GET","uri":"/api/accounts","status":200,"upstream_addr":"10.244.0.7:8080, 10.244.0.8:8080","request_time":5.005,"upstream_response_time":"5.001, 0.004","upstream_status":"504, 200"}
+  api:     {"time":"2026-11-06T11:14:39.042480534Z","level":"ERROR","msg":"request","method":"GET","path":"/api/accounts","status":500,"duration":5000730056,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-25","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231"}
+  api:     {"time":"2026-11-06T11:14:39.045482502Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":200,"duration":2626313,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-25","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+[exp3-improved-rep3-46]
+  gateway: {"time":"2026-11-06T11:14:49+00:00","request_id":"exp3-improved-rep3-46","method":"GET","uri":"/api/accounts","status":200,"upstream_addr":"10.244.0.7:8080, 10.244.0.8:8080","request_time":5.005,"upstream_response_time":"5.001, 0.004","upstream_status":"504, 200"}
+  api:     {"time":"2026-11-06T11:14:49.544723261Z","level":"ERROR","msg":"request","method":"GET","path":"/api/accounts","status":500,"duration":5001323717,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-46","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231"}
+  api:     {"time":"2026-11-06T11:14:49.547749787Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":200,"duration":2599179,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-46","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+
+=== Normal request: same id in the gateway and API logs (exp3, before the fault) (request id prefix exp3-improved-rep3-1, 78 matching gateway entries, showing up to 1) ===
+[exp3-improved-rep3-10]
+  gateway: {"time":"2026-11-06T11:14:26+00:00","request_id":"exp3-improved-rep3-10","method":"GET","uri":"/api/accounts","status":200,"upstream_addr":"10.244.0.8:8080","request_time":0.004,"upstream_response_time":"0.004","upstream_status":"200"}
+  api:     {"time":"2026-11-06T11:14:26.542566391Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":200,"duration":2798719,"remote":"10.244.0.1","request_id":"exp3-improved-rep3-10","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+
+=== Interrupted POST: JSON 503 from the gateway, POST not replayed; the retry succeeds on the other replica (exp4) (request id prefix exp4-improved-rep3-try, 2 matching gateway entries, showing up to 2) ===
+[exp4-improved-rep3-try1]
+  gateway: {"time":"2026-11-06T11:22:10+00:00","request_id":"exp4-improved-rep3-try1","method":"POST","uri":"/api/transactions","status":503,"upstream_addr":"10.244.0.7:8080","request_time":1.773,"upstream_response_time":"1.769","upstream_status":"502"}
+  api:     (no line: request never reached a live API process, or the pod has restarted)
+[exp4-improved-rep3-try2]
+  gateway: {"time":"2026-11-06T11:22:11+00:00","request_id":"exp4-improved-rep3-try2","method":"POST","uri":"/api/transactions","status":201,"upstream_addr":"10.244.0.8:8080","request_time":0.525,"upstream_response_time":"0.525","upstream_status":"201"}
+  api:     {"time":"2026-11-06T11:22:11.828018781Z","level":"WARN","msg":"request","method":"POST","path":"/api/transactions","status":201,"duration":523723013,"remote":"10.244.0.1","request_id":"exp4-improved-rep3-try2","user_id":"61f76ba6-262a-4905-99d9-c965b37940b6","household_id":"38e982f4-64c0-41d8-934d-4d1c1504cd3c"}
+
+=== Database frozen: gateway answers with its JSON 503 (exp2) (request id prefix exp2-rep4-freeze-gw, 138 matching gateway entries, showing up to 3) ===
+[exp2-rep4-freeze-gw-52]
+  gateway: {"time":"2026-11-06T11:34:23+00:00","request_id":"exp2-rep4-freeze-gw-52","method":"GET","uri":"/api/accounts","status":503,"upstream_addr":"10.244.0.8:8080, api_upstream","request_time":5.000,"upstream_response_time":"5.000, 0.000","upstream_status":"504, 502"}
+  api:     {"time":"2026-11-06T11:34:23.75036135Z","level":"ERROR","msg":"request","method":"GET","path":"/api/accounts","status":500,"duration":5000095317,"remote":"10.244.0.1","request_id":"exp2-rep4-freeze-gw-52","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231"}
+[exp2-rep4-freeze-gw-53]
+  gateway: {"time":"2026-11-06T11:34:23+00:00","request_id":"exp2-rep4-freeze-gw-53","method":"GET","uri":"/api/accounts","status":503,"upstream_addr":"10.244.0.23:8080, api_upstream","request_time":5.001,"upstream_response_time":"5.002, 0.000","upstream_status":"504, 502"}
+  api:     {"time":"2026-11-06T11:34:23.917978754Z","level":"ERROR","msg":"request","method":"GET","path":"/api/accounts","status":500,"duration":5000849943,"remote":"10.244.0.1","request_id":"exp2-rep4-freeze-gw-53","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231"}
+[exp2-rep4-freeze-gw-84]
+  gateway: {"time":"2026-11-06T11:34:24+00:00","request_id":"exp2-rep4-freeze-gw-84","method":"GET","uri":"/api/accounts","status":503,"upstream_addr":"api_upstream","request_time":0.000,"upstream_response_time":"0.000","upstream_status":"502"}
+  api:     (no line: request never reached a live API process, or the pod has restarted)
+
+=== Denied access, logged with the request id (exp7) (request id prefix exp7a-r2, 10 matching gateway entries, showing up to 6) ===
+[exp7a-r2-01]
+  gateway: {"time":"2026-11-06T11:57:14+00:00","request_id":"exp7a-r2-01","method":"GET","uri":"/api/accounts","status":401,"upstream_addr":"10.244.0.23:8080","request_time":0.001,"upstream_response_time":"0.001","upstream_status":"401"}
+  api:     {"time":"2026-11-06T11:57:14.45415199Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":401,"duration":71729,"remote":"10.244.0.1","request_id":"exp7a-r2-01"}
+[exp7a-r2-02]
+  gateway: {"time":"2026-11-06T11:57:14+00:00","request_id":"exp7a-r2-02","method":"POST","uri":"/api/transactions","status":401,"upstream_addr":"10.244.0.8:8080","request_time":0.002,"upstream_response_time":"0.001","upstream_status":"401"}
+  api:     {"time":"2026-11-06T11:57:14.459757438Z","level":"INFO","msg":"request","method":"POST","path":"/api/transactions","status":401,"duration":58022,"remote":"10.244.0.1","request_id":"exp7a-r2-02"}
+[exp7a-r2-05]
+  gateway: {"time":"2026-11-06T11:57:14+00:00","request_id":"exp7a-r2-05","method":"GET","uri":"/api/accounts","status":404,"upstream_addr":"10.244.0.23:8080","request_time":0.002,"upstream_response_time":"0.003","upstream_status":"404"}
+  api:     {"time":"2026-11-06T11:57:14.478368884Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":404,"duration":1424107,"remote":"10.244.0.1","request_id":"exp7a-r2-05","user_id":"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8"}
+[exp7a-r2-07]
+  gateway: {"time":"2026-11-06T11:57:14+00:00","request_id":"exp7a-r2-07","method":"POST","uri":"/api/transactions","status":404,"upstream_addr":"10.244.0.8:8080","request_time":0.002,"upstream_response_time":"0.001","upstream_status":"404"}
+  api:     {"time":"2026-11-06T11:57:14.510922865Z","level":"INFO","msg":"request","method":"POST","path":"/api/transactions","status":404,"duration":860183,"remote":"10.244.0.1","request_id":"exp7a-r2-07","user_id":"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8"}
+[exp7a-r2-09]
+  gateway: {"time":"2026-11-06T11:57:14+00:00","request_id":"exp7a-r2-09","method":"POST","uri":"/api/transactions","status":400,"upstream_addr":"10.244.0.23:8080","request_time":0.005,"upstream_response_time":"0.004","upstream_status":"400"}
+  api:     {"time":"2026-11-06T11:57:14.527445029Z","level":"INFO","msg":"request","method":"POST","path":"/api/transactions","status":400,"duration":3223192,"remote":"10.244.0.1","request_id":"exp7a-r2-09","user_id":"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8","household_id":"32a9b20c-6637-4885-9fb1-b223063eb2d7"}
+[exp7a-r2-10]
+  gateway: {"time":"2026-11-06T11:57:14+00:00","request_id":"exp7a-r2-10","method":"GET","uri":"/api/households/23fc0d3c-a859-4642-a4ba-f8063b184520","status":405,"upstream_addr":"10.244.0.8:8080","request_time":0.001,"upstream_response_time":"0.001","upstream_status":"405"}
+  api:     {"time":"2026-11-06T11:57:14.533743101Z","level":"INFO","msg":"request","method":"GET","path":"/api/households/23fc0d3c-a859-4642-a4ba-f8063b184520","status":405,"duration":707382,"remote":"10.244.0.1","request_id":"exp7a-r2-10","user_id":"9fe8558a-4b78-4b5d-90b0-0ab1f4fa9ca8"}
+
+=== Rejected input and login lockout, logged with the request id (exp7) (request id prefix exp7b-r2, 20 matching gateway entries, showing up to 5) ===
+[exp7b-r2-01]
+  gateway: {"time":"2026-11-06T11:59:56+00:00","request_id":"exp7b-r2-01","method":"POST","uri":"/api/accounts","status":400,"upstream_addr":"10.244.0.8:8080","request_time":0.003,"upstream_response_time":"0.002","upstream_status":"400"}
+  api:     {"time":"2026-11-06T11:59:56.083660496Z","level":"INFO","msg":"request","method":"POST","path":"/api/accounts","status":400,"duration":1177595,"remote":"10.244.0.1","request_id":"exp7b-r2-01","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+[exp7b-r2-04]
+  gateway: {"time":"2026-11-06T11:59:56+00:00","request_id":"exp7b-r2-04","method":"GET","uri":"/api/accounts/not-a-uuid","status":400,"upstream_addr":"10.244.0.23:8080","request_time":0.002,"upstream_response_time":"0.003","upstream_status":"400"}
+  api:     {"time":"2026-11-06T11:59:56.112414796Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts/not-a-uuid","status":400,"duration":1392812,"remote":"10.244.0.1","request_id":"exp7b-r2-04","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+[exp7b-r2-05]
+  gateway: {"time":"2026-11-06T11:59:56+00:00","request_id":"exp7b-r2-05","method":"POST","uri":"/api/accounts","status":413,"upstream_addr":"","request_time":0.005,"upstream_response_time":"","upstream_status":""}
+  api:     (no line: request never reached a live API process, or the pod has restarted)
+[exp7b-r2-06]
+  gateway: {"time":"2026-11-06T11:59:56+00:00","request_id":"exp7b-r2-06","method":"POST","uri":"/api/accounts","status":400,"upstream_addr":"10.244.0.8:8080","request_time":0.036,"upstream_response_time":"0.017","upstream_status":"400"}
+  api:     {"time":"2026-11-06T11:59:56.169780241Z","level":"INFO","msg":"request","method":"POST","path":"/api/accounts","status":400,"duration":9662679,"remote":"10.244.0.1","request_id":"exp7b-r2-06","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+[exp7b-r2-08]
+  gateway: {"time":"2026-11-06T11:59:57+00:00","request_id":"exp7b-r2-08","method":"POST","uri":"/auth/login","status":401,"upstream_addr":"10.244.0.8:8080","request_time":0.488,"upstream_response_time":"0.488","upstream_status":"401"}
+  api:     {"time":"2026-11-06T11:59:57.423679421Z","level":"INFO","msg":"request","method":"POST","path":"/auth/login","status":401,"duration":486468401,"remote":"10.244.0.1","request_id":"exp7b-r2-08"}
+
+=== Crash during a request: the gateway fails over to the other replica (exp1) (request id prefix exp1-improved-rep3-crash, 1 matching gateway entries, showing up to 1) ===
+[exp1-improved-rep3-crash-51]
+  gateway: {"time":"2026-11-06T12:05:34+00:00","request_id":"exp1-improved-rep3-crash-51","method":"GET","uri":"/api/accounts","status":200,"upstream_addr":"10.244.0.32:8080, 10.244.0.8:8080","request_time":0.324,"upstream_response_time":"0.000, 0.324","upstream_status":"502, 200"}
+  gateway: {"time":"2026-11-06T11:28:48+00:00","request_id":"exp1-improved-rep3-crash-51","method":"GET","uri":"/api/accounts","status":200,"upstream_addr":"10.244.0.8:8080","request_time":0.094,"upstream_response_time":"0.094","upstream_status":"200"}
+  api:     {"time":"2026-11-06T11:28:48.985379589Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":200,"duration":93518271,"remote":"10.244.0.1","request_id":"exp1-improved-rep3-crash-51","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+  api:     {"time":"2026-11-06T12:05:34.701928874Z","level":"INFO","msg":"request","method":"GET","path":"/api/accounts","status":200,"duration":321627484,"remote":"10.244.0.1","request_id":"exp1-improved-rep3-crash-51","user_id":"fa89b564-4bd6-4a96-8bd1-372141a07231","household_id":"23fc0d3c-a859-4642-a4ba-f8063b184520"}
+
+=== Request in flight on a hung replica: single try, 504 from upstream, JSON 503 to the client (exp6) (request id prefix exp6-replica-down-rep3, 10 matching gateway entries, showing up to 2) ===
+[exp6-replica-down-rep3-32]
+  gateway: {"time":"2026-11-06T11:50:12+00:00","request_id":"exp6-replica-down-rep3-32","method":"GET","uri":"/api/accounts","status":503,"upstream_addr":"10.244.0.23:8080","request_time":5.006,"upstream_response_time":"5.006","upstream_status":"504"}
+  api:     (no line: request never reached a live API process, or the pod has restarted)
+[exp6-replica-down-rep3-34]
+  gateway: {"time":"2026-11-06T11:50:13+00:00","request_id":"exp6-replica-down-rep3-34","method":"GET","uri":"/api/accounts","status":503,"upstream_addr":"10.244.0.23:8080","request_time":5.001,"upstream_response_time":"5.000","upstream_status":"504"}
+  api:     (no line: request never reached a live API process, or the pod has restarted)
+

@@ -1,0 +1,8 @@
+evidence/token.txt
+evidence/lab-users.json
+__pycache__/
+*.pyc
+~$*
+
+# private hoWallet source fragment, shared with the instructor on request only
+patch/

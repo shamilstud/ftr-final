@@ -1,0 +1,3 @@
+2026-11-06 16:05 exp8-improved-rep1: postgres OOMKilled at 2026-11-06T11:05:35Z (limit 256Mi, exit 137, 68 connections after restart, memory.peak 268263424). Queries hung from about t+2 s; availability 3.61 % in the fault window. Run INVALID, kept as exp8-improved-rep1-INVALID-confounded-postgres-oom.json. Limit raised to 1Gi; see test-plan.md amendment.
+2026-11-06 16:07 experiment chain stopped by hand during the start of exp8-baseline-rep1 (no fault injected yet, no result saved); also exp3 rep 2 and later had not started.
+postgres memory.peak bytes: 210456576

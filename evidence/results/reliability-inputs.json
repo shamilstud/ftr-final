@@ -1,0 +1,941 @@
+{
+ "_description": {
+  "scope": "Measured in the kind lab on one date. Faults were injected on purpose, so these windows measure behaviour under fault: they do not estimate field MTTF or field availability.",
+  "experiment": "Number in the assignment's matrix. Experiment 7 has no availability window and is left out.",
+  "config": "baseline or improved.",
+  "run": "Result file name without .json.",
+  "injected_faults": "Faults injected in this run (0 for load and quiet windows).",
+  "observation_window_s": "First request sent to last response received by the probe, seconds. Includes the time before the fault.",
+  "requests_total": "Probe requests in the window. Experiment 2 uses its GET probe; writes are in the result files.",
+  "requests_ok": "Probe requests answered 200 or 201.",
+  "requests_429": "Answers from the rate limiter; excluded from the ratio.",
+  "successful_request_ratio": "requests_ok / (requests_total - requests_429).",
+  "downtime_intervals_s": "[start, end] relative to the injection, seconds. Failed requests within 2.0 s are merged. Null where the result has no per-request records.",
+  "downtime_total_s": "Sum of the intervals. Only failed requests count: slow but successful requests are not downtime, so read experiment 3 with its latency. Resolution is limited by the probe rate.",
+  "failures_observed": "Number of downtime intervals (user-visible failures).",
+  "recovery_s": "Experiment's own recovery measure. Exp1 injection to replacement ready and no failures; exp2 restore command to last failure; exp3 removal to last slow request; exp4 kill to successful retry; exp8 undo to bad pod gone.",
+  "fault_duration_s": "Exp3 only: how long the delay was in place.",
+  "aggregate": "Sums over valid runs per experiment and config. MTTR = downtime_total_s / failures_observed; failure rate = failures_observed / observation_window_s."
+ },
+ "aggregate": {
+  "exp1-baseline": {
+   "runs": 3,
+   "injected_faults": 3,
+   "failures_observed": 3,
+   "observation_window_s": 119.52,
+   "downtime_total_s": 52.65,
+   "requests_total": 959,
+   "requests_ok": 657,
+   "requests_429": 0,
+   "successful_request_ratio": 0.68509
+  },
+  "exp1-improved": {
+   "runs": 3,
+   "injected_faults": 3,
+   "failures_observed": 0,
+   "observation_window_s": 66.65,
+   "downtime_total_s": 0.0,
+   "requests_total": 536,
+   "requests_ok": 536,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0
+  },
+  "exp2-improved": {
+   "runs": 4,
+   "injected_faults": 4,
+   "failures_observed": 4,
+   "observation_window_s": 207.72,
+   "downtime_total_s": 114.35,
+   "requests_total": 1250,
+   "requests_ok": 632,
+   "requests_429": 0,
+   "successful_request_ratio": 0.5056
+  },
+  "exp2-baseline": {
+   "runs": 4,
+   "injected_faults": 4,
+   "failures_observed": 4,
+   "observation_window_s": 207.04,
+   "downtime_total_s": 102.65,
+   "requests_total": 1246,
+   "requests_ok": 938,
+   "requests_429": 0,
+   "successful_request_ratio": 0.75281
+  },
+  "exp3-baseline": {
+   "runs": 3,
+   "injected_faults": 3,
+   "failures_observed": 3,
+   "observation_window_s": 268.03,
+   "downtime_total_s": 101.5,
+   "requests_total": 539,
+   "requests_ok": 465,
+   "requests_429": 0,
+   "successful_request_ratio": 0.86271
+  },
+  "exp3-improved": {
+   "runs": 3,
+   "injected_faults": 3,
+   "failures_observed": 0,
+   "observation_window_s": 247.54,
+   "downtime_total_s": 0.0,
+   "requests_total": 498,
+   "requests_ok": 498,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0
+  },
+  "exp4-baseline": {
+   "runs": 3,
+   "injected_faults": 3,
+   "failures_observed": 3,
+   "observation_window_s": 121.53,
+   "downtime_total_s": 54.76,
+   "requests_total": 489,
+   "requests_ok": 366,
+   "requests_429": 0,
+   "successful_request_ratio": 0.74847
+  },
+  "exp4-improved": {
+   "runs": 3,
+   "injected_faults": 3,
+   "failures_observed": 0,
+   "observation_window_s": 115.58,
+   "downtime_total_s": 0.0,
+   "requests_total": 465,
+   "requests_ok": 465,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0
+  },
+  "exp5-baseline": {
+   "runs": 2,
+   "injected_faults": 0,
+   "failures_observed": 6,
+   "observation_window_s": 240.42,
+   "downtime_total_s": 6.21,
+   "requests_total": 4204,
+   "requests_ok": 3077,
+   "requests_429": 1086,
+   "successful_request_ratio": 0.98685
+  },
+  "exp5-improved": {
+   "runs": 2,
+   "injected_faults": 0,
+   "failures_observed": 0,
+   "observation_window_s": 240.43,
+   "downtime_total_s": 0.0,
+   "requests_total": 4204,
+   "requests_ok": 4204,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0
+  },
+  "exp6-improved": {
+   "runs": 9,
+   "injected_faults": 7,
+   "failures_observed": 5,
+   "observation_window_s": 720.25,
+   "downtime_total_s": 81.21,
+   "requests_total": 4088,
+   "requests_ok": 3736,
+   "requests_429": 0,
+   "successful_request_ratio": 0.91389
+  },
+  "exp8-baseline": {
+   "runs": 2,
+   "injected_faults": 2,
+   "failures_observed": 0,
+   "observation_window_s": 146.84,
+   "downtime_total_s": 0.0,
+   "requests_total": 736,
+   "requests_ok": 736,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0
+  },
+  "exp8-improved": {
+   "runs": 2,
+   "injected_faults": 2,
+   "failures_observed": 0,
+   "observation_window_s": 156.03,
+   "downtime_total_s": 0.0,
+   "requests_total": 782,
+   "requests_ok": 782,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0
+  }
+ },
+ "runs": [
+  {
+   "experiment": 1,
+   "config": "baseline",
+   "run": "exp1-baseline-rep1-graceful",
+   "injected_faults": 1,
+   "observation_window_s": 46.13,
+   "requests_total": 370,
+   "requests_ok": 221,
+   "requests_429": 0,
+   "successful_request_ratio": 0.5973,
+   "downtime_intervals_s": [
+    [
+     0.25,
+     25.88
+    ]
+   ],
+   "downtime_total_s": 25.63,
+   "failures_observed": 1,
+   "recovery_s": 25.9
+  },
+  {
+   "experiment": 1,
+   "config": "baseline",
+   "run": "exp1-baseline-rep2-graceful",
+   "injected_faults": 1,
+   "observation_window_s": 46.13,
+   "requests_total": 370,
+   "requests_ok": 226,
+   "requests_429": 0,
+   "successful_request_ratio": 0.61081,
+   "downtime_intervals_s": [
+    [
+     0.25,
+     25.26
+    ]
+   ],
+   "downtime_total_s": 25.01,
+   "failures_observed": 1,
+   "recovery_s": 25.3
+  },
+  {
+   "experiment": 1,
+   "config": "baseline",
+   "run": "exp1-baseline-rep3-crash",
+   "injected_faults": 1,
+   "observation_window_s": 27.26,
+   "requests_total": 219,
+   "requests_ok": 210,
+   "requests_429": 0,
+   "successful_request_ratio": 0.9589,
+   "downtime_intervals_s": [
+    [
+     0.25,
+     2.26
+    ]
+   ],
+   "downtime_total_s": 2.01,
+   "failures_observed": 1,
+   "recovery_s": 2.3
+  },
+  {
+   "experiment": 1,
+   "config": "improved",
+   "run": "exp1-improved-rep1-graceful",
+   "injected_faults": 1,
+   "observation_window_s": 22.26,
+   "requests_total": 179,
+   "requests_ok": 179,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.3
+  },
+  {
+   "experiment": 1,
+   "config": "improved",
+   "run": "exp1-improved-rep2-graceful",
+   "injected_faults": 1,
+   "observation_window_s": 22.13,
+   "requests_total": 178,
+   "requests_ok": 178,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.4
+  },
+  {
+   "experiment": 1,
+   "config": "improved",
+   "run": "exp1-improved-rep3-crash",
+   "injected_faults": 1,
+   "observation_window_s": 22.26,
+   "requests_total": 179,
+   "requests_ok": 179,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.7
+  },
+  {
+   "experiment": 2,
+   "config": "improved",
+   "run": "exp2-rep1-stop",
+   "injected_faults": 1,
+   "observation_window_s": 48.18,
+   "requests_total": 290,
+   "requests_ok": 136,
+   "requests_429": 0,
+   "successful_request_ratio": 0.46897,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     27.0
+    ]
+   ],
+   "downtime_total_s": 26.67,
+   "failures_observed": 1,
+   "recovery_s": 4.0
+  },
+  {
+   "experiment": 2,
+   "config": "baseline",
+   "run": "exp2-rep1-stop",
+   "injected_faults": 1,
+   "observation_window_s": 48.01,
+   "requests_total": 289,
+   "requests_ok": 183,
+   "requests_429": 0,
+   "successful_request_ratio": 0.63322,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     31.01
+    ]
+   ],
+   "downtime_total_s": 30.68,
+   "failures_observed": 1,
+   "recovery_s": 8.0
+  },
+  {
+   "experiment": 2,
+   "config": "improved",
+   "run": "exp2-rep2-stop",
+   "injected_faults": 1,
+   "observation_window_s": 55.68,
+   "requests_total": 335,
+   "requests_ok": 171,
+   "requests_429": 0,
+   "successful_request_ratio": 0.51045,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     32.84
+    ]
+   ],
+   "downtime_total_s": 32.51,
+   "failures_observed": 1,
+   "recovery_s": 12.3
+  },
+  {
+   "experiment": 2,
+   "config": "baseline",
+   "run": "exp2-rep2-stop",
+   "injected_faults": 1,
+   "observation_window_s": 55.51,
+   "requests_total": 334,
+   "requests_ok": 265,
+   "requests_429": 0,
+   "successful_request_ratio": 0.79341,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     23.7
+    ]
+   ],
+   "downtime_total_s": 23.37,
+   "failures_observed": 1,
+   "recovery_s": 3.2
+  },
+  {
+   "experiment": 2,
+   "config": "improved",
+   "run": "exp2-rep3-freeze",
+   "injected_faults": 1,
+   "observation_window_s": 54.18,
+   "requests_total": 326,
+   "requests_ok": 164,
+   "requests_429": 0,
+   "successful_request_ratio": 0.50307,
+   "downtime_intervals_s": [
+    [
+     2.83,
+     30.5
+    ]
+   ],
+   "downtime_total_s": 27.67,
+   "failures_observed": 1,
+   "recovery_s": 7.4
+  },
+  {
+   "experiment": 2,
+   "config": "baseline",
+   "run": "exp2-rep3-freeze",
+   "injected_faults": 1,
+   "observation_window_s": 54.01,
+   "requests_total": 325,
+   "requests_ok": 257,
+   "requests_429": 0,
+   "successful_request_ratio": 0.79077,
+   "downtime_intervals_s": [
+    [
+     2.83,
+     27.36
+    ]
+   ],
+   "downtime_total_s": 24.53,
+   "failures_observed": 1,
+   "recovery_s": 4.3
+  },
+  {
+   "experiment": 2,
+   "config": "improved",
+   "run": "exp2-rep4-freeze",
+   "injected_faults": 1,
+   "observation_window_s": 49.68,
+   "requests_total": 299,
+   "requests_ok": 161,
+   "requests_429": 0,
+   "successful_request_ratio": 0.53846,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     27.83
+    ]
+   ],
+   "downtime_total_s": 27.5,
+   "failures_observed": 1,
+   "recovery_s": 7.3
+  },
+  {
+   "experiment": 2,
+   "config": "baseline",
+   "run": "exp2-rep4-freeze",
+   "injected_faults": 1,
+   "observation_window_s": 49.51,
+   "requests_total": 298,
+   "requests_ok": 233,
+   "requests_429": 0,
+   "successful_request_ratio": 0.78188,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     24.4
+    ]
+   ],
+   "downtime_total_s": 24.07,
+   "failures_observed": 1,
+   "recovery_s": 3.9
+  },
+  {
+   "experiment": 3,
+   "config": "baseline",
+   "run": "exp3-baseline-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 89.51,
+   "requests_total": 180,
+   "requests_ok": 129,
+   "requests_429": 0,
+   "successful_request_ratio": 0.71667,
+   "downtime_intervals_s": [
+    [
+     2.01,
+     45.08
+    ]
+   ],
+   "downtime_total_s": 43.07,
+   "failures_observed": 1,
+   "recovery_s": 4.35,
+   "fault_duration_s": 40.9
+  },
+  {
+   "experiment": 3,
+   "config": "baseline",
+   "run": "exp3-baseline-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 93.01,
+   "requests_total": 187,
+   "requests_ok": 179,
+   "requests_429": 0,
+   "successful_request_ratio": 0.95722,
+   "downtime_intervals_s": [
+    [
+     22.5,
+     45.39
+    ]
+   ],
+   "downtime_total_s": 22.89,
+   "failures_observed": 1,
+   "recovery_s": 4.28,
+   "fault_duration_s": 41.2
+  },
+  {
+   "experiment": 3,
+   "config": "baseline",
+   "run": "exp3-baseline-rep3",
+   "injected_faults": 1,
+   "observation_window_s": 85.51,
+   "requests_total": 172,
+   "requests_ok": 157,
+   "requests_429": 0,
+   "successful_request_ratio": 0.91279,
+   "downtime_intervals_s": [
+    [
+     9.5,
+     45.04
+    ]
+   ],
+   "downtime_total_s": 35.54,
+   "failures_observed": 1,
+   "recovery_s": 4.48,
+   "fault_duration_s": 41.0
+  },
+  {
+   "experiment": 3,
+   "config": "improved",
+   "run": "exp3-improved-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 82.51,
+   "requests_total": 166,
+   "requests_ok": 166,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 3.78,
+   "fault_duration_s": 41.0
+  },
+  {
+   "experiment": 3,
+   "config": "improved",
+   "run": "exp3-improved-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 82.52,
+   "requests_total": 166,
+   "requests_ok": 166,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 9.84,
+   "fault_duration_s": 40.9
+  },
+  {
+   "experiment": 3,
+   "config": "improved",
+   "run": "exp3-improved-rep3",
+   "injected_faults": 1,
+   "observation_window_s": 82.51,
+   "requests_total": 166,
+   "requests_ok": 166,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.42,
+   "fault_duration_s": 41.1
+  },
+  {
+   "experiment": 4,
+   "config": "baseline",
+   "run": "exp4-baseline-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 39.01,
+   "requests_total": 157,
+   "requests_ok": 149,
+   "requests_429": 0,
+   "successful_request_ratio": 0.94904,
+   "downtime_intervals_s": [
+    [
+     0.41,
+     2.17
+    ]
+   ],
+   "downtime_total_s": 1.76,
+   "failures_observed": 1,
+   "recovery_s": 3.6
+  },
+  {
+   "experiment": 4,
+   "config": "baseline",
+   "run": "exp4-baseline-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 39.01,
+   "requests_total": 157,
+   "requests_ok": 123,
+   "requests_429": 0,
+   "successful_request_ratio": 0.78344,
+   "downtime_intervals_s": [
+    [
+     0.23,
+     20.48
+    ]
+   ],
+   "downtime_total_s": 20.25,
+   "failures_observed": 1,
+   "recovery_s": 22.2
+  },
+  {
+   "experiment": 4,
+   "config": "baseline",
+   "run": "exp4-baseline-rep3",
+   "injected_faults": 1,
+   "observation_window_s": 43.51,
+   "requests_total": 175,
+   "requests_ok": 94,
+   "requests_429": 0,
+   "successful_request_ratio": 0.53714,
+   "downtime_intervals_s": [
+    [
+     0.27,
+     33.02
+    ]
+   ],
+   "downtime_total_s": 32.75,
+   "failures_observed": 1,
+   "recovery_s": 34.1
+  },
+  {
+   "experiment": 4,
+   "config": "improved",
+   "run": "exp4-improved-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 39.01,
+   "requests_total": 157,
+   "requests_ok": 157,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.7
+  },
+  {
+   "experiment": 4,
+   "config": "improved",
+   "run": "exp4-improved-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 37.51,
+   "requests_total": 151,
+   "requests_ok": 151,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.3
+  },
+  {
+   "experiment": 4,
+   "config": "improved",
+   "run": "exp4-improved-rep3",
+   "injected_faults": 1,
+   "observation_window_s": 39.06,
+   "requests_total": 157,
+   "requests_ok": 157,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.2
+  },
+  {
+   "experiment": 5,
+   "config": "baseline",
+   "run": "exp5-baseline-rep1",
+   "injected_faults": 0,
+   "observation_window_s": 120.21,
+   "requests_total": 2102,
+   "requests_ok": 1560,
+   "requests_429": 522,
+   "successful_request_ratio": 0.98734,
+   "downtime_intervals_s": [
+    [
+     74.5,
+     75.73
+    ],
+    [
+     82.57,
+     82.74
+    ],
+    [
+     88.47,
+     89.68
+    ]
+   ],
+   "downtime_total_s": 2.61,
+   "failures_observed": 3
+  },
+  {
+   "experiment": 5,
+   "config": "baseline",
+   "run": "exp5-baseline-rep2",
+   "injected_faults": 0,
+   "observation_window_s": 120.21,
+   "requests_total": 2102,
+   "requests_ok": 1517,
+   "requests_429": 564,
+   "successful_request_ratio": 0.98635,
+   "downtime_intervals_s": [
+    [
+     70.8,
+     72.0
+    ],
+    [
+     78.77,
+     79.97
+    ],
+    [
+     86.8,
+     88.0
+    ]
+   ],
+   "downtime_total_s": 3.6,
+   "failures_observed": 3
+  },
+  {
+   "experiment": 5,
+   "config": "improved",
+   "run": "exp5-improved-rep1",
+   "injected_faults": 0,
+   "observation_window_s": 120.21,
+   "requests_total": 2102,
+   "requests_ok": 2102,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0
+  },
+  {
+   "experiment": 5,
+   "config": "improved",
+   "run": "exp5-improved-rep2",
+   "injected_faults": 0,
+   "observation_window_s": 120.22,
+   "requests_total": 2102,
+   "requests_ok": 2102,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-error-rate-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 66.18,
+   "requests_total": 398,
+   "requests_ok": 240,
+   "requests_429": 0,
+   "successful_request_ratio": 0.60302,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     27.84
+    ]
+   ],
+   "downtime_total_s": 27.51,
+   "failures_observed": 1
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-error-rate-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 64.18,
+   "requests_total": 386,
+   "requests_ok": 226,
+   "requests_429": 0,
+   "successful_request_ratio": 0.58549,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     27.51
+    ]
+   ],
+   "downtime_total_s": 27.18,
+   "failures_observed": 1
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-latency-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 78.18,
+   "requests_total": 470,
+   "requests_ok": 470,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-latency-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 78.18,
+   "requests_total": 470,
+   "requests_ok": 470,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-quiet-window-rep1",
+   "injected_faults": 0,
+   "observation_window_s": 120,
+   "requests_total": 600,
+   "requests_ok": 600,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": null,
+   "downtime_total_s": null,
+   "failures_observed": 0
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-quiet-window-rep2",
+   "injected_faults": 0,
+   "observation_window_s": 120,
+   "requests_total": 600,
+   "requests_ok": 600,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": null,
+   "downtime_total_s": null,
+   "failures_observed": 0
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-replica-down-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 63.17,
+   "requests_total": 380,
+   "requests_ok": 369,
+   "requests_429": 0,
+   "successful_request_ratio": 0.97105,
+   "downtime_intervals_s": [
+    [
+     0.5,
+     10.17
+    ]
+   ],
+   "downtime_total_s": 9.67,
+   "failures_observed": 1
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-replica-down-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 66.18,
+   "requests_total": 398,
+   "requests_ok": 385,
+   "requests_429": 0,
+   "successful_request_ratio": 0.96734,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     9.17
+    ]
+   ],
+   "downtime_total_s": 8.84,
+   "failures_observed": 1
+  },
+  {
+   "experiment": 6,
+   "config": "improved",
+   "run": "exp6-replica-down-rep3",
+   "injected_faults": 1,
+   "observation_window_s": 64.18,
+   "requests_total": 386,
+   "requests_ok": 376,
+   "requests_429": 0,
+   "successful_request_ratio": 0.97409,
+   "downtime_intervals_s": [
+    [
+     0.33,
+     8.34
+    ]
+   ],
+   "downtime_total_s": 8.01,
+   "failures_observed": 1
+  },
+  {
+   "experiment": 8,
+   "config": "baseline",
+   "run": "exp8-baseline-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 73.43,
+   "requests_total": 368,
+   "requests_ok": 368,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 0.76
+  },
+  {
+   "experiment": 8,
+   "config": "baseline",
+   "run": "exp8-baseline-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 73.41,
+   "requests_total": 368,
+   "requests_ok": 368,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 1.94
+  },
+  {
+   "experiment": 8,
+   "config": "improved",
+   "run": "exp8-improved-rep1",
+   "injected_faults": 1,
+   "observation_window_s": 78.02,
+   "requests_total": 391,
+   "requests_ok": 391,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 6.11
+  },
+  {
+   "experiment": 8,
+   "config": "improved",
+   "run": "exp8-improved-rep2",
+   "injected_faults": 1,
+   "observation_window_s": 78.01,
+   "requests_total": 391,
+   "requests_ok": 391,
+   "requests_429": 0,
+   "successful_request_ratio": 1.0,
+   "downtime_intervals_s": [],
+   "downtime_total_s": 0,
+   "failures_observed": 0,
+   "recovery_s": 6.49
+  }
+ ]
+}

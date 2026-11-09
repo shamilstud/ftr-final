@@ -1,0 +1,427 @@
+{
+  "experiment": "Exp7 input/limit acceptance",
+  "rep": 2,
+  "cases": [
+    {
+      "rid": "exp7b-r2-01",
+      "case": "malformed JSON POST /api/accounts",
+      "status": 400,
+      "expected": 400,
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid request body\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-02",
+      "case": "malformed JSON POST /api/transactions",
+      "status": 400,
+      "expected": 400,
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid request body\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-03",
+      "case": "negative amount",
+      "status": 400,
+      "expected": 400,
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"amount must be positive\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-04",
+      "case": "invalid UUID in path",
+      "status": 400,
+      "expected": 400,
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid account id\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-05",
+      "case": "3 MB body via gateway",
+      "status": 413,
+      "expected": 413,
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"payload_too_large\",\"message\":\"request body exceeds 2 MB\",\"request_id\":\"exp7b-r2-05\"}",
+      "gateway_logged": true,
+      "api_logged": false
+    },
+    {
+      "rid": "exp7b-r2-06",
+      "case": "1.5 MB body via gateway (API's own 1 MB decode limit)",
+      "status": 400,
+      "expected": 400,
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid request body\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-07",
+      "case": "wrong password #1",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632CE0FF60>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-08",
+      "case": "wrong password #2",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED37F60>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-09",
+      "case": "wrong password #3",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED37600>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-10",
+      "case": "wrong password #4",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED36DE0>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-11",
+      "case": "wrong password #5",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED37420>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-12",
+      "case": "wrong password #6",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED376A0>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-13",
+      "case": "wrong password #7",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED35B20>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-14",
+      "case": "wrong password #8",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED50040>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-15",
+      "case": "wrong password #9",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED500E0>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-16",
+      "case": "wrong password #10",
+      "status": 401,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED50220>",
+      "pass": true,
+      "retry_after": null,
+      "content_type": "application/json",
+      "body": "{\"error\":\"invalid email or password\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-17",
+      "case": "wrong password #11",
+      "status": 429,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED50360>",
+      "pass": true,
+      "retry_after": "900",
+      "content_type": "application/json",
+      "body": "{\"error\":\"too many login attempts, try again in 15 minutes\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-18",
+      "case": "wrong password #12",
+      "status": 429,
+      "expected": "<function e6.<locals>.<lambda> at 0x000001632ED50540>",
+      "pass": true,
+      "retry_after": "900",
+      "content_type": "application/json",
+      "body": "{\"error\":\"too many login attempts, try again in 15 minutes\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    },
+    {
+      "rid": "exp7b-r2-19",
+      "case": "correct password after the burst",
+      "status": 429,
+      "expected": 429,
+      "pass": true,
+      "retry_after": "900",
+      "content_type": "application/json",
+      "body": "{\"error\":\"too many login attempts, try again in 15 minutes\"}\n",
+      "gateway_logged": true,
+      "api_logged": true
+    }
+  ],
+  "probe": {
+    "requests": 40,
+    "success": 40,
+    "failed": 0,
+    "excluded": 0,
+    "error_rate_pct": 0.0,
+    "availability_pct": 100.0,
+    "lat_avg_ms": 11.2,
+    "lat_p50_ms": 9.9,
+    "lat_p95_ms": 19.2,
+    "lat_max_ms": 24.7,
+    "codes": {
+      "200": 40
+    }
+  },
+  "login_status_sequence": [
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    429,
+    429
+  ],
+  "first_429_at_attempt": 11,
+  "login_gateway_log": [
+    {
+      "time": "2026-11-06T11:59:57+00:00",
+      "request_id": "exp7b-r2-08",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.488,
+      "upstream_response_time": "0.488",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T11:59:58+00:00",
+      "request_id": "exp7b-r2-10",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.564,
+      "upstream_response_time": "0.564",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T11:59:59+00:00",
+      "request_id": "exp7b-r2-11",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.508,
+      "upstream_response_time": "0.508",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T11:59:59+00:00",
+      "request_id": "exp7b-r2-12",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.511,
+      "upstream_response_time": "0.510",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T12:00:00+00:00",
+      "request_id": "exp7b-r2-13",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.23:8080",
+      "request_time": 0.483,
+      "upstream_response_time": "0.482",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T12:00:01+00:00",
+      "request_id": "exp7b-r2-15",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.23:8080",
+      "request_time": 0.533,
+      "upstream_response_time": "0.533",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T12:00:01+00:00",
+      "request_id": "exp7b-r2-17",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 429,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.002,
+      "upstream_response_time": "0.001",
+      "upstream_status": "429"
+    },
+    {
+      "time": "2026-11-06T12:00:01+00:00",
+      "request_id": "exp7b-r2-18",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 429,
+      "upstream_addr": "10.244.0.23:8080",
+      "request_time": 0.001,
+      "upstream_response_time": "0.001",
+      "upstream_status": "429"
+    },
+    {
+      "time": "2026-11-06T12:00:01+00:00",
+      "request_id": "exp7b-r2-19",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 429,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.002,
+      "upstream_response_time": "0.001",
+      "upstream_status": "429"
+    },
+    {
+      "time": "2026-11-06T11:59:56+00:00",
+      "request_id": "exp7b-r2-07",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.23:8080",
+      "request_time": 0.475,
+      "upstream_response_time": "0.474",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T11:59:57+00:00",
+      "request_id": "exp7b-r2-09",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.8:8080",
+      "request_time": 0.515,
+      "upstream_response_time": "0.515",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T12:00:00+00:00",
+      "request_id": "exp7b-r2-14",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.23:8080",
+      "request_time": 0.527,
+      "upstream_response_time": "0.527",
+      "upstream_status": "401"
+    },
+    {
+      "time": "2026-11-06T12:00:01+00:00",
+      "request_id": "exp7b-r2-16",
+      "method": "POST",
+      "uri": "/auth/login",
+      "status": 401,
+      "upstream_addr": "10.244.0.23:8080",
+      "request_time": 0.548,
+      "upstream_response_time": "0.547",
+      "upstream_status": "401"
+    }
+  ],
+  "x_real_ip": [
+    {
+      "entry": "baseline direct",
+      "status": 401,
+      "logged_remote": "203.0.113.77",
+      "rid": "exp7b-r2-xrealip-bl"
+    },
+    {
+      "entry": "gateway",
+      "status": 401,
+      "logged_remote": "10.244.0.1",
+      "rid": "exp7b-r2-xrealip-gw"
+    }
+  ],
+  "accounts_before_after": [
+    "1",
+    "1"
+  ]
+}
